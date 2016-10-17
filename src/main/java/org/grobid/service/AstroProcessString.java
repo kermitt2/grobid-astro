@@ -50,7 +50,7 @@ public class AstroProcessString {
 
 			if (entities != null) {
 				if (entities.size() == 0)
-					retVal = "{ \"entities\" : []";
+					retVal = "{ \"entities\" : [] }";
 				else {
 					for(AstroEntity entity : entities)	{
 						if (retVal == null) {

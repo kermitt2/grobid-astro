@@ -59,7 +59,7 @@ Using ```curl``` POST/GET requests:
 
 
 ```
-curl -X POST -d "text=I've lost one minute." localhost:8080/processAstroText
+curl -X POST -d "text=Look at GRB 020819, on the right." localhost:8080/processAstroText
 ```
 
 ```
