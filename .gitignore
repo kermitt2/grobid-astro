@@ -1,0 +1,8 @@
+target
+*.class
+.idea
+*.log
+grobid.log*
+astro.log*
+*.iml
+*.old
