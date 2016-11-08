@@ -7,15 +7,20 @@ import org.grobid.core.GrobidModels;
 import org.grobid.core.analyzers.AstroAnalyzer;
 import org.grobid.core.data.AstroEntity;
 import org.grobid.core.document.Document;
+import org.grobid.core.document.DocumentSource;
 import org.grobid.core.document.xml.XmlBuilderUtils;
 import org.grobid.core.engines.config.GrobidAnalysisConfig;
 import org.grobid.core.exceptions.GrobidException;
 import org.grobid.core.factory.GrobidFactory;
 import org.grobid.core.features.FeaturesVectorAstro;
 import org.grobid.core.layout.LayoutToken;
+import org.grobid.core.layout.BoundingBox;
+import org.grobid.core.layout.Block;
 import org.grobid.core.lexicon.AstroLexicon;
 import org.grobid.core.tokenization.TaggingTokenCluster;
 import org.grobid.core.tokenization.TaggingTokenClusteror;
+import org.grobid.core.engines.config.GrobidAnalysisConfig;
+
 import org.grobid.core.utilities.*;
 import org.grobid.core.sax.TextChunkSaxHandler;
 import org.slf4j.Logger;
@@ -63,14 +68,16 @@ public class AstroParser extends AbstractParser {
     }
 
     private AstroLexicon astroLexicon = null;
+	private EngineParsers parsers;
 
     private AstroParser() {
         super(GrobidModels.ASTRO);
         astroLexicon = AstroLexicon.getInstance();
+		parsers = new EngineParsers();
     }
 
     /**
-     * Extract all occurrences of measurement/quantities from a simple piece of text.
+     * Extract all Astro Objects from a simple piece of text.
      */
     public List<AstroEntity> processText(String text) throws Exception {
         if (isBlank(text)) {
@@ -110,6 +117,54 @@ public class AstroParser extends AbstractParser {
         }
 
         return entities;
+    }
+
+	/**
+	  * Extract all Astro Objects from a pdf file.
+	  */
+    public List<AstroEntity> processPDF(File file) throws IOException {
+
+        ArrayList<AstroEntity> entities = new ArrayList<AstroEntity>();
+
+        try {			
+			GrobidAnalysisConfig config = new GrobidAnalysisConfig.GrobidAnalysisConfigBuilder().build();
+			DocumentSource documentSource = DocumentSource.fromPdf(file, config.getStartPage(), config.getEndPage(), config.getPdfAssetPath() != null);
+			Document doc = parsers.getSegmentationParser().processing(documentSource, config);
+
+			for (Block block : doc.getBlocks()) {
+
+				String text = block.getText();			
+				
+                List<LayoutToken> tokenizations = block.getTokens();
+
+                if (tokenizations.size() == 0)
+                    continue;
+
+                String ress = null;
+                List<String> texts = new ArrayList<String>();
+                for (LayoutToken token : tokenizations) {
+                    if (!token.getText().equals(" ") && !token.getText().equals("\t") && !token.getText().equals("\n") && !token.getText().equals("\r") && !token.getText().equals("\u00A0")) {
+                        texts.add(token.getText());
+                    }
+                }
+				
+                List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
+                ress = addFeatures(texts, astroTokenPositions);
+                String res = null;
+                try {
+                    res = label(ress);
+                } catch (Exception e) {
+                    throw new GrobidException("CRF labeling for astro parsing failed.", e);
+                }
+
+                entities.addAll(extractAstroEntities(text, res, tokenizations));			
+			}
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new GrobidException("Cannot process pdf file: " + file.getPath());
+        }
+
+        return (List<AstroEntity>)entities;
     }
 
 	/**
@@ -291,6 +346,7 @@ public class AstroParser extends AbstractParser {
         }
 
         String teiXML = teiDoc.getTei();
+		FileUtils.writeStringToFile(new File(file.getPath()+".tei.xml"), teiXML);
 
         // we parse this TEI string similarly as for createTrainingXML
 
@@ -450,10 +506,18 @@ public class AstroParser extends AbstractParser {
 					if (currentEntity == null) {
                         currentEntity = new AstroEntity();
                     }
+
                     currentEntity.setRawForm(clusterContent);
                     currentEntity.setOffsetStart(pos);
                     currentEntity.setOffsetEnd(endPos);
                     currentEntity.setType(AstroLexicon.Astro_Type.OBJECT);
+					
+					List<BoundingBox> boundingBoxes = new ArrayList<BoundingBox>();
+					for (LayoutToken token : cluster.concatTokens())
+						if ((token.getHeight() > 0) && (token.getWidth() > 0))
+							boundingBoxes.add(BoundingBox.fromLayoutToken(token));
+					currentEntity.setBoundingBoxes(boundingBoxes);
+					
 					entities.add(currentEntity);
 					currentEntity = null;
                     break;

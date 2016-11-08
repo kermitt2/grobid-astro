@@ -54,7 +54,7 @@ public class AstroEntity implements Comparable<AstroEntity> {
 	private double conf = 0.8;
 	
 	// optional bounding box in the source document
-	private BoundingBox box = null;
+	private List<BoundingBox> boundingBoxes = null;
 		
 	// orign of the entity definition
 	private Origin origin = Origin.GROBID;
@@ -149,6 +149,14 @@ public class AstroEntity implements Comparable<AstroEntity> {
 		this.origin = origin;
 	}
 	
+	public List<BoundingBox> getBoundingBoxes() {
+		return boundingBoxes;
+	}
+
+	public void setBoundingBoxes(List<BoundingBox> boundingBoxes) {
+		this.boundingBoxes = boundingBoxes;
+	}
+	
 	public void normalize() {
 		// TBD is necessary
 	}
@@ -192,6 +200,20 @@ public class AstroEntity implements Comparable<AstroEntity> {
 		buffer.append(", \"offsetEnd\" : " + offsets.end);	
 		
 		buffer.append(", \"conf\" : \"" + conf + "\"");
+		
+		if (boundingBoxes != null) {
+			buffer.append(", \"boundingBoxes\" : [");
+			boolean first = true;
+			for (BoundingBox box : boundingBoxes) {
+				if (first)
+					first = false;
+				else
+					buffer.append(",");
+				buffer.append("{").append(box.toJson()).append("}");
+			}
+			buffer.append("] ");
+		}
+			
 		
 		buffer.append(" }");
 		return buffer.toString();

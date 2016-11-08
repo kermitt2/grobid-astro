@@ -39,6 +39,8 @@ import java.util.NoSuchElementException;
 
 import org.apache.commons.lang3.StringUtils;
 
+import org.grobid.core.layout.Page;
+
 /**
  *
  * @author Patrice
@@ -56,28 +58,57 @@ public class AstroProcessFile {
      * @param inputStream the data of origin PDF
      * @return a response object containing the JSON annotations
      */
-    public static Response processPDFAnnotation(final InputStream inputStream) {
+	public static Response processPDFAnnotation(final InputStream inputStream) {
         LOGGER.debug(methodLogIn()); 
         Response response = null;
         File originFile = null;
         AstroParser parser = AstroParser.getInstance();
         Engine engine = null;
+
         try {
             LibraryLoader.load();
             engine = GrobidFactory.getInstance().getEngine();
             originFile = IOUtilities.writeInputFile(inputStream);
-            GrobidAnalysisConfig config = new GrobidAnalysisConfig.
-                GrobidAnalysisConfigBuilder().build();
-
-            String json = null;
+            GrobidAnalysisConfig config = new GrobidAnalysisConfig.GrobidAnalysisConfigBuilder().build();
 
             if (originFile == null) {
                 response = Response.status(Status.INTERNAL_SERVER_ERROR).build();
             } else {
-                DocumentSource documentSource = DocumentSource.fromPdf(originFile);
-                Document teiDoc = engine.fullTextToTEIDoc(originFile, config);
-                // to be written!
-                //json = AstroEntityVisualizer.getJsonAnnotations(teiDoc);
+                //DocumentSource documentSource = DocumentSource.fromPdf(originFile);
+                Document teiDoc = engine.fullTextToTEIDoc(originFile, config);				
+				
+                StringBuilder json = new StringBuilder();
+				json.append("{ ");
+
+				// default page height and width
+				List<Page> pages = teiDoc.getPages();
+				Page page = null;
+				if (pages.size() > 1) {
+				    // avoiding a possible cover page
+				    page = pages.get(1);
+				} else {
+				    page = pages.get(0);
+				}
+				json.append("\"page_height\":" + page.getHeight());
+				json.append(", \"page_width\":" + page.getWidth() + ", ");
+
+				json.append("\"entities\":[");
+
+				String tei = teiDoc.getTei();
+		
+				List<AstroEntity> entities = parser.processPDF(originFile);
+				
+				boolean first = true;
+				for(AstroEntity entity : entities)	{
+					if (!first)
+						json.append(", ");
+					else
+						first = false;
+					json.append(entity.toJson());
+				}
+				
+				json.append("] }");
+
 
                 IOUtilities.removeTempFile(originFile);
 
@@ -85,7 +116,7 @@ public class AstroProcessFile {
                     response = Response
                             .ok()
                             .type("application/json")
-                            .entity(json)
+                            .entity(json.toString())
                             .build();
                 }
                 else {

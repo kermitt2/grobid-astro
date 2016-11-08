@@ -30,6 +30,10 @@
         <servlet-name>grobid-service</servlet-name>
         <url-pattern>/procesAstroPDF</url-pattern>
     </servlet-mapping>
+	<servlet-mapping>
+        <servlet-name>grobid-service</servlet-name>
+        <url-pattern>/annotateAstroPDF</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>grobid-service</servlet-name>
         <url-pattern>/service/*</url-pattern>

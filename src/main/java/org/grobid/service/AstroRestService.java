@@ -74,7 +74,7 @@ public class AstroRestService implements AstroPaths {
         LOGGER.info(text);
         return AstroProcessString.processText(text);
     }
-
+	
 	@Path(PATH_ANNOTATE_ASTRO_PDF)
 	@Consumes(MediaType.MULTIPART_FORM_DATA)
 	@Produces("application/json")

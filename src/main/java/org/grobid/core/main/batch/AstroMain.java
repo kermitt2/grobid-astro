@@ -172,7 +172,7 @@ public class AstroMain {
 			
             //if (gbdArgs.getProcessMethodName().equals(COMMAND_PROCESS_TEXT)) {
             //    nb = astroParser.batchProcess(gbdArgs.getPath2Input(), gbdArgs.getPath2Output());
-            //} else 
+            //} else
 			if (gbdArgs.getProcessMethodName().equals(COMMAND_CREATE_TRAINING)) {
                 nb = astroParser.createTrainingBatch(gbdArgs.getPath2Input(), gbdArgs.getPath2Output(), -1);
             }  else if (gbdArgs.getProcessMethodName().equals(COMMAND_BOOTSTRAP_TRAINING_PDF)) {
