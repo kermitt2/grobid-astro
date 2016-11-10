@@ -41,6 +41,8 @@ import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static org.apache.commons.lang3.StringUtils.trim;
 import static org.grobid.core.document.xml.XmlBuilderUtils.teiElement;
 
 /**
@@ -124,17 +126,17 @@ public class AstroParser extends AbstractParser {
 	  */
     public List<AstroEntity> processPDF(File file) throws IOException {
 
-        ArrayList<AstroEntity> entities = new ArrayList<AstroEntity>();
+        List<AstroEntity> entities = new ArrayList<AstroEntity>();
 
-        try {			
+        try {
 			GrobidAnalysisConfig config = new GrobidAnalysisConfig.GrobidAnalysisConfigBuilder().build();
 			DocumentSource documentSource = DocumentSource.fromPdf(file, config.getStartPage(), config.getEndPage(), config.getPdfAssetPath() != null);
 			Document doc = parsers.getSegmentationParser().processing(documentSource, config);
 
-			for (Block block : doc.getBlocks()) {
+			/*for (Block block : doc.getBlocks()) {
 
-				String text = block.getText();		
-				
+				String text = block.getText();
+
                 List<LayoutToken> tokenizations = block.getTokens();
 
                 if (tokenizations.size() == 0)
@@ -147,7 +149,7 @@ public class AstroParser extends AbstractParser {
                         texts.add(token.getText());
                     }
                 }
-				
+
                 List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
                 ress = addFeatures(texts, astroTokenPositions);
                 String res = null;
@@ -157,38 +159,40 @@ public class AstroParser extends AbstractParser {
                     throw new GrobidException("CRF labeling for astro parsing failed.", e);
                 }
 
-                entities.addAll(extractAstroEntities(text, res, tokenizations));			
-			}
+                entities.addAll(extractAstroEntities(text, res, tokenizations));
+			}*/
 
-			/*List<LayoutToken> tokenizations = doc.getTokenizations();
+			List<LayoutToken> tokenizations = doc.getTokenizations();
 
 			StringBuilder textBuilder = new StringBuilder();
 			for(LayoutToken token : tokenizations)
 				textBuilder.append(token.getText());
 			String text = textBuilder.toString();
-			
+
 			String ress = null;
 		    List<String> texts = new ArrayList<>();
-		    for (LayoutToken token : tokenizations)
-		        if (!token.getText().equals(" ") && !token.getText().equals("\t") && !token.getText().equals("\u00A0"))
-		            texts.add(token.getText());
-			
+		    for (LayoutToken token : tokenizations) {
+                if (isNotEmpty(trim(token.getText())) && !token.getText().equals("\t") && !token.getText().equals("\u00A0")) {
+                    texts.add(token.getText());
+                }
+            }
+
 		    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
 		    ress = addFeatures(texts, astroTokenPositions);
 		    String res = label(ress);
-		    
-			entities.addAll(extractAstroEntities(text, res, tokenizations));*/
-			
+
+			entities.addAll(extractAstroEntities(text, res, tokenizations));
+
         } catch (Exception e) {
             e.printStackTrace();
             throw new GrobidException("Cannot process pdf file: " + file.getPath());
         }
 
-        return (List<AstroEntity>)entities;
+        return entities;
     }
 
 	/**
-	 * 
+	 *
 	 */
     public int batchProcess(String inputDirectory,
                             String outputDirectory,
@@ -203,8 +207,8 @@ public class AstroParser extends AbstractParser {
      * Input file can be (i)) PDF (.pdf) and it is assumed that we have a scientific article which will
      * be processed by GROBID full text first, (ii) some text (.txt extension).
 	 *
-	 * Note that we could consider a third input type which would be a TEI file resuling from the 
-	 * conversion of a publisher's native XML file following Pub2TEI transformatiom/standardization.  
+	 * Note that we could consider a third input type which would be a TEI file resuling from the
+	 * conversion of a publisher's native XML file following Pub2TEI transformatiom/standardization.
      *
      * @param inputFile input file
      * @param pathTEI   path to TEI with annotated training data
@@ -235,10 +239,10 @@ public class AstroParser extends AbstractParser {
         }
     }
 
-	/** 
+	/**
 	 * Generate training data with the current model using new files located in a given directory.
-	 * the generated training data can then be corrected manually to be used for updating the 
-	 * astro CRF model. 
+	 * the generated training data can then be corrected manually to be used for updating the
+	 * astro CRF model.
      */
     @SuppressWarnings({"UnusedParameters"})
     public int createTrainingBatch(String inputDirectory,
@@ -293,7 +297,7 @@ public class AstroParser extends AbstractParser {
             throw new GrobidException("An exception occured while running Grobid batch.", exp);
         }
     }
-	
+
 	/**
 	  * Generate training data from a text file
 	  */
@@ -531,10 +535,10 @@ public class AstroParser extends AbstractParser {
                     currentEntity.setOffsetStart(pos);
                     currentEntity.setOffsetEnd(endPos);
                     currentEntity.setType(AstroLexicon.Astro_Type.OBJECT);
-					
+
 					List<BoundingBox> boundingBoxes = BoundingBoxCalculator.calculate(cluster.concatTokens());
 					currentEntity.setBoundingBoxes(boundingBoxes);
-					
+
 					entities.add(currentEntity);
 					currentEntity = null;
                     break;
@@ -550,7 +554,7 @@ public class AstroParser extends AbstractParser {
     }
 
 	/**
-	 *  Add XML annotations corresponding to entities in a piece of text, to be included in 
+	 *  Add XML annotations corresponding to entities in a piece of text, to be included in
 	 *  generated training data.
 	 */
     private Element trainingExtraction(List<AstroEntity> entities, String text, List<LayoutToken> tokenizations) {
@@ -617,9 +621,9 @@ public class AstroParser extends AbstractParser {
 
         return tei;
     }
-	
+
 	/**
-	 *  Create training data from PDF with annotation layers corresponding to the entities. 
+	 *  Create training data from PDF with annotation layers corresponding to the entities.
 	 */
 	public int boostrapTrainingPDF(String inputDirectory,
                                    String outputDirectory,
