@@ -133,7 +133,7 @@ public class AstroParser extends AbstractParser {
 
 			for (Block block : doc.getBlocks()) {
 
-				String text = block.getText();			
+				String text = block.getText();		
 				
                 List<LayoutToken> tokenizations = block.getTokens();
 
@@ -159,6 +159,26 @@ public class AstroParser extends AbstractParser {
 
                 entities.addAll(extractAstroEntities(text, res, tokenizations));			
 			}
+
+			/*List<LayoutToken> tokenizations = doc.getTokenizations();
+
+			StringBuilder textBuilder = new StringBuilder();
+			for(LayoutToken token : tokenizations)
+				textBuilder.append(token.getText());
+			String text = textBuilder.toString();
+			
+			String ress = null;
+		    List<String> texts = new ArrayList<>();
+		    for (LayoutToken token : tokenizations)
+		        if (!token.getText().equals(" ") && !token.getText().equals("\t") && !token.getText().equals("\u00A0"))
+		            texts.add(token.getText());
+			
+		    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
+		    ress = addFeatures(texts, astroTokenPositions);
+		    String res = label(ress);
+		    
+			entities.addAll(extractAstroEntities(text, res, tokenizations));*/
+			
         } catch (Exception e) {
             e.printStackTrace();
             throw new GrobidException("Cannot process pdf file: " + file.getPath());
@@ -512,10 +532,7 @@ public class AstroParser extends AbstractParser {
                     currentEntity.setOffsetEnd(endPos);
                     currentEntity.setType(AstroLexicon.Astro_Type.OBJECT);
 					
-					List<BoundingBox> boundingBoxes = new ArrayList<BoundingBox>();
-					for (LayoutToken token : cluster.concatTokens())
-						if ((token.getHeight() > 0) && (token.getWidth() > 0))
-							boundingBoxes.add(BoundingBox.fromLayoutToken(token));
+					List<BoundingBox> boundingBoxes = BoundingBoxCalculator.calculate(cluster.concatTokens());
 					currentEntity.setBoundingBoxes(boundingBoxes);
 					
 					entities.add(currentEntity);

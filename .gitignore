@@ -6,3 +6,7 @@ grobid.log*
 astro.log*
 *.iml
 *.old
+.classpath
+.project
+.settings
+
