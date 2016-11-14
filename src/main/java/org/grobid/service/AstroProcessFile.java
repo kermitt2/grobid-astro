@@ -74,7 +74,6 @@ public class AstroProcessFile {
             if (originFile == null) {
                 response = Response.status(Status.INTERNAL_SERVER_ERROR).build();
             } else {
-                //DocumentSource documentSource = DocumentSource.fromPdf(originFile);
                 Document teiDoc = engine.fullTextToTEIDoc(originFile, config);				
 				
                 StringBuilder json = new StringBuilder();
@@ -108,9 +107,6 @@ public class AstroProcessFile {
 				}
 				
 				json.append("] }");
-
-
-                IOUtilities.removeTempFile(originFile);
 
                 if (json != null) {
                     response = Response

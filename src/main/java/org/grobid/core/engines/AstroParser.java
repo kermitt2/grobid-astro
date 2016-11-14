@@ -129,56 +129,35 @@ public class AstroParser extends AbstractParser {
         List<AstroEntity> entities = new ArrayList<AstroEntity>();
 
         try {
-			GrobidAnalysisConfig config = new GrobidAnalysisConfig.GrobidAnalysisConfigBuilder().build();
-			DocumentSource documentSource = DocumentSource.fromPdf(file, config.getStartPage(), config.getEndPage(), config.getPdfAssetPath() != null);
+			GrobidAnalysisConfig config = 
+				new GrobidAnalysisConfig.GrobidAnalysisConfigBuilder().build();
+			DocumentSource documentSource = 
+				DocumentSource.fromPdf(file, config.getStartPage(), config.getEndPage());
 			Document doc = parsers.getSegmentationParser().processing(documentSource, config);
-
-			/*for (Block block : doc.getBlocks()) {
-
-				String text = block.getText();
-
-                List<LayoutToken> tokenizations = block.getTokens();
-
-                if (tokenizations.size() == 0)
-                    continue;
-
-                String ress = null;
-                List<String> texts = new ArrayList<String>();
-                for (LayoutToken token : tokenizations) {
-                    if (!token.getText().equals(" ") && !token.getText().equals("\t") && !token.getText().equals("\n") && !token.getText().equals("\r") && !token.getText().equals("\u00A0")) {
-                        texts.add(token.getText());
-                    }
-                }
-
-                List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
-                ress = addFeatures(texts, astroTokenPositions);
-                String res = null;
-                try {
-                    res = label(ress);
-                } catch (Exception e) {
-                    throw new GrobidException("CRF labeling for astro parsing failed.", e);
-                }
-
-                entities.addAll(extractAstroEntities(text, res, tokenizations));
-			}*/
 
 			List<LayoutToken> tokenizations = doc.getTokenizations();
 
 			StringBuilder textBuilder = new StringBuilder();
-			for(LayoutToken token : tokenizations)
+			for(LayoutToken token : tokenizations) {
 				textBuilder.append(token.getText());
+			}
 			String text = textBuilder.toString();
 
 			String ress = null;
 		    List<String> texts = new ArrayList<>();
 		    for (LayoutToken token : tokenizations) {
-                if (isNotEmpty(trim(token.getText())) && !token.getText().equals("\t") && !token.getText().equals("\u00A0")) {
-                    texts.add(token.getText());
-                }
+				if (isNotEmpty(trim(token.getText())) && 
+					!token.getText().equals(" ") &&
+					!token.getText().equals("\n") && 
+					!token.getText().equals("\r") &&  
+					!token.getText().equals("\t") && 
+					!token.getText().equals("\u00A0")) {
+						texts.add(token.getText());
+				}
             }
 
 		    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
-		    ress = addFeatures(texts, astroTokenPositions);
+		    ress = addFeatures(texts, astroTokenPositions);		
 		    String res = label(ress);
 
 			entities.addAll(extractAstroEntities(text, res, tokenizations));
@@ -526,7 +505,7 @@ public class AstroParser extends AbstractParser {
 
             switch (clusterLabel) {
                 case ASTRO_OBJECT:
-                    System.out.println("astro: " + clusterContent);
+                    //System.out.println("astro: " + clusterContent);
 					if (currentEntity == null) {
                         currentEntity = new AstroEntity();
                     }

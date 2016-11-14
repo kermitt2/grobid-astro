@@ -232,11 +232,17 @@ public class AstroEntity implements Comparable<AstroEntity> {
 		}
 		if (entityId != null)
 			buffer.append(entityId + "\t");	
-		
+
 		if (offsets != null) {
 			buffer.append(offsets.toString() + "\t");
 		}
-		
+
+		if ( (boundingBoxes != null) && (boundingBoxes.size()>0) ) {
+			for(BoundingBox box : boundingBoxes) {
+				buffer.append(box.toString() + "\t");
+			}
+		}
+
         return buffer.toString();
     }
 	
