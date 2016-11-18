@@ -10,7 +10,14 @@ import org.grobid.core.utilities.OffsetPosition;
 import org.grobid.core.utilities.Pair;
 import org.grobid.trainer.evaluation.EvaluationUtilities;
 import org.grobid.trainer.AstroAnnotationSaxHandler;
-	
+import org.grobid.core.engines.config.GrobidAnalysisConfig;
+import org.grobid.core.engines.EngineParsers;
+import org.grobid.core.layout.PDFAnnotation;
+import org.grobid.core.layout.LayoutToken;
+import org.grobid.core.layout.Block;
+import org.grobid.core.document.Document;
+import org.grobid.core.document.DocumentSource;
+
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
@@ -47,7 +54,11 @@ public class AstroTrainer extends AbstractTrainer {
     }
 
     /**
-     * Add the selected features to the model training for astro entities
+     * Add the selected features to the model training for astro entities. For grobid-astro, we
+	 * can have two types of training files: XML/TEI files where text content is annotated with
+	 * astronimocal entities, and PDF files where the entities are annotated with an additional
+	 * PDf layer. The two types of training files suppose two different process in order to 
+	 * generate the CRF training file.    
      */
     public int createCRFPPData(File sourcePathLabel,
                                File outputPath) {
@@ -56,7 +67,7 @@ public class AstroTrainer extends AbstractTrainer {
             System.out.println("sourcePathLabel: " + sourcePathLabel);
             System.out.println("outputPath: " + outputPath);
 
-            // we convert the tei files into the usual CRF label format
+            // we convert first the tei files into the usual CRF label format
             // we process all tei files in the output directory
             File[] refFiles = sourcePathLabel.listFiles(new FilenameFilter() {
                 public boolean accept(File dir, String name) {
@@ -64,58 +75,166 @@ public class AstroTrainer extends AbstractTrainer {
                 }
             });
 
-            if (refFiles == null) {
-                return 0;
-            }
-
-            System.out.println(refFiles.length + " files");
-
             // the file for writing the training data
             Writer writer = new OutputStreamWriter(new FileOutputStream(outputPath), "UTF8");
 
-            // get a factory for SAX parser
-            SAXParserFactory spf = SAXParserFactory.newInstance();
+            if (refFiles != null) {
+	            System.out.println(refFiles.length + " TEI files");
 
-            String name;
-            for (int n = 0; n < refFiles.length; n++) {
-                File thefile = refFiles[n];
-                name = thefile.getName();
-                System.out.println(name);
+	            // get a factory for SAX parser
+	            SAXParserFactory spf = SAXParserFactory.newInstance();
 
-                AstroAnnotationSaxHandler handler = new AstroAnnotationSaxHandler();
+	            String name;
+	            for (int n = 0; n < refFiles.length; n++) {
+	                File thefile = refFiles[n];
+	                name = thefile.getName();
+	                System.out.println(name);
 
-                //get a new instance of parser
-                SAXParser p = spf.newSAXParser();
-                p.parse(thefile, handler);
+	                AstroAnnotationSaxHandler handler = new AstroAnnotationSaxHandler();
 
-                List<Pair<String, String>> labeled = handler.getLabeledResult();
+	                //get a new instance of parser
+	                SAXParser p = spf.newSAXParser();
+	                p.parse(thefile, handler);
 
-                // we need to add now the features to the labeled tokens
-                List<Pair<String, String>> bufferLabeled = null;
-                int pos = 0;
+	                List<Pair<String, String>> labeled = handler.getLabeledResult();
 
-                // let's iterate by defined CRF input (separated by new line)
-                while (pos < labeled.size()) {
-                    bufferLabeled = new ArrayList<>();
-                    while (pos < labeled.size()) {
-                        if (labeled.get(pos).getA().equals("\n")) {
-                            pos++;
-                            break;
-                        }
-                        bufferLabeled.add(labeled.get(pos));
-                        pos++;
-                    }
+	                // we need to add now the features to the labeled tokens
+	                List<Pair<String, String>> bufferLabeled = null;
+	                int pos = 0;
 
-                    if (bufferLabeled.size() == 0)
-                        continue;
+	                // let's iterate by defined CRF input (separated by new line)
+	                while (pos < labeled.size()) {
+	                    bufferLabeled = new ArrayList<>();
+	                    while (pos < labeled.size()) {
+	                        if (labeled.get(pos).getA().equals("\n")) {
+	                            pos++;
+	                            break;
+	                        }
+	                        bufferLabeled.add(labeled.get(pos));
+	                        pos++;
+	                    }
 
-                    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVectorLabeled(bufferLabeled);
+	                    if (bufferLabeled.size() == 0)
+	                        continue;
 
-                    addFeatures(bufferLabeled, writer, astroTokenPositions);
-                    writer.write("\n");
+	                    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVectorLabeled(bufferLabeled);
+
+	                    addFeatures(bufferLabeled, writer, astroTokenPositions);
+	                    writer.write("\n");
+	                }
+	                writer.write("\n");
+	            }
+			}
+
+			// we convert then the PDF files having entities annotated into the
+			// CRf training format
+			refFiles = sourcePathLabel.listFiles(new FilenameFilter() {
+                public boolean accept(File dir, String name) {
+                    return name.toLowerCase().endsWith(".pdf");
                 }
-                writer.write("\n");
-            }
+            });
+
+            if (refFiles != null) {
+				EngineParsers parsers = new EngineParsers();
+	            System.out.println(refFiles.length + " PDF files");
+
+	            String name;
+	            for (int n = 0; n < refFiles.length; n++) {
+	                File thefile = refFiles[n];
+	                name = thefile.getName();
+	                System.out.println(name);
+
+					// parse the PDF
+					GrobidAnalysisConfig config = 
+						new GrobidAnalysisConfig.GrobidAnalysisConfigBuilder().build();
+					DocumentSource documentSource = 
+						DocumentSource.fromPdf(thefile, config.getStartPage(), config.getEndPage());
+					Document doc = parsers.getSegmentationParser().processing(documentSource, config);
+
+					List<LayoutToken> tokenizations = doc.getTokenizations();
+
+					// get the annotations
+					List<PDFAnnotation> annotations = doc.getPDFAnnotations();
+
+					// we can create the labeled data block per block
+					int indexAnnotation = 0;
+					List<Block> blocks = doc.getBlocks();
+					
+					for(Block block : blocks) {
+						List<Pair<String, String>> labeled = new ArrayList<Pair<String, String>>();
+						String previousLabel = "";
+						int startBlockToken = block.getStartToken();
+						int endBlockToken = block.getEndToken();
+						for(int p=startBlockToken; p < endBlockToken; p++) {
+							LayoutToken token = tokenizations.get(p);
+							//for(LayoutToken token : tokenizations) {
+							if ( (token.getText() != null) &&
+								 (token.getText().trim().length()>0) &&
+								 (!token.getText().equals("\t")) && 
+								 (!token.getText().equals("\n")) && 	  
+								 (!token.getText().equals("\r")) ) {
+								String theLabel = "<other>";
+								for(int i=indexAnnotation; i<annotations.size(); i++) {
+									PDFAnnotation currentAnnotation = annotations.get(i);
+									// check if we are at least on the same page
+									if (currentAnnotation.getPageNumber() < token.getPage())
+										continue;
+									else if (currentAnnotation.getPageNumber() > token.getPage())
+										break;
+
+									// check if we have an astro entity
+									if ( (currentAnnotation.getType() == PDFAnnotation.Type.URI) && 
+										(currentAnnotation.getDestination() != null) &&
+										(currentAnnotation.getDestination().indexOf("simbad") != -1) ) {
+
+										//System.out.println(currentAnnotation.toString() + "\n");
+
+										if (currentAnnotation.cover(token)) {
+											System.out.println(currentAnnotation.toString() + " covers " + token.toString());
+											// the annotation covers the token position
+											// we have an astro entity at this token position
+											if (previousLabel.endsWith("<object>")) {
+												theLabel = "<object>";
+											}
+											else {
+												// we filter out entity starting with (
+												if (!token.getText().equals("("))
+													theLabel = "I-<object>";
+											}
+											break;
+										}
+									} 
+								}
+								Pair<String, String> thePair = 
+									new Pair<String, String>(token.getText(), theLabel);
+
+								// we filter out entity ending with a punctuation mark
+								if (theLabel.equals("<other>") && previousLabel.equals("<object>")) {
+									// check the previous token 
+									Pair<String, String> theLastPair = labeled.get(labeled.size() - 1);
+									String theLastToken = theLastPair.getA();
+									if (theLastToken.equals(";") || 
+										theLastToken.equals(".") || 
+										theLastToken.equals(",") ) {
+										theLastPair = new Pair(theLastToken, "<other>");
+										labeled.set(labeled.size()-1, theLastPair);
+									}
+								}
+
+								// add the current token
+								labeled.add(thePair);
+								previousLabel = theLabel;
+						    }
+						}
+						// add features
+	                    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVectorLabeled(labeled);
+
+	                    addFeatures(labeled, writer, astroTokenPositions);
+	                    writer.write("\n");
+					}
+					writer.write("\n");
+				}
+			}
 
             writer.close();
         } catch (Exception e) {
@@ -149,7 +268,8 @@ public class AstroTrainer extends AbstractTrainer {
                 // do we have an astro at position posit?
                 if ((localPositions != null) && (localPositions.size() > 0)) {
                     for (int mm = currentAstroIndex; mm < localPositions.size(); mm++) {
-                        if ((posit >= localPositions.get(mm).start) && (posit <= localPositions.get(mm).end)) {
+                        if ((posit >= localPositions.get(mm).start) && 
+						    (posit <= localPositions.get(mm).end)) {
                             isAstroPattern = true;
                             currentAstroIndex = mm;
                             break;
@@ -163,7 +283,8 @@ public class AstroTrainer extends AbstractTrainer {
                 }
 
                 FeaturesVectorAstro featuresVector =
-                        FeaturesVectorAstro.addFeaturesAstro(token, label, astroLexicon.inAstroDictionary(token), isAstroPattern);
+                        FeaturesVectorAstro.addFeaturesAstro(token, label, 
+							astroLexicon.inAstroDictionary(token), isAstroPattern);
                 if (featuresVector.label == null)
                     continue;
                 writer.write(featuresVector.printVector());
