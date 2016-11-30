@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import java.io.*;
+import java.util.Properties;
 
 import com.sun.jersey.multipart.FormDataParam;
 import com.sun.jersey.spi.resource.Singleton;
@@ -37,8 +38,6 @@ public class AstroRestService implements AstroPaths {
     private static final String XML = "xml";
     private static final String PDF = "pdf";
     private static final String INPUT = "input";
-    
-    private static final String PDF_DIR_PATH = "/home/kaestle/it/djin2/api/uploads/";
 
     public AstroRestService() {
         LOGGER.info("Init Servlet AstroRestService.");
@@ -93,7 +92,19 @@ public class AstroRestService implements AstroPaths {
 	@Produces("application/json")
 	@POST
 	public Response processLocalPDFAnnotation(@FormParam("filename") String filename) {
-		File file = new File(PDF_DIR_PATH+filename);
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		InputStream stream = classLoader.getResourceAsStream("grobid-astro.properties");
+		
+		Properties properties = new Properties();
+		try {
+			properties.load(stream);
+		} catch (IOException e1) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Can't find upload dir property.").build();
+		}
+		
+		String uploadDir = properties.getProperty("astro.uploadDir", "no_upload_dir");
+		
+		File file = new File(uploadDir+filename);
 		
 		InputStream inputStream;
 		try {

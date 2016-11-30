@@ -211,11 +211,15 @@
         <!-- Not standard -->
         <!-- finalName>${project.groupId}.${project.artifactId}_${project.version}</finalName -->
 
-        <!--<resources> -->
-        <!--<resource> -->
-        <!--<directory>src/main/native</directory> -->
-        <!--</resource> -->
-        <!--</resources> -->
+        <resources>
+	        <resource>
+	            <directory>src/main/resources</directory>
+	            <filtering>true</filtering>
+	        </resource>
+	        <!--<resource> -->
+	        <!--<directory>src/main/native</directory> -->
+	        <!--</resource> -->
+        </resources>
 
         <!--pluginManagement -->
         <plugins>
@@ -316,7 +320,7 @@
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <connectors>
                         <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>8080</port>
+                            <port>4400</port>
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
