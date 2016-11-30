@@ -32,4 +32,9 @@ public interface AstroPaths {
      * path extension for annotating a PDF file with the recognized astronomical entities.
      */
     public static final String PATH_ANNOTATE_ASTRO_PDF= "annotateAstroPDF";
+    
+    /**
+     * path extension for annotating a PDF file with the recognized astronomical entities.
+     */
+    public static final String PATH_ANNOTATE_ASTRO_LOCAL_PDF= "annotateAstroLocalPDF";
 }

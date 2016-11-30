@@ -5,6 +5,9 @@ import org.grobid.core.lexicon.AstroLexicon;
 import org.grobid.core.layout.BoundingBox;
 import org.grobid.core.layout.LayoutToken;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -186,9 +189,15 @@ public class AstroEntity implements Comparable<AstroEntity> {
 	}
 	
 	public String toJson() {
+		ObjectMapper mapper = new ObjectMapper();
+		
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("{ ");
-		buffer.append("\"rawForm\" : \"" + rawForm + "\"");
+		try {
+			buffer.append("\"rawForm\" : " + mapper.writeValueAsString(rawForm));
+		} catch (JsonProcessingException e) {
+			buffer.append("\"rawForm\" : \"" + "JsonProcessingException" + "\"");
+		}
 		if (normalizedForm != null)
 			buffer.append(", \"normalizedForm\" : \"" + normalizedForm + "\"");
 		if (type != null)

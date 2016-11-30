@@ -12,6 +12,9 @@ import javax.naming.InitialContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import java.io.*;
 
@@ -34,6 +37,8 @@ public class AstroRestService implements AstroPaths {
     private static final String XML = "xml";
     private static final String PDF = "pdf";
     private static final String INPUT = "input";
+    
+    private static final String PDF_DIR_PATH = "/home/kaestle/it/djin2/api/uploads/";
 
     public AstroRestService() {
         LOGGER.info("Init Servlet AstroRestService.");
@@ -80,6 +85,23 @@ public class AstroRestService implements AstroPaths {
 	@Produces("application/json")
 	@POST
 	public Response processPDFAnnotation(@FormDataParam(INPUT) InputStream inputStream) {
+		return AstroProcessFile.processPDFAnnotation(inputStream);
+	}
+	
+	@Path(PATH_ANNOTATE_ASTRO_LOCAL_PDF)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED + ";charset=utf-8")
+	@Produces("application/json")
+	@POST
+	public Response processLocalPDFAnnotation(@FormParam("filename") String filename) {
+		File file = new File(PDF_DIR_PATH+filename);
+		
+		InputStream inputStream;
+		try {
+			inputStream = new FileInputStream(file);
+		} catch (FileNotFoundException e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Local file not found. Please check your PDF_DIR_PATH.").build();
+		}
+		
 		return AstroProcessFile.processPDFAnnotation(inputStream);
 	}
 }
