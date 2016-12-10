@@ -43,17 +43,6 @@ public class AstroTrainer extends AbstractTrainer {
     }
 
     /**
-     * Add the selected features to the model training for astronomical entities
-     */
-    public int createCRFPPData(final File corpusDir,
-                               final File trainingOutputPath,
-                               final File evalOutputPath,
-                               double splitRatio) {
-        // TBD, see training for other models
-        return 0;
-    }
-
-    /**
      * Add the selected features to the model training for astro entities. For grobid-astro, we
 	 * can have two types of training files: XML/TEI files where text content is annotated with
 	 * astronimocal entities, and PDF files where the entities are annotated with an additional
@@ -62,21 +51,43 @@ public class AstroTrainer extends AbstractTrainer {
      */
     public int createCRFPPData(File sourcePathLabel,
                                File outputPath) {
+    	return createCRFPPData(sourcePathLabel, outputPath, null, 1.0);
+    }
+
+    /**
+     * Add the selected features to the model training for astronomical entities. Split 
+     * automatically all available labeled data into training and evaluation data 
+     * according to a given split ratio.
+     */
+    public int createCRFPPData(final File corpusDir,
+                               final File trainingOutputPath,
+                               final File evalOutputPath,
+                               double splitRatio) {
         int totalExamples = 0;
+        Writer writerTraining = null;
+        Writer writerEvaluation = null;
         try {
-            System.out.println("sourcePathLabel: " + sourcePathLabel);
-            System.out.println("outputPath: " + outputPath);
+            System.out.println("labeled corpus path: " + corpusDir.getPath());
+            System.out.println("training data path: " + trainingOutputPath.getPath());
+            System.out.println("evaluation data path: " + trainingOutputPath.getPath());
 
             // we convert first the tei files into the usual CRF label format
             // we process all tei files in the output directory
-            File[] refFiles = sourcePathLabel.listFiles(new FilenameFilter() {
+            File[] refFiles = corpusDir.listFiles(new FilenameFilter() {
                 public boolean accept(File dir, String name) {
                     return name.toLowerCase().endsWith(".tei") || name.toLowerCase().endsWith(".tei.xml");
                 }
             });
 
             // the file for writing the training data
-            Writer writer = new OutputStreamWriter(new FileOutputStream(outputPath), "UTF8");
+            writerTraining = new OutputStreamWriter(new FileOutputStream(trainingOutputPath), "UTF8");
+
+            // the file for writing the evaluation data
+            if (evalOutputPath != null)
+				writerEvaluation = new OutputStreamWriter(new FileOutputStream(evalOutputPath), "UTF8");            
+
+			// the active writer
+			Writer writer = null;
 
             if (refFiles != null) {
 	            System.out.println(refFiles.length + " TEI files");
@@ -101,6 +112,12 @@ public class AstroTrainer extends AbstractTrainer {
 	                // we need to add now the features to the labeled tokens
 	                List<Pair<String, String>> bufferLabeled = null;
 	                int pos = 0;
+
+	                // segmentation into training/evaluation is done file by file
+					if (Math.random() <= splitRatio)
+						writer = writerTraining;
+					else 
+						writer = writerEvaluation;
 
 	                // let's iterate by defined CRF input (separated by new line)
 	                while (pos < labeled.size()) {
@@ -128,7 +145,7 @@ public class AstroTrainer extends AbstractTrainer {
 
 			// we convert then the PDF files having entities annotated into the
 			// CRf training format
-			refFiles = sourcePathLabel.listFiles(new FilenameFilter() {
+			refFiles = corpusDir.listFiles(new FilenameFilter() {
                 public boolean accept(File dir, String name) {
                     return name.toLowerCase().endsWith(".pdf");
                 }
@@ -159,12 +176,21 @@ public class AstroTrainer extends AbstractTrainer {
 					// we can create the labeled data block per block
 					int indexAnnotation = 0;
 					List<Block> blocks = doc.getBlocks();
+
+					// segmentation into training/evaluation is done file by file
+					// it could be done block by block y moving the piece of code bellow
+					// under the next loop on blocks bellow
+					if (Math.random() <= splitRatio)
+						writer = writerTraining;
+					else 
+						writer = writerEvaluation;
 					
 					for(Block block : blocks) {
 						List<Pair<String, String>> labeled = new ArrayList<Pair<String, String>>();
 						String previousLabel = "";
 						int startBlockToken = block.getStartToken();
 						int endBlockToken = block.getEndToken();
+						
 						for(int p=startBlockToken; p < endBlockToken; p++) {
 							LayoutToken token = tokenizations.get(p);
 							//for(LayoutToken token : tokenizations) {
@@ -235,10 +261,17 @@ public class AstroTrainer extends AbstractTrainer {
 					writer.write("\n");
 				}
 			}
-
-            writer.close();
         } catch (Exception e) {
-            throw new GrobidException("An exception occured while running Grobid.", e);
+            throw new GrobidException("An exception occured while training Grobid.", e);
+        } finally {
+        	try {
+	        	if (writerTraining != null)
+		        	writerTraining.close();
+        	    if (writerEvaluation != null)
+ 	        	   writerEvaluation.close();
+ 	        } catch(IOException e) {
+ 	        	e.printStackTrace();
+ 	        }
         }
         return totalExamples;
     }

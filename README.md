@@ -31,23 +31,7 @@ Run some test:
 
 > mvn compile test
 
-**The models have to be trained before running the tests!**
-
-## Training
-
-For training the quantity model:
-> cd PATH-TO-GROBID/grobid/grobid-astro
-
-> mvn generate-resources -Ptrain_astro
-
-## Training data
- 
-... 
-
-## Generation of training data
-
-...
-
+**The models have to be trained before running the tests!** - See bellow for training an astro model. 
 
 ## Start the service
 
@@ -66,6 +50,48 @@ curl -X POST -d "text=Look at GRB 020819, on the right." localhost:8080/processA
 curl -GET --data-urlencode "text=Look at Andromeda bellow the North Star." localhost:8080/processAstroText
 ```
 
-## License
+## Training and evaluation
+
+### Training only
+
+For training the astro model with all the available training data:
+
+```
+> cd PATH-TO-GROBID/grobid/grobid-astro
+
+> mvn generate-resources -Ptrain_astro
+```
+
+The training data must be under ```grobid-astro/resources/dataset/astro/corpus```
+
+### Evaluating only
+
+For evaluating under the labeled data under ```grobid-astro/resources/dataset/astro/evaluation```, use the command:
+
+```
+>  mvn compile exec:exec -Peval_astro
+```
+
+### Training and evaluating with automatic corpus split
+
+The following commands will split automatically and randomly the available annotated data (under ```resources/dataset/astro/corpus/```) into a training set and an evaluation set, train a model based on the first set and launch an evaluation based on the second set. 
+
+```
+>  mvn compile exec:exec -Peval_astro_split
+```
+
+In this mode, by default, 80% of the available data is used for training and the remaining for evaluation. This ratio can be changed by editing the corresponding exec profile in the pom.xml file. 
+
+## Training data
+ 
+... 
+
+## Generation of training data
 
 ...
+
+
+
+## License
+
+GROBID is distributed under [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0). 
