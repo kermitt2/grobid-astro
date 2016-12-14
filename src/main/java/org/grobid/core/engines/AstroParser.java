@@ -20,6 +20,8 @@ import org.grobid.core.lexicon.AstroLexicon;
 import org.grobid.core.tokenization.TaggingTokenCluster;
 import org.grobid.core.tokenization.TaggingTokenClusteror;
 import org.grobid.core.engines.config.GrobidAnalysisConfig;
+import org.grobid.core.engines.label.AstroTaggingLabels;
+import org.grobid.core.engines.label.TaggingLabel;
 
 import org.grobid.core.utilities.*;
 import org.grobid.core.sax.TextChunkSaxHandler;
@@ -503,29 +505,23 @@ public class AstroParser extends AbstractParser {
             if ( (endPos > 0) && (text.charAt(endPos-1) == ' ') )
                 endPos--;
 
-            switch (clusterLabel) {
-                case ASTRO_OBJECT:
-                    //System.out.println("astro: " + clusterContent);
-					if (currentEntity == null) {
-                        currentEntity = new AstroEntity();
-                    }
+            if (clusterLabel.equals(AstroTaggingLabels.OBJECT)) {
+            	if (currentEntity == null) {
+                    currentEntity = new AstroEntity();
+                }
 
-                    currentEntity.setRawForm(clusterContent);
-                    currentEntity.setOffsetStart(pos);
-                    currentEntity.setOffsetEnd(endPos);
-                    currentEntity.setType(AstroLexicon.Astro_Type.OBJECT);
+                currentEntity.setRawForm(clusterContent);
+                currentEntity.setOffsetStart(pos);
+                currentEntity.setOffsetEnd(endPos);
+                currentEntity.setType(AstroLexicon.Astro_Type.OBJECT);
 
-					List<BoundingBox> boundingBoxes = BoundingBoxCalculator.calculate(cluster.concatTokens());
-					currentEntity.setBoundingBoxes(boundingBoxes);
+				List<BoundingBox> boundingBoxes = BoundingBoxCalculator.calculate(cluster.concatTokens());
+				currentEntity.setBoundingBoxes(boundingBoxes);
 
-					entities.add(currentEntity);
-					currentEntity = null;
-                    break;
-                case ASTRO_OTHER:
-                    break;
-                default:
-                    logger.error("Warning: unexpected label in astro parser: " + clusterLabel + " for " + clusterContent);
+				entities.add(currentEntity);
+				currentEntity = null;
             }
+            
             pos = endPos;
         }
 
