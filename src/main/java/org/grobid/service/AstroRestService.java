@@ -86,33 +86,4 @@ public class AstroRestService implements AstroPaths {
 	public Response processPDFAnnotation(@FormDataParam(INPUT) InputStream inputStream) {
 		return AstroProcessFile.processPDFAnnotation(inputStream);
 	}
-	
-	@Path(PATH_ANNOTATE_ASTRO_LOCAL_PDF)
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED + ";charset=utf-8")
-	@Produces("application/json")
-	@POST
-	public Response processLocalPDFAnnotation(@FormParam("filename") String filename) {
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream stream = classLoader.getResourceAsStream("grobid-astro.properties");
-		
-		Properties properties = new Properties();
-		try {
-			properties.load(stream);
-		} catch (IOException e1) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Can't find upload dir property.").build();
-		}
-		
-		String uploadDir = properties.getProperty("astro.uploadDir", "no_upload_dir");
-		
-		File file = new File(uploadDir+filename);
-		
-		InputStream inputStream;
-		try {
-			inputStream = new FileInputStream(file);
-		} catch (FileNotFoundException e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Local file not found. Please check your PDF_DIR_PATH.").build();
-		}
-		
-		return AstroProcessFile.processPDFAnnotation(inputStream);
-	}
 }

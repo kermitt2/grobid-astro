@@ -5,6 +5,7 @@ import org.grobid.core.exceptions.GrobidException;
 import org.grobid.core.features.FeaturesVectorAstro;
 import org.grobid.core.lexicon.AstroLexicon;
 import org.grobid.core.mock.MockContext;
+import org.grobid.core.utilities.AstroProperties;
 import org.grobid.core.utilities.GrobidProperties;
 import org.grobid.core.utilities.OffsetPosition;
 import org.grobid.core.utilities.Pair;
@@ -34,10 +35,16 @@ public class AstroTrainer extends AbstractTrainer {
     private AstroLexicon astroLexicon = null;
 
     public AstroTrainer() {
-        super(GrobidModels.ASTRO);
+        this(0.00001, 20, 0);
+    }
+    
+    public AstroTrainer(double epsilon, int window, int nbMaxIterations) {
+    	super(GrobidModels.ASTRO);
+
 		// adjusting CRF training parameters for this model
-		epsilon = 0.0001;
-		window = 20;
+		this.epsilon = epsilon;
+		this.window = window;
+		this.nbMaxIterations = nbMaxIterations;
 
         astroLexicon = AstroLexicon.getInstance();
     }
@@ -60,9 +67,16 @@ public class AstroTrainer extends AbstractTrainer {
      * according to a given split ratio.
      */
     public int createCRFPPData(final File corpusDir,
+            final File trainingOutputPath,
+            final File evalOutputPath,
+            double splitRatio) {
+    	return createCRFPPData(corpusDir, trainingOutputPath, evalOutputPath, splitRatio, true);
+    }
+    public int createCRFPPData(final File corpusDir,
                                final File trainingOutputPath,
                                final File evalOutputPath,
-                               double splitRatio) {
+                               double splitRatio,
+                               boolean splitRandom) {
         int totalExamples = 0;
         Writer writerTraining = null;
         Writer writerEvaluation = null;
@@ -114,10 +128,18 @@ public class AstroTrainer extends AbstractTrainer {
 	                int pos = 0;
 
 	                // segmentation into training/evaluation is done file by file
-					if (Math.random() <= splitRatio)
-						writer = writerTraining;
-					else 
-						writer = writerEvaluation;
+	                if (splitRandom) {
+						if (Math.random() <= splitRatio)
+							writer = writerTraining;
+						else 
+							writer = writerEvaluation;
+	                }
+	                else {
+	                	if ((double)n/refFiles.length <= splitRatio)
+							writer = writerTraining;
+						else 
+							writer = writerEvaluation;
+	                }
 
 	                // let's iterate by defined CRF input (separated by new line)
 	                while (pos < labeled.size()) {
@@ -180,10 +202,18 @@ public class AstroTrainer extends AbstractTrainer {
 					// segmentation into training/evaluation is done file by file
 					// it could be done block by block y moving the piece of code bellow
 					// under the next loop on blocks bellow
-					if (Math.random() <= splitRatio)
-						writer = writerTraining;
-					else 
-						writer = writerEvaluation;
+					if (splitRandom) {
+						if (Math.random() <= splitRatio)
+							writer = writerTraining;
+						else 
+							writer = writerEvaluation;
+	                }
+	                else {
+	                	if ((double)n/refFiles.length <= splitRatio)
+							writer = writerTraining;
+						else 
+							writer = writerEvaluation;
+	                }
 					
 					for(Block block : blocks) {
 						List<Pair<String, String>> labeled = new ArrayList<Pair<String, String>>();
@@ -342,6 +372,42 @@ public class AstroTrainer extends AbstractTrainer {
         createCRFPPData(evalDataF, tmpEvalPath);
 
         return EvaluationUtilities.evaluateStandard(tmpEvalPath.getAbsolutePath(), getTagger());
+    }
+    
+    public String splitTrainEvaluate(Double split, boolean random) {
+    	System.out.println("PAths :\n"+getCorpusPath()+"\n"+GrobidProperties.getModelPath(model).getAbsolutePath()+"\n"+getTempTrainingDataPath().getAbsolutePath()+"\n"+getTempEvaluationDataPath().getAbsolutePath()+" \nrand "+random);
+        
+        File trainDataPath = getTempTrainingDataPath();
+        File evalDataPath = getTempEvaluationDataPath();
+        
+        final File dataPath = trainDataPath;
+        createCRFPPData(getCorpusPath(), dataPath, evalDataPath, split);
+        GenericTrainer trainer = TrainerFactory.getTrainer();
+
+        if (epsilon != 0.0) 
+            trainer.setEpsilon(epsilon);
+        if (window != 0)
+            trainer.setWindow(window);
+        if (nbMaxIterations != 0)
+            trainer.setNbMaxIterations(nbMaxIterations);
+        
+        final File tempModelPath = new File(GrobidProperties.getModelPath(model).getAbsolutePath() + NEW_MODEL_EXT);
+        final File oldModelPath = GrobidProperties.getModelPath(model);
+
+        trainer.train(getTemplatePath(), dataPath, tempModelPath, GrobidProperties.getNBThreads(), model);
+
+        // if we are here, that means that training succeeded
+        renameModels(oldModelPath, tempModelPath);
+
+        return EvaluationUtilities.evaluateStandard(evalDataPath.getAbsolutePath(), getTagger());
+    }
+    
+    protected final File getCorpusPath() {
+        return new File(AstroProperties.get("grobid.astro.corpusPath"));
+    }
+    
+    protected final File getTemplatePath() {
+        return new File(AstroProperties.get("grobid.astro.templatePath"));
     }
 
     /**
