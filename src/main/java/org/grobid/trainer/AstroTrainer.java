@@ -36,7 +36,7 @@ public class AstroTrainer extends AbstractTrainer {
     public AstroTrainer() {
         super(GrobidModels.ASTRO);
 		// adjusting CRF training parameters for this model
-		epsilon = 0.000001;
+		epsilon = 0.0001;
 		window = 20;
 
         astroLexicon = AstroLexicon.getInstance();
@@ -294,9 +294,9 @@ public class AstroTrainer extends AbstractTrainer {
                 }
 
                 String label = lineP.getB();
-                if (label != null) {
+                /*if (label != null) {
                     isAstroPattern = true;
-                }
+                }*/
 
                 // do we have an astro at position posit?
                 if ((localPositions != null) && (localPositions.size() > 0)) {

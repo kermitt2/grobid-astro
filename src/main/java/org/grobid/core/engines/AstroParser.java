@@ -383,7 +383,9 @@ public class AstroParser extends AbstractParser {
                 String ress = null;
                 List<String> texts = new ArrayList<String>();
                 for (LayoutToken token : tokenizations) {
-                    if (!token.getText().equals(" ") && !token.getText().equals("\t") && !token.getText().equals("\u00A0")) {
+                    if (!token.getText().equals(" ") && 
+                        !token.getText().equals("\t") && 
+                        !token.getText().equals("\u00A0")) {
                         texts.add(token.getText());
                     }
                 }
