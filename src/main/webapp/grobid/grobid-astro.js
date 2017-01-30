@@ -166,6 +166,9 @@ var grobid = (function ($) {
         else if (selected == 'processAstroPDF') {
             //SubmitSuccesfulPDF(responseText, statusText);          
         }
+        else if (selected == 'annotateAstroPDF') {
+            //SubmitSuccesfulPDF(responseText, statusText);          
+        }
 
     }
 
@@ -341,6 +344,11 @@ var grobid = (function ($) {
             createInputFile(selected);
             //$('#consolidateBlock').hide();
             setBaseUrl('processAstroPDF');
+        }
+        else if (selected == 'annotateAstroPDF') {
+            createInputFile(selected);
+            //$('#consolidateBlock').hide();
+            setBaseUrl('annotateAstroPDF');
         }
     }
 
