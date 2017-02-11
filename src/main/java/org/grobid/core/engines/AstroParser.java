@@ -126,17 +126,21 @@ public class AstroParser extends AbstractParser {
 	/**
 	  * Extract all Astro Objects from a pdf file.
 	  */
-    public List<AstroEntity> processPDF(File file) throws IOException {
+    public Pair<List<AstroEntity>,Document> processPDF(File file) throws IOException {
 
         List<AstroEntity> entities = new ArrayList<AstroEntity>();
-
+        Document doc = null;
         try {
 			GrobidAnalysisConfig config = 
 				new GrobidAnalysisConfig.GrobidAnalysisConfigBuilder().build();
 			DocumentSource documentSource = 
 				DocumentSource.fromPdf(file, config.getStartPage(), config.getEndPage());
-			Document doc = parsers.getSegmentationParser().processing(documentSource, config);
+			doc = parsers.getSegmentationParser().processing(documentSource, config);
 
+            // here we process all the textural content of the document
+            // for refining the process based on structures, we need to filter
+            // segment of interest (e.g. header, body, annex) and apply the 
+            // corresponding model to further filter by structure types 
 			List<LayoutToken> tokenizations = doc.getTokenizations();
 
 			StringBuilder textBuilder = new StringBuilder();
@@ -169,7 +173,7 @@ public class AstroParser extends AbstractParser {
             throw new GrobidException("Cannot process pdf file: " + file.getPath());
         }
 
-        return entities;
+        return new Pair<List<AstroEntity>,Document>(entities, doc);
     }
 
 	/**

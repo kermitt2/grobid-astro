@@ -23,6 +23,14 @@
         
         <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css">
         
+        <!-- PDF.js stuff -->
+        <link type="text/css" href="resources/pdf.js/web/text_layer_builder.css" rel="stylesheet"/>
+        <link type="text/css" href="resources/pdf.js/web/annotation_layer_builder.css" rel="stylesheet"/>
+        <script type="text/javascript" src="resources/pdf.js/web/text_layer_builder.js"></script>
+        <script type="text/javascript" src="resources/pdf.js/web/pdf_link_service.js"></script>
+        <script type="text/javascript" src="resources/pdf.js/web/annotation_layer_builder.js"></script>
+        <script type="text/javascript" src="resources/pdf.js/build/pdf.js"></script>
+        
         <!-- for using brat -->
         <!-- script src="brat/client/lib/jquery.svg.min.js"></script> 
         <script src="brat/client/lib/jquery.svgdom.min.js"></script>  
@@ -83,8 +91,8 @@
             </table>
             
             <div id="divRestI">      
-                <div class="form-horizontal" method="post" id="gbdForm" target=_blank accept-charset="UTF-8">
-                <!--form class="form-horizontal" method="post" id="gbdForm" target=_blank accept-charset="UTF-8"-->
+                <!--div class="form-horizontal" method="post" id="gbdForm" target=_blank accept-charset="UTF-8"-->
+                <form class="form-horizontal" method="post" id="gbdForm" target=_blank accept-charset="UTF-8">
                     <table border="0">
                         <tr>
                             <td>Service to call &nbsp;</td>
@@ -92,14 +100,8 @@
                                 <select id="selectedService">
                                     <option value="processAstroText" selected>Process
                                         text</option>
-                                    <option value="processAstroTEI">Process TEI
-                                        Document</option>
-                                    <option value="processAstroPDF">Process PDF document</option>
                                     <option value="annotateAstroPDF">Annotate PDF document</option>
                                 </select>
-                            </td>
-                            <td>    
-                                <div id="consolidateBlock"></div>
                             </td>
                         </tr>
                         <tr><td>&nbsp;</td><td/></tr>
@@ -139,11 +141,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td><td colspan="2"><input id="submitRequest" type="submit" value="Submit" class="btn"/></td>
+                            <td>&nbsp;</td><td colspan="2"><input id="submitRequest" value="Submit" class="btn"/></td>
                         </tr>   
                     </table>
-                </div>
+                </form>
                 <br>
+                <div id="infoResult"></div>
                 <div id="requestResult"></div>
             </div>
     
