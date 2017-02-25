@@ -4,6 +4,8 @@ import org.grobid.core.data.AstroEntity;
 import org.grobid.core.engines.AstroParser;
 import org.grobid.core.main.GrobidConstants;
 import org.grobid.core.utilities.GrobidProperties;
+import org.grobid.core.utilities.Pair;
+import org.grobid.core.document.Document;
 import org.junit.Test;
 
 import java.io.File;
@@ -69,8 +71,9 @@ public class TestAstroParser {
 
         String pdfPath = testPath + File.separator + "annot.pdf";
 		
-		List<AstroEntity> entities = AstroParser.getInstance().processPDF(new File(pdfPath));
-		assertNotNull(entities);
+		Pair<List<AstroEntity>, Document> res = AstroParser.getInstance().processPDF(new File(pdfPath));
+		List<AstroEntity> entities = res.getA();
+        assertNotNull(entities);
 
 		for(AstroEntity entity : entities) {
 			System.out.println(entity.toString());
