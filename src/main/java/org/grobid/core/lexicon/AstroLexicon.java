@@ -113,4 +113,7 @@ public class AstroLexicon {
         List<OffsetPosition> results = astroPattern.matcher(vector);
         return results;
     }
+
+    // TBD: methods working on List<LayoutToken> directly instead of List<String> to avoid 
+    // copies
 }
