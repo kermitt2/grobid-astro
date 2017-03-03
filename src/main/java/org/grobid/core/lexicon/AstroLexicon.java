@@ -75,7 +75,7 @@ public class AstroLexicon {
             String l = null;
             while ((l = dis.readLine()) != null) {
                 if (l.length() == 0) continue;
-                List<String> tokens = GrobidDefaultAnalyzer.tokenize(l);
+                List<String> tokens = GrobidDefaultAnalyzer.getInstance().tokenize(l);
                 for(String token : tokens) {
                     if (token.length() > 1) {
                         // should we filter out 100% numerical tokens?

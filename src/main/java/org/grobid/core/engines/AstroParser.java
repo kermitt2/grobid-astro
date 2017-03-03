@@ -89,7 +89,7 @@ public class AstroParser extends AbstractParser {
         try {
             text = text.replace("\n", " ");
             text = text.replace("\t", " ");
-            List<LayoutToken> tokens = AstroAnalyzer.tokenizeWithLayoutToken(text);
+            List<LayoutToken> tokens = AstroAnalyzer.getInstance().tokenizeWithLayoutToken(text);
 
             if (tokens.size() == 0) {
                 return null;
@@ -410,7 +410,7 @@ public class AstroParser extends AbstractParser {
             if (((line.length() == 0) || (i == lines.length - 1)) && (paragraph.length() > 0)) {
                 // we have a new paragraph
                 text = paragraph.toString().replace("\n", " ").replace("\r", " ").replace("\t", " ");
-                List<LayoutToken> tokens = AstroAnalyzer.tokenizeWithLayoutToken(text);
+                List<LayoutToken> tokens = AstroAnalyzer.getInstance().tokenizeWithLayoutToken(text);
 
                 if (tokens.size() == 0)
                     continue;
@@ -486,7 +486,7 @@ public class AstroParser extends AbstractParser {
                 // the last one is a special "large" space missed by the regex "\\p{Space}+" used on the SAX parser
                 if (text.trim().length() == 0)
                     continue;
-                List<LayoutToken> tokenizations = AstroAnalyzer.tokenizeWithLayoutToken(text);
+                List<LayoutToken> tokenizations = AstroAnalyzer.getInstance().tokenizeWithLayoutToken(text);
 
                 if (tokenizations.size() == 0)
                     continue;
