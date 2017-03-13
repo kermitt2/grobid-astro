@@ -9,4 +9,4 @@ astro.log*
 .classpath
 .project
 .settings
-
+resources/dataset/astro/corpus
