@@ -39,34 +39,42 @@ public class AstroProcessString {
 	public static Response processText(String text) {
 		LOGGER.debug(methodLogIn());
 		Response response = null;
-		String retVal = null;
+		StringBuilder retVal = new StringBuilder();
 		AstroParser parser = AstroParser.getInstance();
 		try {
 			LOGGER.debug(">> set raw text for stateless service'...");
 			
 			List<AstroEntity> entities = null;
 			text = text.replaceAll("\\n", " ").replaceAll("\\t", " ");
+			long start = System.currentTimeMillis();
 			entities = parser.processText(text);
+			long end = System.currentTimeMillis();
 
 			if (entities != null) {
+				retVal.append("{ ");
 				if (entities.size() == 0)
-					retVal = "{ \"entities\" : [] }";
+					retVal.append("\"entities\" : []");
 				else {
+					boolean first = true;
 					for(AstroEntity entity : entities)	{
-						if (retVal == null) {
-							retVal = "{ \"entities\" : [ ";
-						} else
-							retVal += ", ";
-						retVal += entity.toJson();
+						if (first) {
+							retVal.append("\"entities\" : [ ");
+							first = false;
+						} else {	
+							retVal.append(", ");
+						}
+						retVal.append(entity.toJson());
 					}
-					retVal += "] }";
+					retVal.append("]");
 				}
+				retVal.append(", \"runtime\" : " + (end-start));
+				retVal.append("}");
 			}
-
-			if (!isResultOK(retVal)) {
+			String retValString = retVal.toString();
+			if (!isResultOK(retValString)) {
 				response = Response.status(Status.NO_CONTENT).build();
 			} else {
-				response = Response.status(Status.OK).entity(retVal).type(MediaType.TEXT_PLAIN).build();
+				response = Response.status(Status.OK).entity(retValString).type(MediaType.TEXT_PLAIN).build();
 			}
 		} catch (NoSuchElementException nseExp) {
 			LOGGER.error("Could not get an instance of AstroParser. Sending service unavailable.");

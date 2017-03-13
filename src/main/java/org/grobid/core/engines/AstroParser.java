@@ -3,11 +3,12 @@ package org.grobid.core.engines;
 import nu.xom.Attribute;
 import nu.xom.Element;
 import org.apache.commons.io.FileUtils;
+
 import org.grobid.core.GrobidModels;
 import org.grobid.core.analyzers.AstroAnalyzer;
 import org.grobid.core.data.AstroEntity;
-import org.grobid.core.document.Document;
-import org.grobid.core.document.DocumentSource;
+import org.grobid.core.data.BiblioItem;
+import org.grobid.core.document.*;
 import org.grobid.core.document.xml.XmlBuilderUtils;
 import org.grobid.core.engines.config.GrobidAnalysisConfig;
 import org.grobid.core.exceptions.GrobidException;
@@ -22,21 +23,18 @@ import org.grobid.core.tokenization.TaggingTokenClusteror;
 import org.grobid.core.engines.config.GrobidAnalysisConfig;
 import org.grobid.core.engines.label.AstroTaggingLabels;
 import org.grobid.core.engines.label.TaggingLabel;
-
+import org.grobid.core.engines.label.TaggingLabels;
 import org.grobid.core.utilities.*;
 import org.grobid.core.sax.TextChunkSaxHandler;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.File;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -91,7 +89,7 @@ public class AstroParser extends AbstractParser {
         try {
             text = text.replace("\n", " ");
             text = text.replace("\t", " ");
-            List<LayoutToken> tokens = AstroAnalyzer.tokenizeWithLayoutToken(text);
+            List<LayoutToken> tokens = AstroAnalyzer.getInstance().tokenizeWithLayoutToken(text);
 
             if (tokens.size() == 0) {
                 return null;
@@ -124,50 +122,143 @@ public class AstroParser extends AbstractParser {
     }
 
 	/**
-	  * Extract all Astro Objects from a pdf file.
+	  * Extract all Astro Objects from a pdf file, with 
 	  */
-    public List<AstroEntity> processPDF(File file) throws IOException {
+    public Pair<List<AstroEntity>,Document> processPDF(File file) throws IOException {
 
         List<AstroEntity> entities = new ArrayList<AstroEntity>();
-
+        Document doc = null;
         try {
 			GrobidAnalysisConfig config = 
 				new GrobidAnalysisConfig.GrobidAnalysisConfigBuilder().build();
 			DocumentSource documentSource = 
 				DocumentSource.fromPdf(file, config.getStartPage(), config.getEndPage());
-			Document doc = parsers.getSegmentationParser().processing(documentSource, config);
+			doc = parsers.getSegmentationParser().processing(documentSource, config);
 
-			List<LayoutToken> tokenizations = doc.getTokenizations();
+            // here we process the relevant textual content of the document
 
-			StringBuilder textBuilder = new StringBuilder();
-			for(LayoutToken token : tokenizations) {
-				textBuilder.append(token.getText());
-			}
-			String text = textBuilder.toString();
+            // for refining the process based on structures, we need to filter
+            // segment of interest (e.g. header, body, annex) and possibly apply 
+            // the corresponding model to further filter by structure types 
 
-			String ress = null;
-		    List<String> texts = new ArrayList<>();
-		    for (LayoutToken token : tokenizations) {
-				if (isNotEmpty(trim(token.getText())) && 
-					!token.getText().equals(" ") &&
-					!token.getText().equals("\n") && 
-					!token.getText().equals("\r") &&  
-					!token.getText().equals("\t") && 
-					!token.getText().equals("\u00A0")) {
-						texts.add(token.getText());
-				}
+            // from the header, we are interested in title, abstract and keywords
+            SortedSet<DocumentPiece> documentParts = doc.getDocumentPart(SegmentationLabel.HEADER);
+            if (documentParts != null) {
+                String header = parsers.getHeaderParser().getSectionHeaderFeatured(doc, documentParts, true);
+                List<LayoutToken> tokenizationHeader = doc.getTokenizationParts(documentParts, doc.getTokenizations());
+                String labeledResult = null;
+                if ((header != null) && (header.trim().length() > 0)) {
+                    labeledResult = parsers.getHeaderParser().label(header);
+
+                    BiblioItem resHeader = new BiblioItem();
+                    //parsers.getHeaderParser().processingHeaderSection(false, doc, resHeader);
+                    resHeader.generalResultMapping(doc, labeledResult, tokenizationHeader);
+
+                    // title
+                    List<LayoutToken> titleTokens = resHeader.getLayoutTokens(TaggingLabels.HEADER_TITLE);
+                    if (titleTokens != null) {
+                        processLayoutTokenSequence(titleTokens, doc, entities);
+                    } 
+
+                    // abstract
+                    List<LayoutToken> abstractTokens = resHeader.getLayoutTokens(TaggingLabels.HEADER_ABSTRACT);
+                    if (abstractTokens != null) {
+                        processLayoutTokenSequence(abstractTokens, doc, entities);
+                    } 
+
+                    // keywords
+                    List<LayoutToken> keywordTokens = resHeader.getLayoutTokens(TaggingLabels.HEADER_KEYWORD);
+                    if (keywordTokens != null) {
+                        processLayoutTokenSequence(keywordTokens, doc, entities);
+                    }
+                }
             }
 
-		    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
-		    ress = addFeatures(texts, astroTokenPositions);		
-		    String res = label(ress);
+            // we can process all the body, in the future figure and table could be the 
+            // object of more refined processing
+            documentParts = doc.getDocumentPart(SegmentationLabel.BODY);
+            if (documentParts != null) {
+                processDocumentPart(documentParts, doc, entities);
+            }
 
-			entities.addAll(extractAstroEntities(text, res, tokenizations));
+            // we don't process references (although reference titles could be relevant)
+            // acknowledgement? 
+
+            // we can process annexes
+            documentParts = doc.getDocumentPart(SegmentationLabel.ANNEX);
+            if (documentParts != null) {
+                processDocumentPart(documentParts, doc, entities);
+            }
+
+            // footnotes are also relevant?
+            /*documentParts = doc.getDocumentPart(SegmentationLabel.FOOTNOTE);
+            if (documentParts != null) {
+                processDocumentPart(documentParts, doc, entities);
+            }*/
 
         } catch (Exception e) {
             e.printStackTrace();
             throw new GrobidException("Cannot process pdf file: " + file.getPath());
         }
+
+        Collections.sort(entities);
+        return new Pair<List<AstroEntity>,Document>(entities, doc);
+    }
+
+    /**
+     * Process with the astro model a segment coming from the segmentation model
+     */ 
+    private List<AstroEntity> processDocumentPart(SortedSet<DocumentPiece> documentParts, 
+                                                  Document doc,
+                                                  List<AstroEntity> entities) {
+        // List<LayoutToken> for the selected segment
+        List<LayoutToken> tokenizationParts = doc.getTokenizationParts(documentParts, doc.getTokenizations());
+
+        // text of the selected segment
+        String text = doc.getDocumentPieceText(documentParts);
+        
+        // list of textual tokens of the selected segment
+        List<String> texts = getTexts(tokenizationParts);
+        
+        // positions for lexical match
+        List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
+        
+        // string representation of the feature matrix for CRF lib
+        String ress = addFeatures(texts, astroTokenPositions);     
+        
+        // labeled result from CRF lib
+        String res = label(ress);
+
+        entities.addAll(extractAstroEntities(text, res, tokenizationParts));
+
+        return entities;
+    }
+
+    /**
+     * Process with the astro model an arbitrary sequence of LayoutToken objects
+     */ 
+    private List<AstroEntity> processLayoutTokenSequence(List<LayoutToken> layoutTokens, 
+                                                  Document doc,
+                                                  List<AstroEntity> entities) {
+        // List<LayoutToken> for the selected segment
+        List<LayoutToken> tokenizationParts = layoutTokens;
+
+        // text of the selected segment
+        String text = LayoutTokensUtil.toText(layoutTokens);
+        
+        // list of textual tokens of the selected segment
+        List<String> texts = getTexts(tokenizationParts);
+        
+        // positions for lexical match
+        List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
+        
+        // string representation of the feature matrix for CRF lib
+        String ress = addFeatures(texts, astroTokenPositions);     
+        
+        // labeled result from CRF lib
+        String res = label(ress);
+
+        entities.addAll(extractAstroEntities(text, res, tokenizationParts));
 
         return entities;
     }
@@ -180,6 +271,24 @@ public class AstroParser extends AbstractParser {
                             boolean isRecursive) throws IOException {
 		// TBD
         return 0;
+    }
+
+    /**
+     * Give the list of textual tokens from a list of LayoutToken
+     */
+    private static List<String> getTexts(List<LayoutToken> tokenizations) {
+        List<String> texts = new ArrayList<>();
+        for (LayoutToken token : tokenizations) {
+            if (isNotEmpty(trim(token.getText())) && 
+                !token.getText().equals(" ") &&
+                !token.getText().equals("\n") && 
+                !token.getText().equals("\r") &&  
+                !token.getText().equals("\t") && 
+                !token.getText().equals("\u00A0")) {
+                    texts.add(token.getText());
+            }
+        }
+        return texts;
     }
 
     /**
@@ -301,7 +410,7 @@ public class AstroParser extends AbstractParser {
             if (((line.length() == 0) || (i == lines.length - 1)) && (paragraph.length() > 0)) {
                 // we have a new paragraph
                 text = paragraph.toString().replace("\n", " ").replace("\r", " ").replace("\t", " ");
-                List<LayoutToken> tokens = AstroAnalyzer.tokenizeWithLayoutToken(text);
+                List<LayoutToken> tokens = AstroAnalyzer.getInstance().tokenizeWithLayoutToken(text);
 
                 if (tokens.size() == 0)
                     continue;
@@ -377,7 +486,7 @@ public class AstroParser extends AbstractParser {
                 // the last one is a special "large" space missed by the regex "\\p{Space}+" used on the SAX parser
                 if (text.trim().length() == 0)
                     continue;
-                List<LayoutToken> tokenizations = AstroAnalyzer.tokenizeWithLayoutToken(text);
+                List<LayoutToken> tokenizations = AstroAnalyzer.getInstance().tokenizeWithLayoutToken(text);
 
                 if (tokenizations.size() == 0)
                     continue;
@@ -385,7 +494,9 @@ public class AstroParser extends AbstractParser {
                 String ress = null;
                 List<String> texts = new ArrayList<String>();
                 for (LayoutToken token : tokenizations) {
-                    if (!token.getText().equals(" ") && !token.getText().equals("\t") && !token.getText().equals("\u00A0")) {
+                    if (!token.getText().equals(" ") && 
+                        !token.getText().equals("\t") && 
+                        !token.getText().equals("\u00A0")) {
                         texts.add(token.getText());
                     }
                 }

@@ -29,7 +29,7 @@ var grobid = (function ($) {
         $("#divAbout").show();
         $("#divRestI").hide();
         $("#divDoc").hide();
-        $('#consolidateBlock').show();
+        //$('#consolidateBlock').show();
 
         createInputTextArea('text');
         setBaseUrl('processAstroText');
@@ -50,8 +50,8 @@ var grobid = (function ($) {
             event.preventDefault();
             $('#inputTextArea').val(examples[3]);
         });
-        $("#selectedService").val('processAstroText');
 
+        $("#selectedService").val('processAstroText');
         $('#selectedService').change(function () {
             processChange();
             return true;
@@ -105,32 +105,26 @@ var grobid = (function ($) {
             $("#divDemo").hide();
             return false;
         });
-        $("#demo").click(function () {
-            $("#demo").attr('class', 'section-active');
-            $("#rest").attr('class', 'section-not-active');
-            $("#about").attr('class', 'section-not-active');
-            $("#doc").attr('class', 'section-not-active');
-
-            $("#subTitle").html("Demo");
-            $("#subTitle").show();
-
-            $("#divDemo").show();
-            $("#divDoc").hide();
-            $("#divAbout").hide();
-            $("#divRestI").hide();
-            return false;
-        });
     });
 
     function ShowRequest(formData, jqForm, options) {
         var queryString = $.param(formData);
-        $('#requestResult').html('<font color="grey">Requesting server...</font>');
+        $('#infoResult').html('<font color="grey">Requesting server...</font>');
         return true;
     }
 
     function AjaxError(jqXHR, textStatus, errorThrown) {
-        $('#requestResult').html("<font color='red'>Error encountered while requesting the server.<br/>" + jqXHR.responseText + "</font>");
+        $('#infoResult').html("<font color='red'>Error encountered while requesting the server.<br/>" + jqXHR.responseText + "</font>");
         responseJson = null;
+    }
+
+    function AjaxError2(message) {
+        if (!message)
+            message = "";
+        message += " - The PDF document cannot be annotated. Please check the server logs.";
+        $('#infoResult').html("<font color='red'>Error encountered while requesting the server.<br/>"+message+"</font>");
+        responseJson = null;
+        return true;
     }
 
     function htmll(s) {
@@ -138,20 +132,146 @@ var grobid = (function ($) {
     }
 
     function submitQuery() {
-        var urlLocal = $('#gbdForm').attr('action');
-        {
-            $.ajax({
-                type: 'GET',
-                url: urlLocal,
-                data: {text: $('#inputTextArea').val()},
-                success: SubmitSuccesful,
-                error: AjaxError,
-                contentType: false
-                //dataType: "text"
-            });
-        }
+        $('#infoResult').html('<font color="grey">Requesting server...</font>');
+        $('#requestResult').html('');
 
-        $('#requestResult').html('<font color="grey">Requesting server...</font>');
+        var selected = $('#selectedService option:selected').attr('value');
+        if (selected == 'processAstroText') {
+            var urlLocal = $('#gbdForm').attr('action');
+            {
+                $.ajax({
+                    type: 'GET',
+                    url: urlLocal,
+                    data: {text: $('#inputTextArea').val()},
+                    success: SubmitSuccesful,
+                    error: AjaxError,
+                    contentType: false
+                    //dataType: "text"
+                });
+            }
+        }
+        else if (selected == 'annotateAstroPDF') {
+            // we will have JSON annotations to be layered on the PDF
+
+            // request for the annotation information
+            var form = document.getElementById('gbdForm');
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            var url = $('#gbdForm').attr('action');
+            xhr.responseType = 'json'; 
+            xhr.open('POST', url, true);
+            //ShowRequest2();
+
+            var nbPages = -1;
+
+            // display the local PDF
+            if ((document.getElementById("input").files[0].type == 'application/pdf') ||
+                (document.getElementById("input").files[0].name.endsWith(".pdf")) ||
+                (document.getElementById("input").files[0].name.endsWith(".PDF")))
+                var reader = new FileReader();
+            reader.onloadend = function () {
+                // to avoid cross origin issue
+                //PDFJS.disableWorker = true;
+                var pdfAsArray = new Uint8Array(reader.result);
+                // Use PDFJS to render a pdfDocument from pdf array
+                PDFJS.getDocument(pdfAsArray).then(function (pdf) {
+                    // Get div#container and cache it for later use
+                    var container = document.getElementById("requestResult");
+                    // enable hyperlinks within PDF files.
+                    //var pdfLinkService = new PDFJS.PDFLinkService();
+                    //pdfLinkService.setDocument(pdf, null);
+
+                    //$('#requestResult').html('');
+                    nbPages = pdf.numPages;
+
+                    // Loop from 1 to total_number_of_pages in PDF document
+                    for (var i = 1; i <= nbPages; i++) {
+
+                        // Get desired page
+                        pdf.getPage(i).then(function (page) {
+
+                            var div0 = document.createElement("div");
+                            div0.setAttribute("style", "text-align: center; margin-top: 1cm;");
+                            var pageInfo = document.createElement("p");
+                            var t = document.createTextNode("page " + (page.pageIndex + 1) + "/" + (nbPages));
+                            pageInfo.appendChild(t);
+                            div0.appendChild(pageInfo);
+                            container.appendChild(div0);
+
+                            var scale = 1.5;
+                            var viewport = page.getViewport(scale);
+                            var div = document.createElement("div");
+
+                            // Set id attribute with page-#{pdf_page_number} format
+                            div.setAttribute("id", "page-" + (page.pageIndex + 1));
+
+                            // This will keep positions of child elements as per our needs, and add a light border
+                            div.setAttribute("style", "position: relative; border-style: solid; border-width: 1px; border-color: gray;");
+
+                            // Append div within div#container
+                            container.appendChild(div);
+
+                            // Create a new Canvas element
+                            var canvas = document.createElement("canvas");
+
+                            // Append Canvas within div#page-#{pdf_page_number}
+                            div.appendChild(canvas);
+
+                            var context = canvas.getContext('2d');
+                            canvas.height = viewport.height;
+                            canvas.width = viewport.width;
+
+                            var renderContext = {
+                                canvasContext: context,
+                                viewport: viewport
+                            };
+
+                            // Render PDF page
+                            page.render(renderContext).then(function () {
+                                // Get text-fragments
+                                return page.getTextContent();
+                            })
+                                .then(function (textContent) {
+                                    // Create div which will hold text-fragments
+                                    var textLayerDiv = document.createElement("div");
+
+                                    // Set it's class to textLayer which have required CSS styles
+                                    textLayerDiv.setAttribute("class", "textLayer");
+
+                                    // Append newly created div in `div#page-#{pdf_page_number}`
+                                    div.appendChild(textLayerDiv);
+
+                                    // Create new instance of TextLayerBuilder class
+                                    var textLayer = new TextLayerBuilder({
+                                        textLayerDiv: textLayerDiv,
+                                        pageIndex: page.pageIndex,
+                                        viewport: viewport
+                                    });
+
+                                    // Set text-fragments
+                                    textLayer.setTextContent(textContent);
+
+                                    // Render text-fragments
+                                    textLayer.render();
+                                });
+                        });
+                    }
+                });
+            }
+            reader.readAsArrayBuffer(document.getElementById("input").files[0]);
+
+            xhr.onreadystatechange = function (e) {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = e.target.response;
+                    //var response = JSON.parse(xhr.responseText);
+                    //console.log(response);
+                    setupAnnotations(response);
+                } else if (xhr.status != 200) {
+                    AjaxError2("Response " + xhr.status + ": ");
+                }
+            };
+            xhr.send(formData);
+        }
     }
 
     function SubmitSuccesful(responseText, statusText) {
@@ -159,12 +279,8 @@ var grobid = (function ($) {
 
         if (selected == 'processAstroText') {
             SubmitSuccesfulText(responseText, statusText);
-        }
-        else if (selected == 'processAstroTEI') {
-            //SubmitSuccesfulXML(responseText, statusText);          
-        }
-        else if (selected == 'processAstroPDF') {
-            //SubmitSuccesfulPDF(responseText, statusText);          
+        } else if (selected == 'annotateAstroPDF') {
+            SubmitSuccesfulPDF(responseText, statusText);          
         }
 
     }
@@ -172,9 +288,11 @@ var grobid = (function ($) {
     function SubmitSuccesfulText(responseText, statusText) {
         responseJson = responseText;
         if ((responseJson == null) || (responseJson.length == 0)) {
-            $('#requestResult')
+            $('#infoResult')
                 .html("<font color='red'>Error encountered while receiving the server's answer: response is empty.</font>");
             return;
+        } else {
+            $('#infoResult').html('');
         }
 
         responseJson = jQuery.parseJSON(responseJson);
@@ -243,7 +361,6 @@ var grobid = (function ($) {
         display += '</div> \
                     <div class="tab-pane " id="navbar-fixed-json">\n';
 
-
         display += "<pre class='prettyprint' id='jsonCode'>";
 
         display += "<pre class='prettyprint lang-json' id='xmlCode'>";
@@ -257,8 +374,6 @@ var grobid = (function ($) {
         $('#requestResult').html(display);
         window.prettyPrint && prettyPrint();
 
-        
-
         if (entities) {
             for (var entityIndex = 0; entityIndex < entities.length; entityIndex++) {
                 $('#annot-' + entityIndex).bind('hover', viewEntity);
@@ -269,6 +384,76 @@ var grobid = (function ($) {
         $('#detailed_annot-0').hide();
 
         $('#requestResult').show();
+    }
+
+    function setupAnnotations(response) {
+        // we must check/wait that the corresponding PDF page is rendered at this point
+        if ((response == null) || (response.length == 0)) {
+            $('#infoResult')
+                .html("<font color='red'>Error encountered while receiving the server's answer: response is empty.</font>");
+            return;
+        } else {
+            $('#infoResult').html('');
+        }
+
+        var json = response;
+        var pageInfo = json.pages;
+
+        var page_height = 0.0;
+        var page_width = 0.0;
+
+        var entities = json.entities;
+        if (entities) {
+            for(var n in entities) {
+                var annotation = entities[n];
+                var theId = annotation.rawForm;
+                var theUrl = null;
+                //var theUrl = annotation.url;
+                var pos = annotation.boundingBoxes;
+                pos.forEach(function(thePos, m) {
+                    // get page information for the annotation
+                    var pageNumber = thePos.p;
+                    if (pageInfo[pageNumber-1]) {
+                        page_height = pageInfo[pageNumber-1].page_height;
+                        page_width = pageInfo[pageNumber-1].page_width;
+                    }
+                    annotateEntity(theId, thePos, theUrl, page_height, page_width);
+                });
+            }
+        }
+    }
+
+    function annotateEntity(theId, thePos, theUrl, page_height, page_width) {
+        var page = thePos.p;
+        var pageDiv = $('#page-'+page);
+        var canvas = pageDiv.children('canvas').eq(0);;
+
+        var canvasHeight = canvas.height();
+        var canvasWidth = canvas.width();
+        var scale_x = canvasHeight / page_height;
+        var scale_y = canvasWidth / page_width;
+
+        var x = thePos.x * scale_x - 1;
+        var y = thePos.y * scale_y - 1 ;
+        var width = thePos.w * scale_x + 1;
+        var height = thePos.h * scale_y + 1;
+
+        //make clickable the area
+        var element = document.createElement("a");
+        var attributes = "display:block; width:"+width+"px; height:"+height+"px; position:absolute; top:"+
+            y+"px; left:"+x+"px;";
+        element.setAttribute("style", attributes + "border:2px solid; border-color: #800080;");
+        element.setAttribute("data-toggle", "popover");
+        element.setAttribute("data-placement", "top");
+        element.setAttribute("data-content", "content");
+        element.setAttribute("data-trigger", "hover");
+        $(element).popover({
+            content: "<p>Astronomical Object</p><p>" +theId+"<p>",
+            html: true,
+            container: 'body'
+        });
+        
+        pageDiv.append(element);
     }
 
     function viewEntity() {
@@ -332,7 +517,7 @@ var grobid = (function ($) {
             //$('#consolidateBlock').show();
             setBaseUrl('processAstroText');
         }
-        else if (selected == 'processAstroTEI') {
+        /*else if (selected == 'processAstroTEI') {
             createInputFile(selected)
             //$('#consolidateBlock').show();
             setBaseUrl('processAstroTEI');
@@ -341,6 +526,11 @@ var grobid = (function ($) {
             createInputFile(selected);
             //$('#consolidateBlock').hide();
             setBaseUrl('processAstroPDF');
+        }*/
+        else if (selected == 'annotateAstroPDF') {
+            createInputFile(selected);
+            //$('#consolidateBlock').hide();
+            setBaseUrl('annotateAstroPDF');
         }
     }
 

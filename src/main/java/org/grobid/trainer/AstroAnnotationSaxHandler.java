@@ -138,7 +138,7 @@ public class AstroAnnotationSaxHandler extends DefaultHandler {
 
             String text = getText();
             // we segment the text
-            List<String> tokenizations = AstroAnalyzer.tokenize(text);
+            List<String> tokenizations = AstroAnalyzer.getInstance().tokenize(text);
             boolean begin = true;
             for (String tok : tokenizations) {
                 tok = tok.trim();

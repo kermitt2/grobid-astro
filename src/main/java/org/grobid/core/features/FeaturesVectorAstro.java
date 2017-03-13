@@ -27,9 +27,10 @@ public class FeaturesVectorAstro {
     // OPENQUOTE, ENDQUOTE
 
 	// lexical features to inject some vocabularies/dictionaries of astronomical names
-    public boolean astroName = false; // can be part of an astronomical name without looking at the other 
-									  // tokens around
-	public boolean isAstroToken = false; // is part of an astronomical name
+    public boolean astroName = false; // can be part of a known astronomical name without looking at 
+									  // the other tokens around
+	public boolean isAstroToken = false; // is part of a known astronomical name, possibly a 
+                                      // multi-token expression
 
     public boolean commonName = false;
 

@@ -35,11 +35,12 @@ public class AstroTrainer extends SmectaAbstractTrainer {
     private AstroLexicon astroLexicon = null;
 
     public AstroTrainer() {
-        this(0.000001, 20, 0);
+        this(0.00001, 20, 0);
     }
     
     public AstroTrainer(double epsilon, int window, int nbMaxIterations) {
     	super(GrobidModels.ASTRO);
+
 		// adjusting CRF training parameters for this model
 		this.epsilon = epsilon;
 		this.window = window;
@@ -323,9 +324,9 @@ public class AstroTrainer extends SmectaAbstractTrainer {
                 }
 
                 String label = lineP.getB();
-                if (label != null) {
+                /*if (label != null) {
                     isAstroPattern = true;
-                }
+                }*/
 
                 // do we have an astro at position posit?
                 if ((localPositions != null) && (localPositions.size() > 0)) {

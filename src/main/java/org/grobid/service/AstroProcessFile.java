@@ -12,6 +12,7 @@ import org.grobid.core.factory.GrobidPoolingFactory;
 import org.grobid.core.utilities.GrobidProperties;
 import org.grobid.core.utilities.IOUtilities;
 import org.grobid.core.utilities.KeyGen;
+import org.grobid.core.utilities.Pair;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,31 +75,31 @@ public class AstroProcessFile {
             if (originFile == null) {
                 response = Response.status(Status.INTERNAL_SERVER_ERROR).build();
             } else {
-                Document teiDoc = engine.fullTextToTEIDoc(originFile, config);				
-				
+                long start = System.currentTimeMillis();
+                Pair<List<AstroEntity>, Document> extractedEntities = parser.processPDF(originFile);
+                long end = System.currentTimeMillis();
+
+                Document doc = extractedEntities.getB();
+                List<AstroEntity> entities = extractedEntities.getA();
                 StringBuilder json = new StringBuilder();
 				json.append("{ ");
 
-				// default page height and width
-				List<Page> pages = teiDoc.getPages();
-				Page page = null;
-				if (pages.size() > 1) {
-				    // avoiding a possible cover page
-				    page = pages.get(1);
-				} else {
-				    page = pages.get(0);
-				}
-				json.append("\"page_height\":" + page.getHeight());
-				json.append(", \"page_width\":" + page.getWidth() + ", ");
+				// page height and width
+                json.append("\"pages\":[");
+				List<Page> pages = doc.getPages();
+                boolean first = true;
+                for(Page page : pages) {
+    				if (first) 
+                        first = false;
+                    else
+                        json.append(", ");    
+    				json.append("{\"page_height\":" + page.getHeight());
+    				json.append(", \"page_width\":" + page.getWidth() + "}");
+                }
 
-				json.append("\"entities\":[");
-
-				String tei = teiDoc.getTei();
-		
-				List<AstroEntity> entities = parser.processPDF(originFile);
-				
-				boolean first = true;
-				for(AstroEntity entity : entities)	{
+				json.append("], \"entities\":[");
+				first = true;
+				for(AstroEntity entity : entities) {
 					if (!first)
 						json.append(", ");
 					else
@@ -106,7 +107,9 @@ public class AstroProcessFile {
 					json.append(entity.toJson());
 				}
 				
-				json.append("] }");
+				json.append("]");
+                json.append(", \"runtime\" :" + (end-start));
+                json.append("}");
 
                 if (json != null) {
                     response = Response
