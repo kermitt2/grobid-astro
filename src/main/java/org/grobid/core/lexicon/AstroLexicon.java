@@ -56,7 +56,7 @@ public class AstroLexicon {
         LOGGER.info("Init astro lexicon");
         astroVocabulary = new HashSet<String>();
 
-        File file = new File("resources/lexicon/astroVoc.txt");
+        File file = new File(GrobidProperties.getGrobidHomePath()+"/../grobid-astro/resources/lexicon/astroVoc.txt");
         if (!file.exists()) {
             throw new GrobidResourceException("Cannot initialize astro dictionary, because file '" + 
                 file.getAbsolutePath() + "' does not exists.");
