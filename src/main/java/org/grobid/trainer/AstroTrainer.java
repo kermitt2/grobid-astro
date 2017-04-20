@@ -30,7 +30,7 @@ import java.util.List;
  *
  * @author Patrice
  */
-public class AstroTrainer extends SmectaAbstractTrainer {
+public class AstroTrainer extends AbstractTrainer {
 
     private AstroLexicon astroLexicon = null;
 
