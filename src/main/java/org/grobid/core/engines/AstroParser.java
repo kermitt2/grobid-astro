@@ -42,6 +42,7 @@ import java.util.TimeZone;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.trim;
 import static org.grobid.core.document.xml.XmlBuilderUtils.teiElement;
 
@@ -216,7 +217,9 @@ public class AstroParser extends AbstractParser {
 
         // text of the selected segment
         String text = doc.getDocumentPieceText(documentParts);
-        
+        if (isEmpty(trim(text)))
+            return entities;
+
         // list of textual tokens of the selected segment
         List<String> texts = getTexts(tokenizationParts);
         
@@ -228,7 +231,7 @@ public class AstroParser extends AbstractParser {
         
         // labeled result from CRF lib
         String res = label(ress);
-
+        
         entities.addAll(extractAstroEntities(text, res, tokenizationParts));
 
         return entities;
