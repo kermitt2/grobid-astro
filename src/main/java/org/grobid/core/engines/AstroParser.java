@@ -43,6 +43,7 @@ import java.util.TimeZone;
 
 import static org.apache.commons.lang3.StringUtils.isBlank;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.trim;
 import static org.grobid.core.document.xml.XmlBuilderUtils.teiElement;
 
