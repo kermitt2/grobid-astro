@@ -17,6 +17,7 @@ import org.grobid.core.features.FeaturesVectorAstro;
 import org.grobid.core.layout.LayoutToken;
 import org.grobid.core.layout.BoundingBox;
 import org.grobid.core.layout.Block;
+import org.grobid.core.layout.LayoutTokenization;
 import org.grobid.core.lexicon.AstroLexicon;
 import org.grobid.core.tokenization.TaggingTokenCluster;
 import org.grobid.core.tokenization.TaggingTokenClusteror;
@@ -157,28 +158,52 @@ public class AstroParser extends AbstractParser {
                     // title
                     List<LayoutToken> titleTokens = resHeader.getLayoutTokens(TaggingLabels.HEADER_TITLE);
                     if (titleTokens != null) {
-                        processLayoutTokenSequence(titleTokens, doc, entities);
+                        processLayoutTokenSequence(titleTokens, entities);
                     } 
 
                     // abstract
                     List<LayoutToken> abstractTokens = resHeader.getLayoutTokens(TaggingLabels.HEADER_ABSTRACT);
                     if (abstractTokens != null) {
-                        processLayoutTokenSequence(abstractTokens, doc, entities);
+                        processLayoutTokenSequence(abstractTokens, entities);
                     } 
 
                     // keywords
                     List<LayoutToken> keywordTokens = resHeader.getLayoutTokens(TaggingLabels.HEADER_KEYWORD);
                     if (keywordTokens != null) {
-                        processLayoutTokenSequence(keywordTokens, doc, entities);
+                        processLayoutTokenSequence(keywordTokens, entities);
                     }
                 }
             }
 
-            // we can process all the body, in the future figure and table could be the 
-            // object of more refined processing
+            // process selected structures in the body,
             documentParts = doc.getDocumentPart(SegmentationLabel.BODY);
             if (documentParts != null) {
-                processDocumentPart(documentParts, doc, entities);
+                // full text processing
+                Pair<String, LayoutTokenization> featSeg = parsers.getFullTextParser().getBodyTextFeatured(doc, documentParts);
+                if (featSeg != null) {
+                    // if featSeg is null, it usually means that no body segment is found in the
+                    // document segmentation
+                    String bodytext = featSeg.getA();
+
+                    LayoutTokenization tokenizationBody = featSeg.getB();
+                    String rese = null;
+                    if ( (bodytext != null) && (bodytext.trim().length() > 0) ) {               
+                        rese = parsers.getFullTextParser().label(bodytext);
+                    } else {
+                        logger.debug("Fulltext model: The input to the CRF processing is empty");
+                    }
+
+                    // do not process the references markers, figure markers, table markers, 
+                    // formula markers, formula label and the formula
+                    List<TaggingLabel> toProcess = Arrays.asList(TaggingLabels.PARAGRAPH, TaggingLabels.ITEM, 
+                        TaggingLabels.SECTION, TaggingLabels.FIGURE, TaggingLabels.TABLE);
+                    List<LayoutTokenization> documentBodyTokens = 
+                        FullTextParser.getDocumentFullTextTokens(toProcess, rese, tokenizationBody.getTokenization());
+
+                    if (documentBodyTokens != null) {
+                            processLayoutTokenSequences(documentBodyTokens, entities);
+                    }
+                }
             }
 
             // we don't process references (although reference titles could be relevant)
@@ -207,59 +232,52 @@ public class AstroParser extends AbstractParser {
 
     /**
      * Process with the astro model a segment coming from the segmentation model
-     */ 
+     */
     private List<AstroEntity> processDocumentPart(SortedSet<DocumentPiece> documentParts, 
                                                   Document doc,
                                                   List<AstroEntity> entities) {
-        // List<LayoutToken> for the selected segment
         List<LayoutToken> tokenizationParts = doc.getTokenizationParts(documentParts, doc.getTokenizations());
-
-        // text of the selected segment
-        String text = doc.getDocumentPieceText(documentParts);
-        
-        // list of textual tokens of the selected segment
-        List<String> texts = getTexts(tokenizationParts);
-        
-        // positions for lexical match
-        List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
-        
-        // string representation of the feature matrix for CRF lib
-        String ress = addFeatures(texts, astroTokenPositions);     
-        
-        // labeled result from CRF lib
-        String res = label(ress);
-
-        entities.addAll(extractAstroEntities(text, res, tokenizationParts));
-
-        return entities;
+        return processLayoutTokenSequence(tokenizationParts, entities);
     }
 
     /**
      * Process with the astro model an arbitrary sequence of LayoutToken objects
      */ 
     private List<AstroEntity> processLayoutTokenSequence(List<LayoutToken> layoutTokens, 
-                                                  Document doc,
+                                                            List<AstroEntity> entities) {
+        List<LayoutTokenization> layoutTokenizations = new ArrayList<LayoutTokenization>();
+        layoutTokenizations.add(new LayoutTokenization(layoutTokens));
+        return processLayoutTokenSequences(layoutTokenizations, entities);
+    }
+
+    /**
+     * Process with the astro model a set of arbitrary sequence of LayoutTokenization
+     */ 
+    private List<AstroEntity> processLayoutTokenSequences(List<LayoutTokenization> layoutTokenizations, 
                                                   List<AstroEntity> entities) {
-        // List<LayoutToken> for the selected segment
-        List<LayoutToken> tokenizationParts = layoutTokens;
+        for(LayoutTokenization layoutTokenization : layoutTokenizations) {
+            List<LayoutToken> layoutTokens = layoutTokenization.getTokenization();
 
-        // text of the selected segment
-        String text = LayoutTokensUtil.toText(layoutTokens);
-        
-        // list of textual tokens of the selected segment
-        List<String> texts = getTexts(tokenizationParts);
-        
-        // positions for lexical match
-        List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
-        
-        // string representation of the feature matrix for CRF lib
-        String ress = addFeatures(texts, astroTokenPositions);     
-        
-        // labeled result from CRF lib
-        String res = label(ress);
+            // List<LayoutToken> for the selected segment
+            List<LayoutToken> tokenizationParts = layoutTokens;
 
-        entities.addAll(extractAstroEntities(text, res, tokenizationParts));
+            // text of the selected segment
+            String text = LayoutTokensUtil.toText(layoutTokens);
+            
+            // list of textual tokens of the selected segment
+            List<String> texts = getTexts(tokenizationParts);
+            
+            // positions for lexical match
+            List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
+            
+            // string representation of the feature matrix for CRF lib
+            String ress = addFeatures(texts, astroTokenPositions);     
+            
+            // labeled result from CRF lib
+            String res = label(ress);
 
+            entities.addAll(extractAstroEntities(text, res, tokenizationParts));
+        }
         return entities;
     }
 
