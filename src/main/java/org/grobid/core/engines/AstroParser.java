@@ -3,48 +3,45 @@ package org.grobid.core.engines;
 import nu.xom.Attribute;
 import nu.xom.Element;
 import org.apache.commons.io.FileUtils;
-
 import org.grobid.core.GrobidModels;
 import org.grobid.core.analyzers.AstroAnalyzer;
 import org.grobid.core.data.AstroEntity;
 import org.grobid.core.data.BiblioItem;
-import org.grobid.core.document.*;
+import org.grobid.core.document.Document;
+import org.grobid.core.document.DocumentPiece;
+import org.grobid.core.document.DocumentSource;
 import org.grobid.core.document.xml.XmlBuilderUtils;
 import org.grobid.core.engines.config.GrobidAnalysisConfig;
+import org.grobid.core.engines.label.AstroTaggingLabels;
+import org.grobid.core.engines.label.SegmentationLabels;
+import org.grobid.core.engines.label.TaggingLabel;
+import org.grobid.core.engines.label.TaggingLabels;
 import org.grobid.core.exceptions.GrobidException;
 import org.grobid.core.factory.GrobidFactory;
 import org.grobid.core.features.FeaturesVectorAstro;
-import org.grobid.core.layout.LayoutToken;
 import org.grobid.core.layout.BoundingBox;
-import org.grobid.core.layout.Block;
+import org.grobid.core.layout.LayoutToken;
 import org.grobid.core.layout.LayoutTokenization;
 import org.grobid.core.lexicon.AstroLexicon;
+import org.grobid.core.sax.TextChunkSaxHandler;
 import org.grobid.core.tokenization.TaggingTokenCluster;
 import org.grobid.core.tokenization.TaggingTokenClusteror;
-import org.grobid.core.engines.config.GrobidAnalysisConfig;
-import org.grobid.core.engines.label.AstroTaggingLabels;
-import org.grobid.core.engines.label.TaggingLabel;
-import org.grobid.core.engines.label.TaggingLabels;
 import org.grobid.core.utilities.*;
-import org.grobid.core.sax.TextChunkSaxHandler;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.InputSource;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.*;
-import java.util.*;
-
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.StringReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.TimeZone;
+import java.util.*;
 
-import static org.apache.commons.lang3.StringUtils.isBlank;
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
-import static org.apache.commons.lang3.StringUtils.isEmpty;
-import static org.apache.commons.lang3.StringUtils.trim;
+import static org.apache.commons.lang3.StringUtils.*;
 import static org.grobid.core.document.xml.XmlBuilderUtils.teiElement;
 
 /**
@@ -144,7 +141,7 @@ public class AstroParser extends AbstractParser {
             // the corresponding model to further filter by structure types 
 
             // from the header, we are interested in title, abstract and keywords
-            SortedSet<DocumentPiece> documentParts = doc.getDocumentPart(SegmentationLabel.HEADER);
+            SortedSet<DocumentPiece> documentParts = doc.getDocumentPart(SegmentationLabels.HEADER);
             if (documentParts != null) {
                 String header = parsers.getHeaderParser().getSectionHeaderFeatured(doc, documentParts, true);
                 List<LayoutToken> tokenizationHeader = doc.getTokenizationParts(documentParts, doc.getTokenizations());
@@ -177,7 +174,7 @@ public class AstroParser extends AbstractParser {
             }
 
             // process selected structures in the body,
-            documentParts = doc.getDocumentPart(SegmentationLabel.BODY);
+            documentParts = doc.getDocumentPart(SegmentationLabels.BODY);
             if (documentParts != null) {
                 // full text processing
                 Pair<String, LayoutTokenization> featSeg = parsers.getFullTextParser().getBodyTextFeatured(doc, documentParts);
@@ -211,7 +208,7 @@ public class AstroParser extends AbstractParser {
             // acknowledgement? 
 
             // we can process annexes
-            documentParts = doc.getDocumentPart(SegmentationLabel.ANNEX);
+            documentParts = doc.getDocumentPart(SegmentationLabels.ANNEX);
             if (documentParts != null) {
                 processDocumentPart(documentParts, doc, entities);
             }
