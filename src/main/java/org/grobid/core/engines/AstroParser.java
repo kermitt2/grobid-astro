@@ -11,6 +11,7 @@ import org.grobid.core.data.BiblioItem;
 import org.grobid.core.document.*;
 import org.grobid.core.document.xml.XmlBuilderUtils;
 import org.grobid.core.engines.config.GrobidAnalysisConfig;
+import org.grobid.core.engines.label.SegmentationLabels;
 import org.grobid.core.exceptions.GrobidException;
 import org.grobid.core.factory.GrobidFactory;
 import org.grobid.core.features.FeaturesVectorAstro;
@@ -144,7 +145,7 @@ public class AstroParser extends AbstractParser {
             // the corresponding model to further filter by structure types 
 
             // from the header, we are interested in title, abstract and keywords
-            SortedSet<DocumentPiece> documentParts = doc.getDocumentPart(SegmentationLabel.HEADER);
+            SortedSet<DocumentPiece> documentParts = doc.getDocumentPart(SegmentationLabels.HEADER);
             if (documentParts != null) {
                 String header = parsers.getHeaderParser().getSectionHeaderFeatured(doc, documentParts, true);
                 List<LayoutToken> tokenizationHeader = doc.getTokenizationParts(documentParts, doc.getTokenizations());
@@ -177,7 +178,7 @@ public class AstroParser extends AbstractParser {
             }
 
             // process selected structures in the body,
-            documentParts = doc.getDocumentPart(SegmentationLabel.BODY);
+            documentParts = doc.getDocumentPart(SegmentationLabels.BODY);
             if (documentParts != null) {
                 // full text processing
                 Pair<String, LayoutTokenization> featSeg = parsers.getFullTextParser().getBodyTextFeatured(doc, documentParts);
@@ -211,7 +212,7 @@ public class AstroParser extends AbstractParser {
             // acknowledgement? 
 
             // we can process annexes
-            documentParts = doc.getDocumentPart(SegmentationLabel.ANNEX);
+            documentParts = doc.getDocumentPart(SegmentationLabels.ANNEX);
             if (documentParts != null) {
                 processDocumentPart(documentParts, doc, entities);
             }
