@@ -408,7 +408,7 @@ public class AstroParser extends AbstractParser {
 	  * Generate training data from a text file
 	  */
     private Element createTrainingText(File file, Element root) throws IOException {
-        String text = FileUtils.readFileToString(file);
+        String text = FileUtils.readFileToString(file, "UTF-8");
 
         Element textNode = teiElement("text");
         // for the moment we suppose we have english only...
