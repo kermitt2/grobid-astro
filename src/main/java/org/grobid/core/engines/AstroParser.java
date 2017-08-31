@@ -524,7 +524,7 @@ public class AstroParser extends AbstractParser {
     }
 
     @SuppressWarnings({"UnusedParameters"})
-    private String addFeatures(List<String> texts,
+    public String addFeatures(List<String> texts,
                                List<OffsetPosition> astroTokenPositions) {
         int totalLine = texts.size();
         int posit = 0;
@@ -643,7 +643,7 @@ public class AstroParser extends AbstractParser {
 	 *  Add XML annotations corresponding to entities in a piece of text, to be included in
 	 *  generated training data.
 	 */
-    private Element trainingExtraction(List<AstroEntity> entities, String text, List<LayoutToken> tokenizations) {
+    public Element trainingExtraction(List<AstroEntity> entities, String text, List<LayoutToken> tokenizations) {
         Element p = teiElement("p");
 
         int pos = 0;

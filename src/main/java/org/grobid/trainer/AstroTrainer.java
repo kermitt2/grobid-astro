@@ -305,6 +305,114 @@ public class AstroTrainer extends AbstractTrainer {
         }
         return totalExamples;
     }
+    
+    public Pair<String, List<LayoutToken>> getCRFData(File pdfFile, List<PDFAnnotation> annotations) {
+    	
+    	Writer crfWriter = null;
+    	List<LayoutToken> tokenizations = null;
+    	
+        try {
+
+        	EngineParsers parsers = new EngineParsers();
+        	
+			// parse the PDF
+			GrobidAnalysisConfig config = 
+				new GrobidAnalysisConfig.GrobidAnalysisConfigBuilder().build();
+			DocumentSource documentSource = 
+				DocumentSource.fromPdf(pdfFile, config.getStartPage(), config.getEndPage());
+			Document doc = parsers.getSegmentationParser().processing(documentSource, config);
+
+			tokenizations = doc.getTokenizations();
+
+			// we can create the labeled data block per block
+			int indexAnnotation = 0;
+			List<Block> blocks = doc.getBlocks();
+
+			crfWriter = new StringWriter();
+			
+			for(Block block : blocks) {
+				List<Pair<String, String>> labeled = new ArrayList<Pair<String, String>>();
+				String previousLabel = "";
+				int startBlockToken = block.getStartToken();
+				int endBlockToken = block.getEndToken();
+				
+				for(int p=startBlockToken; p < endBlockToken; p++) {
+					LayoutToken token = tokenizations.get(p);
+					
+					//for(LayoutToken token : tokenizations) {
+					if ( (token.getText() != null) &&
+						 (token.getText().trim().length()>0) &&
+						 (!token.getText().equals("\t")) && 
+						 (!token.getText().equals("\n")) && 	  
+						 (!token.getText().equals("\r")) ) {
+						String theLabel = "<other>";
+						for(int i=indexAnnotation; i<annotations.size(); i++) {
+							PDFAnnotation currentAnnotation = annotations.get(i);
+							// check if we are at least on the same page
+							if (currentAnnotation.getPageNumber() < token.getPage())
+								continue;
+							else if (currentAnnotation.getPageNumber() > token.getPage())
+								continue;
+
+							if (currentAnnotation.cover(token)) {
+								System.out.println(currentAnnotation.toString() + " covers " + token.toString());
+								// the annotation covers the token position
+								// we have an astro entity at this token position
+								if (previousLabel.endsWith("<object>")) {
+									theLabel = "<object>";
+								}
+								else {
+									// we filter out entity starting with (
+									if (!token.getText().equals("("))
+										theLabel = "I-<object>";
+								}
+								break;
+							}
+						}
+						Pair<String, String> thePair = 
+							new Pair<String, String>(token.getText(), theLabel);
+
+						// we filter out entity ending with a punctuation mark
+						if (theLabel.equals("<other>") && previousLabel.equals("<object>")) {
+							// check the previous token 
+							Pair<String, String> theLastPair = labeled.get(labeled.size() - 1);
+							String theLastToken = theLastPair.getA();
+							if (theLastToken.equals(";") || 
+								theLastToken.equals(".") || 
+								theLastToken.equals(",") ) {
+								theLastPair = new Pair(theLastToken, "<other>");
+								labeled.set(labeled.size()-1, theLastPair);
+							}
+						}
+
+						// add the current token
+						labeled.add(thePair);
+						previousLabel = theLabel;
+				    }
+				}
+				// add features
+                List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVectorLabeled(labeled);
+
+                addFeatures(labeled, crfWriter, astroTokenPositions);
+                crfWriter.write("\n");
+			}
+			crfWriter.write("\n");
+        } catch (Exception e) {
+            throw new GrobidException("An exception occured while training Grobid.", e);
+        } finally {
+        	try {
+	        	if (crfWriter != null)
+	        		crfWriter.close();
+ 	        } catch(IOException e) {
+ 	        	e.printStackTrace();
+ 	        }
+        }
+        
+        if (crfWriter != null && tokenizations != null)
+        	return new Pair<String, List<LayoutToken>>(crfWriter.toString(), tokenizations);
+        else
+        	return null;
+    }
 
     @SuppressWarnings({"UnusedParameters"})
     private void addFeatures(List<Pair<String, String>> texts,
