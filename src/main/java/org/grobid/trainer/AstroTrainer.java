@@ -306,6 +306,12 @@ public class AstroTrainer extends AbstractTrainer {
         return totalExamples;
     }
     
+    /**
+     * Generate CRFData for a pdf file and a list of its annotations
+     * The result is a Pair with :
+     *  A: crf text
+     *  B: tokenizations list
+     */
     public Pair<String, List<LayoutToken>> getCRFData(File pdfFile, List<PDFAnnotation> annotations) {
     	
     	Writer crfWriter = null;
