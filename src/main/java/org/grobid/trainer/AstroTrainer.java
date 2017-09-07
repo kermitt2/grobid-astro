@@ -156,7 +156,7 @@ public class AstroTrainer extends AbstractTrainer {
 	                    if (bufferLabeled.size() == 0)
 	                        continue;
 
-	                    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVectorLabeled(bufferLabeled);
+	                    List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNamesVectorLabeled(bufferLabeled);
 
 	                    addFeatures(bufferLabeled, writer, astroTokenPositions);
 	                    writer.write("\n");
@@ -283,7 +283,7 @@ public class AstroTrainer extends AbstractTrainer {
 						    }
 						}
 						// add features
-	                    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVectorLabeled(labeled);
+	                    List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNamesVectorLabeled(labeled);
 
 	                    addFeatures(labeled, writer, astroTokenPositions);
 					}
@@ -396,7 +396,7 @@ public class AstroTrainer extends AbstractTrainer {
 				    }
 				}
 				// add features
-                List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVectorLabeled(labeled);
+                List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNamesVectorLabeled(labeled);
 
                 addFeatures(labeled, crfWriter, astroTokenPositions);
 			}

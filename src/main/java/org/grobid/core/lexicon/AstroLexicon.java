@@ -7,6 +7,7 @@ import org.grobid.core.utilities.GrobidProperties;
 import org.grobid.core.utilities.Pair;
 import org.grobid.core.utilities.OffsetPosition;
 import org.grobid.core.lexicon.FastMatcher;
+import org.grobid.core.layout.LayoutToken;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,13 +105,13 @@ public class AstroLexicon {
 		return astroVocabulary.contains(string);
 	}
 
-    public List<OffsetPosition> inAstroNamesVectorLabeled(List<Pair<String, String>> pairs) {
+    public List<OffsetPosition> tokenPositionsAstroNamesVectorLabeled(List<Pair<String, String>> pairs) {
         List<OffsetPosition> results = astroPattern.matcherPairs(pairs);
         return results;
     }
 
-    public List<OffsetPosition> inAstroNamesVector(List<String> vector) {
-        List<OffsetPosition> results = astroPattern.matcher(vector);
+    public List<OffsetPosition> tokenPositionsAstroNames(List<LayoutToken> vector) {
+        List<OffsetPosition> results = astroPattern.matchLayoutToken(vector);
         return results;
     }
 

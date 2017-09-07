@@ -103,8 +103,8 @@ public class AstroParser extends AbstractParser {
             }
 
             // to store astronomical name positions (names coming from the optional dictionary)
-            List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
-            ress = addFeatures(texts, astroTokenPositions);
+            List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNames(tokens);
+            ress = addFeatures(tokens, astroTokenPositions);
             String res;
             try {
                 res = label(ress);
@@ -263,14 +263,14 @@ public class AstroParser extends AbstractParser {
             String text = LayoutTokensUtil.toText(layoutTokens);
             
             // list of textual tokens of the selected segment
-            List<String> texts = getTexts(tokenizationParts);
+            //List<String> texts = getTexts(tokenizationParts);
             
             // positions for lexical match
-            List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
+            List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNames(tokenizationParts);
             
             // string representation of the feature matrix for CRF lib
-            String ress = addFeatures(texts, astroTokenPositions);     
-            
+            String ress = addFeatures(tokenizationParts, astroTokenPositions);     
+           
             // labeled result from CRF lib
             String res = label(ress);
 
@@ -292,7 +292,7 @@ public class AstroParser extends AbstractParser {
     /**
      * Give the list of textual tokens from a list of LayoutToken
      */
-    private static List<String> getTexts(List<LayoutToken> tokenizations) {
+    /*private static List<String> getTexts(List<LayoutToken> tokenizations) {
         List<String> texts = new ArrayList<>();
         for (LayoutToken token : tokenizations) {
             if (isNotEmpty(trim(token.getText())) && 
@@ -305,7 +305,7 @@ public class AstroParser extends AbstractParser {
             }
         }
         return texts;
-    }
+    }*/
 
     /**
      * Process the content of the specified input file and format the result as training data.
@@ -432,16 +432,16 @@ public class AstroParser extends AbstractParser {
                     continue;
 
                 String ress = null;
-                List<String> texts = new ArrayList<>();
+                /*List<String> texts = new ArrayList<>();
                 for (LayoutToken token : tokens) {
                     if (!token.getText().equals(" ") && !token.getText().equals("\t") && !token.getText().equals("\u00A0")) {
                         texts.add(token.getText());
                     }
-                }
+                }*/
 
                 // to store unit term positions
-                List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
-                ress = addFeatures(texts, astroTokenPositions);
+                List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNames(tokens);
+                ress = addFeatures(tokens, astroTokenPositions);
                 String res = null;
                 try {
                     res = label(ress);
@@ -508,18 +508,18 @@ public class AstroParser extends AbstractParser {
                     continue;
 
                 String ress = null;
-                List<String> texts = new ArrayList<String>();
+                /*List<String> texts = new ArrayList<String>();
                 for (LayoutToken token : tokenizations) {
                     if (!token.getText().equals(" ") && 
                         !token.getText().equals("\t") && 
                         !token.getText().equals("\u00A0")) {
                         texts.add(token.getText());
                     }
-                }
+                }*/
 
                 // to store unit term positions
-                List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVector(texts);
-                ress = addFeatures(texts, astroTokenPositions);
+                List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNames(tokenizations);
+                ress = addFeatures(tokenizations, astroTokenPositions);
                 String res = null;
                 try {
                     res = label(ress);
@@ -540,18 +540,29 @@ public class AstroParser extends AbstractParser {
     }
 
     @SuppressWarnings({"UnusedParameters"})
-    public String addFeatures(List<String> texts,
+    public String addFeatures(List<LayoutToken> tokens,
                                List<OffsetPosition> astroTokenPositions) {
-        int totalLine = texts.size();
+        int totalLine = tokens.size();
         int posit = 0;
         int currentAstroIndex = 0;
         List<OffsetPosition> localPositions = astroTokenPositions;
         boolean isAstroPattern = false;
         StringBuilder result = new StringBuilder();
         try {
-            for (String token : texts) {
-                if (token.trim().equals("@newline")) {
+            for (LayoutToken token : tokens) {
+                if (token.getText().trim().equals("@newline")) {
                     result.append("\n");
+                    continue;
+                }
+
+                String text = token.getText();
+                if (text.equals(" ") || text.equals("\n")) {
+                    continue;
+                }
+
+                // parano normalisation
+                text = UnicodeUtil.normaliseTextAndRemoveSpaces(text);
+                if (text.trim().length() == 0 ) {
                     continue;
                 }
 
@@ -574,8 +585,8 @@ public class AstroParser extends AbstractParser {
                 }
 
                 FeaturesVectorAstro featuresVector =
-                        FeaturesVectorAstro.addFeaturesAstro(token, null,
-                                astroLexicon.inAstroDictionary(token), isAstroPattern);
+                        FeaturesVectorAstro.addFeaturesAstro(text, null,
+                                astroLexicon.inAstroDictionary(token.getText()), isAstroPattern);
                 result.append(featuresVector.printVector());
                 result.append("\n");
                 posit++;
