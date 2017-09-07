@@ -286,7 +286,6 @@ public class AstroTrainer extends AbstractTrainer {
 	                    List<OffsetPosition> astroTokenPositions = astroLexicon.inAstroNamesVectorLabeled(labeled);
 
 	                    addFeatures(labeled, writer, astroTokenPositions);
-	                    writer.write("\n");
 					}
 					writer.write("\n");
 				}
