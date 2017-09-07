@@ -676,6 +676,7 @@ public class AstroParser extends AbstractParser {
 
 				p.appendChild(text.substring(pos, startE));
                 entityElement.appendChild(text.substring(startE, endE));
+                pos = endE + 1;
             }
             p.appendChild(entityElement);
         }
