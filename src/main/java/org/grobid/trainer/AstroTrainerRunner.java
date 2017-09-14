@@ -2,6 +2,8 @@ package org.grobid.trainer;
 
 import java.io.File;
 
+import javax.xml.bind.annotation.XmlElement;
+
 import org.grobid.core.mock.MockContext;
 import org.grobid.core.utilities.GrobidProperties;
 
@@ -47,17 +49,23 @@ public class AstroTrainerRunner {
 	public static void main(String[] args) {
 		if (args.length < 4) {
 			throw new IllegalStateException(
-					"Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} -gH /path/to/Grobid/home -s { [0.0 - 1.0] - split ratio, optional}");
+					"Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} -gH /path/to/Grobid/home -s { [0.0 - 1.0] - split ratio, optional} -b {epsilon, window, nbMax}");
 		}
 
 		RunType mode = RunType.getRunType(Integer.parseInt(args[0]));
 		if ( (mode == RunType.SPLIT) && (args.length < 6) ) {
 			throw new IllegalStateException(
-					"Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} -gH /path/to/Grobid/home -s { [0.0 - 1.0] - split ratio, optional}");
+					"Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} -gH /path/to/Grobid/home -s { [0.0 - 1.0] - split ratio, optional} -b {epsilon, window, nbMax}");
 		}
 
 		String path2GbdHome = null;
 		Double split = 0.0;
+		
+		boolean breakParams = false;
+		double epsilon = 0.000001;
+		int window = 20;
+		int nbMaxIterations = 0;
+		
 		for (int i = 0; i < args.length; i++) {
 			if (args[i].equals("-gH")) {
 				if (i+1 == args.length) {
@@ -78,6 +86,16 @@ public class AstroTrainerRunner {
 				}
 				
 			}
+			else if (args[i].equals("-b")) {
+				if ((mode == RunType.TRAIN) && (args.length >= 8)) {
+					breakParams = true;
+					epsilon = Double.parseDouble(args[i+1]);
+					window = Integer.parseInt(args[i+2]);
+					nbMaxIterations = Integer.parseInt(args[i+3]);
+				}
+				else
+					throw new IllegalStateException("Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} -gH /path/to/Grobid/home -s { [0.0 - 1.0] - split ratio, optional} -b {epsilon, window, nbMax}");
+			}
 		}
 
 		if (path2GbdHome == null) {
@@ -90,15 +108,10 @@ public class AstroTrainerRunner {
 		System.out.println("path2GbdHome=" + path2GbdHome + "   path2GbdProperties=" + path2GbdProperties);
 		initProcess(path2GbdHome, path2GbdProperties);
 
-		String model = args[1];
-
-		Trainer trainer;
-
-		if (model.equals("astro")) {
-			trainer = new AstroTrainer();
-		} else {
-			throw new IllegalStateException("The model " + model + " is unknown.");
-		}
+		AstroTrainer trainer = new AstroTrainer();
+		
+		if (breakParams)
+			trainer.setParams(epsilon, window, nbMaxIterations);
 
 		switch (mode) {
 		case TRAIN:

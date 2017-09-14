@@ -111,7 +111,7 @@ public class AstroLexicon {
     }
 
     public List<OffsetPosition> tokenPositionsAstroNames(List<LayoutToken> vector) {
-        List<OffsetPosition> results = astroPattern.matchLayoutToken(vector);
+        List<OffsetPosition> results = astroPattern.matcherLayoutToken(vector);
         return results;
     }
 
