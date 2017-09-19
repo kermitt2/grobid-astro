@@ -8,7 +8,6 @@ import org.grobid.core.layout.LayoutToken;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -158,6 +157,14 @@ public class AstroEntity implements Comparable<AstroEntity> {
 
 	public void setBoundingBoxes(List<BoundingBox> boundingBoxes) {
 		this.boundingBoxes = boundingBoxes;
+	}
+	
+	public List<LayoutToken> getTokens() {
+		return this.tokens;
+	}
+	
+	public void setTokens(List<LayoutToken> tokens) {
+		this.tokens = tokens;
 	}
 	
 	public void normalize() {

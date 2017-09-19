@@ -652,6 +652,7 @@ public class AstroParser extends AbstractParser {
                 currentEntity.setOffsetStart(pos);
                 currentEntity.setOffsetEnd(endPos);
                 currentEntity.setType(AstroLexicon.Astro_Type.OBJECT);
+                currentEntity.setTokens(theTokens);
 
 				List<BoundingBox> boundingBoxes = BoundingBoxCalculator.calculate(cluster.concatTokens());
 				currentEntity.setBoundingBoxes(boundingBoxes);
