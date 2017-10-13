@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlElement;
 
 import org.grobid.core.mock.MockContext;
 import org.grobid.core.utilities.GrobidProperties;
+import org.grobid.core.utilities.AstroProperties;
 
 /**
  * Training application for training a target model.
@@ -13,6 +14,11 @@ import org.grobid.core.utilities.GrobidProperties;
  * @author Patrice Lopez
  */
 public class AstroTrainerRunner {
+
+	private static final String USAGE = "Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} "
+			+ "-s { [0.0 - 1.0] - split ratio, optional} "
+			+ "-b {epsilon, window, nbMax}"
+			+ "-t NBThreads";
 
 	enum RunType {
 		TRAIN, EVAL, SPLIT;
@@ -47,18 +53,22 @@ public class AstroTrainerRunner {
 	 *            Command line arguments.
 	 */
 	public static void main(String[] args) {
-		if (args.length < 4) {
+		if (args.length < 3) {
 			throw new IllegalStateException(
-					"Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} -gH /path/to/Grobid/home -s { [0.0 - 1.0] - split ratio, optional} -b {epsilon, window, nbMax}");
+					USAGE);
 		}
 
 		RunType mode = RunType.getRunType(Integer.parseInt(args[0]));
-		if ( (mode == RunType.SPLIT) && (args.length < 6) ) {
+		if ( (mode == RunType.SPLIT) && (args.length < 5) ) {
 			throw new IllegalStateException(
-					"Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} -gH /path/to/Grobid/home -s { [0.0 - 1.0] - split ratio, optional} -b {epsilon, window, nbMax}");
+					USAGE);
 		}
 
-		String path2GbdHome = null;
+		final String path2GbdHome = AstroProperties.get("grobid.home");
+		final String path2GbdProp = AstroProperties.get("grobid.properties");
+		System.out.println("path2GbdHome=" + path2GbdHome + "   path2GbdProperties=" + path2GbdProp);
+		initProcess(path2GbdHome, path2GbdProp);
+
 		Double split = 0.0;
 		
 		boolean breakParams = false;
@@ -67,11 +77,11 @@ public class AstroTrainerRunner {
 		int nbMaxIterations = 0;
 		
 		for (int i = 0; i < args.length; i++) {
-			if (args[i].equals("-gH")) {
+			if (args[i].equals("-t")) {
 				if (i+1 == args.length) {
-					throw new IllegalStateException("Missing path to Grobid home. ");
+					throw new IllegalStateException("Missing Threads number. ");
 				}
-				path2GbdHome = args[i + 1];
+				GrobidProperties.getInstance().setNBThreads(args[i + 1]);
 			}
 			else if (args[i].equals("-s")) {
 				if (i+1 == args.length) {
@@ -87,26 +97,21 @@ public class AstroTrainerRunner {
 				
 			}
 			else if (args[i].equals("-b")) {
-				if ((mode == RunType.TRAIN) && (args.length >= 8)) {
+				if ((mode == RunType.TRAIN) && (args.length >= 7)) {
 					breakParams = true;
 					epsilon = Double.parseDouble(args[i+1]);
 					window = Integer.parseInt(args[i+2]);
 					nbMaxIterations = Integer.parseInt(args[i+3]);
 				}
 				else
-					throw new IllegalStateException("Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} -gH /path/to/Grobid/home -s { [0.0 - 1.0] - split ratio, optional} -b {epsilon, window, nbMax}");
+					throw new IllegalStateException(USAGE);
 			}
 		}
 
 		if (path2GbdHome == null) {
 			throw new IllegalStateException(
-					"Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {ner,nerfr,nersense} -gH /path/to/Grobid/home -s { [0.0 - 1.0] - split ratio, optional}");
+					USAGE);
 		}
-
-		final String path2GbdProperties = path2GbdHome + File.separator + "config" + File.separator + "grobid.properties";
-
-		System.out.println("path2GbdHome=" + path2GbdHome + "   path2GbdProperties=" + path2GbdProperties);
-		initProcess(path2GbdHome, path2GbdProperties);
 
 		AstroTrainer trainer = new AstroTrainer();
 		
