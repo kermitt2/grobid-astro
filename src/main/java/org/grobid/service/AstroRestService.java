@@ -1,26 +1,17 @@
 package org.grobid.service;
 
+import com.sun.jersey.multipart.FormDataParam;
 import com.sun.jersey.spi.resource.Singleton;
 import org.grobid.core.lexicon.AstroLexicon;
 import org.grobid.core.main.LibraryLoader;
-import org.grobid.core.mock.MockContext;
 import org.grobid.core.utilities.GrobidProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.naming.InitialContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import java.io.*;
-import java.util.Properties;
-
-import com.sun.jersey.multipart.FormDataParam;
-import com.sun.jersey.spi.resource.Singleton;
+import java.io.InputStream;
 
 
 /**
@@ -43,15 +34,6 @@ public class AstroRestService implements AstroPaths {
         LOGGER.info("Init Servlet AstroRestService.");
         LOGGER.info("Init lexicon and KB resources.");
         try {
-            InitialContext intialContext = new javax.naming.InitialContext();
-            String path2grobidHome = (String) intialContext.lookup("java:comp/env/org.grobid.home");
-            String path2grobidProperty = (String) intialContext.lookup("java:comp/env/org.grobid.property");
-
-            MockContext.setInitialContext(path2grobidHome, path2grobidProperty);
-
-            System.out.println(path2grobidHome);
-            System.out.println(path2grobidProperty);
-
             LibraryLoader.load();
             GrobidProperties.getInstance();
             AstroLexicon.getInstance();

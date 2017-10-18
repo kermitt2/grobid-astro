@@ -1,135 +1,134 @@
 package org.grobid.trainer;
 
-import java.io.File;
-
-import javax.xml.bind.annotation.XmlElement;
-
-import org.grobid.core.mock.MockContext;
-import org.grobid.core.utilities.GrobidProperties;
+import org.grobid.core.main.GrobidHomeFinder;
+import org.grobid.core.main.LibraryLoader;
 import org.grobid.core.utilities.AstroProperties;
+import org.grobid.core.utilities.GrobidProperties;
+
+import java.util.Arrays;
 
 /**
  * Training application for training a target model.
- * 
+ *
  * @author Patrice Lopez
  */
 public class AstroTrainerRunner {
 
-	private static final String USAGE = "Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} "
-			+ "-s { [0.0 - 1.0] - split ratio, optional} "
-			+ "-b {epsilon, window, nbMax}"
-			+ "-t NBThreads";
+    private static final String USAGE = "Usage: {0 - train, 1 - evaluate, 2 - split, train and evaluate} {astro} "
+            + "-s { [0.0 - 1.0] - split ratio, optional} "
+            + "-b {epsilon, window, nbMax}"
+            + "-t NBThreads";
 
-	enum RunType {
-		TRAIN, EVAL, SPLIT;
+    enum RunType {
+        TRAIN, EVAL, SPLIT;
 
-		public static RunType getRunType(int i) {
-			for (RunType t : values()) {
-				if (t.ordinal() == i) {
-					return t;
-				}
-			}
+        public static RunType getRunType(int i) {
+            for (RunType t : values()) {
+                if (t.ordinal() == i) {
+                    return t;
+                }
+            }
 
-			throw new IllegalStateException("Unsupported RunType with ordinal " + i);
-		}
-	}
+            throw new IllegalStateException("Unsupported RunType with ordinal " + i);
+        }
+    }
 
-	/**
-	 * Initialize the batch.
-	 */
-	protected static void initProcess(final String path2GbdHome, final String path2GbdProperties) {
-		try {
-			MockContext.setInitialContext(path2GbdHome, path2GbdProperties);
-		} catch (final Exception exp) {
-			System.err.println("Grobid initialisation failed: " + exp);
-		}
-		GrobidProperties.getInstance();
-	}
+    /**
+     * Initialize the batch.
+     */
+    protected static void initProcess(final String grobidHome) {
+        try {
+            final GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(grobidHome));
+            grobidHomeFinder.findGrobidHomeOrFail();
+            GrobidProperties.getInstance(grobidHomeFinder);
+            LibraryLoader.load();
+        } catch (final Exception exp) {
+            System.err.println("Grobid initialisation failed: " + exp);
+        }
+    }
 
-	/**
-	 * Command line execution.
-	 * 
-	 * @param args
-	 *            Command line arguments.
-	 */
-	public static void main(String[] args) {
-		if (args.length < 3) {
-			throw new IllegalStateException(
-					USAGE);
-		}
+    protected static void initProcess() {
+        GrobidProperties.getInstance();
+    }
 
-		RunType mode = RunType.getRunType(Integer.parseInt(args[0]));
-		if ( (mode == RunType.SPLIT) && (args.length < 5) ) {
-			throw new IllegalStateException(
-					USAGE);
-		}
+    /**
+     * Command line execution.
+     *
+     * @param args Command line arguments.
+     */
+    public static void main(String[] args) {
+        if (args.length < 3) {
+            throw new IllegalStateException(
+                    USAGE);
+        }
 
-		final String path2GbdHome = AstroProperties.get("grobid.home");
-		final String path2GbdProp = AstroProperties.get("grobid.properties");
-		System.out.println("path2GbdHome=" + path2GbdHome + "   path2GbdProperties=" + path2GbdProp);
-		initProcess(path2GbdHome, path2GbdProp);
+        RunType mode = RunType.getRunType(Integer.parseInt(args[0]));
+        if ((mode == RunType.SPLIT) && (args.length < 5)) {
+            throw new IllegalStateException(
+                    USAGE);
+        }
 
-		Double split = 0.0;
-		
-		boolean breakParams = false;
-		double epsilon = 0.000001;
-		int window = 20;
-		int nbMaxIterations = 0;
-		
-		for (int i = 0; i < args.length; i++) {
-			if (args[i].equals("-t")) {
-				if (i+1 == args.length) {
-					throw new IllegalStateException("Missing Threads number. ");
-				}
-				GrobidProperties.getInstance().setNBThreads(args[i + 1]);
-			}
-			else if (args[i].equals("-s")) {
-				if (i+1 == args.length) {
-					throw new IllegalStateException("Missing split ratio value. ");
-				}
-				String splitRatio = args[i + 1];
-				try {					
-					split = Double.parseDouble(args[i + 1]);
-				}
-				catch(Exception e) {
-					throw new IllegalStateException("Invalid split value: " + args[i + 1]);
-				}
-				
-			}
-			else if (args[i].equals("-b")) {
-				if ((mode == RunType.TRAIN) && (args.length >= 7)) {
-					breakParams = true;
-					epsilon = Double.parseDouble(args[i+1]);
-					window = Integer.parseInt(args[i+2]);
-					nbMaxIterations = Integer.parseInt(args[i+3]);
-				}
-				else
-					throw new IllegalStateException(USAGE);
-			}
-		}
+        final String path2GbdHome = AstroProperties.get("grobid.home");
+        System.out.println("path2GbdHome=" + path2GbdHome);
+        initProcess(path2GbdHome);
 
-		if (path2GbdHome == null) {
-			throw new IllegalStateException(
-					USAGE);
-		}
+        Double split = 0.0;
 
-		AstroTrainer trainer = new AstroTrainer();
-		
-		if (breakParams)
-			trainer.setParams(epsilon, window, nbMaxIterations);
+        boolean breakParams = false;
+        double epsilon = 0.000001;
+        int window = 20;
+        int nbMaxIterations = 0;
 
-		switch (mode) {
-		case TRAIN:
-			AbstractTrainer.runTraining(trainer);
-			break;
-		case EVAL:
-			AbstractTrainer.runEvaluation(trainer);
-			break;
-		case SPLIT:
-			AbstractTrainer.runSplitTrainingEvaluation(trainer, split);
-			break;
-		default:
-			throw new IllegalStateException("Invalid RunType: " + mode.name());
-		}
-	}
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].equals("-t")) {
+                if (i + 1 == args.length) {
+                    throw new IllegalStateException("Missing Threads number. ");
+                }
+                GrobidProperties.getInstance().setNBThreads(args[i + 1]);
+            } else if (args[i].equals("-s")) {
+                if (i + 1 == args.length) {
+                    throw new IllegalStateException("Missing split ratio value. ");
+                }
+                String splitRatio = args[i + 1];
+                try {
+                    split = Double.parseDouble(args[i + 1]);
+                } catch (Exception e) {
+                    throw new IllegalStateException("Invalid split value: " + args[i + 1]);
+                }
+
+            } else if (args[i].equals("-b")) {
+                if ((mode == RunType.TRAIN) && (args.length >= 7)) {
+                    breakParams = true;
+                    epsilon = Double.parseDouble(args[i + 1]);
+                    window = Integer.parseInt(args[i + 2]);
+                    nbMaxIterations = Integer.parseInt(args[i + 3]);
+                } else
+                    throw new IllegalStateException(USAGE);
+            }
+        }
+
+        if (path2GbdHome == null) {
+            throw new IllegalStateException(
+                    USAGE);
+        }
+
+        AstroTrainer trainer = new AstroTrainer();
+
+        if (breakParams)
+            trainer.setParams(epsilon, window, nbMaxIterations);
+
+        switch (mode) {
+            case TRAIN:
+                AbstractTrainer.runTraining(trainer);
+                break;
+            case EVAL:
+                AbstractTrainer.runEvaluation(trainer);
+                break;
+            case SPLIT:
+                AbstractTrainer.runSplitTrainingEvaluation(trainer, split);
+                break;
+            default:
+                throw new IllegalStateException("Invalid RunType: " + mode.name());
+        }
+    }
 }
