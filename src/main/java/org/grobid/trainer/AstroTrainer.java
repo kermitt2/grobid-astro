@@ -16,12 +16,14 @@ import org.grobid.core.utilities.GrobidProperties;
 import org.grobid.core.utilities.OffsetPosition;
 import org.grobid.core.utilities.Pair;
 import org.grobid.trainer.evaluation.EvaluationUtilities;
+import org.grobid.core.main.GrobidHomeFinder;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Arrays;
 
 /**
  * Training of the astronomical entity recognition model
@@ -523,9 +525,20 @@ public class AstroTrainer extends AbstractTrainer {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
+        try {
+            String pGrobidHome = AstroProperties.get("grobid.home");
+
+            GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
+            GrobidProperties.getInstance(grobidHomeFinder);
+    
+            System.out.println(">>>>>>>> GROBID_HOME="+GrobidProperties.get_GROBID_HOME_PATH());
+        } catch (final Exception exp) {
+            System.err.println("GROBID astro initialisation failed: " + exp);
+            exp.printStackTrace();
+        }
+
         Trainer trainer = new AstroTrainer();
         AbstractTrainer.runTraining(trainer);
         AbstractTrainer.runEvaluation(trainer);
-
     }
 }

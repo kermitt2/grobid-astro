@@ -2,17 +2,23 @@ package org.grobid.service;
 
 import com.sun.jersey.multipart.FormDataParam;
 import com.sun.jersey.spi.resource.Singleton;
-import org.grobid.core.lexicon.AstroLexicon;
+
 import org.grobid.core.main.LibraryLoader;
+import org.grobid.core.lexicon.AstroLexicon;
 import org.grobid.core.utilities.GrobidProperties;
+import org.grobid.core.utilities.AstroProperties;
+import org.grobid.core.main.GrobidHomeFinder;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 import java.io.InputStream;
 
+import java.util.Arrays;
 
 /**
  * RESTful service for GROBID astro extension.
@@ -34,8 +40,14 @@ public class AstroRestService implements AstroPaths {
         LOGGER.info("Init Servlet AstroRestService.");
         LOGGER.info("Init lexicon and KB resources.");
         try {
+            String pGrobidHome = AstroProperties.get("grobid.home");
+
+            GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
+            GrobidProperties.getInstance(grobidHomeFinder);
+    
+            LOGGER.info(">>>>>>>> GROBID_HOME="+GrobidProperties.get_GROBID_HOME_PATH());
+
             LibraryLoader.load();
-            GrobidProperties.getInstance();
             AstroLexicon.getInstance();
         } catch (final Exception exp) {
             System.err.println("GROBID astro initialisation failed: " + exp);

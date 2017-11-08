@@ -1,7 +1,6 @@
 package org.grobid.trainer;
 
 import org.grobid.core.main.GrobidHomeFinder;
-import org.grobid.core.main.LibraryLoader;
 import org.grobid.core.utilities.AstroProperties;
 import org.grobid.core.utilities.GrobidProperties;
 
@@ -36,12 +35,14 @@ public class AstroTrainerRunner {
     /**
      * Initialize the batch.
      */
-    protected static void initProcess(final String grobidHome) {
+    protected static void initProcess(String grobidHome) {
         try {
-            final GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(grobidHome));
+            if (grobidHome == null)
+                grobidHome = "../grobid-home/";
+            
+            GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(grobidHome));
             grobidHomeFinder.findGrobidHomeOrFail();
             GrobidProperties.getInstance(grobidHomeFinder);
-            LibraryLoader.load();
         } catch (final Exception exp) {
             System.err.println("Grobid initialisation failed: " + exp);
         }
@@ -67,8 +68,8 @@ public class AstroTrainerRunner {
             throw new IllegalStateException(
                     USAGE);
         }
-
-        final String path2GbdHome = AstroProperties.get("grobid.home");
+System.out.println();
+        String path2GbdHome = AstroProperties.get("grobid.home");
         System.out.println("path2GbdHome=" + path2GbdHome);
         initProcess(path2GbdHome);
 

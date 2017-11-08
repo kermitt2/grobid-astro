@@ -2,8 +2,8 @@ package org.grobid.core.main.batch;
 
 import org.grobid.core.engines.AstroParser;
 import org.grobid.core.main.GrobidHomeFinder;
-import org.grobid.core.main.LibraryLoader;
 import org.grobid.core.utilities.GrobidProperties;
+import org.grobid.core.utilities.AstroProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,8 +54,13 @@ public class AstroMain {
     protected static void inferParamsNotSet() {
         String tmpFilePath;
         if (gbdArgs.getPath2grobidHome() == null) {
-            tmpFilePath = new File("grobid-home").getAbsolutePath();
-            System.out.println("No path set for grobid-home. Using: " + tmpFilePath);
+            tmpFilePath = AstroProperties.get("grobid.home");
+
+            if (tmpFilePath == null) {
+                tmpFilePath = new File("grobid-home").getAbsolutePath();
+                System.out.println("No path set for grobid-home. Using: " + tmpFilePath);   
+            } 
+
             gbdArgs.setPath2grobidHome(tmpFilePath);
             gbdArgs.setPath2grobidProperty(new File("grobid.properties").getAbsolutePath());
         }
@@ -73,7 +78,6 @@ public class AstroMain {
             final GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(grobidHome));
             grobidHomeFinder.findGrobidHomeOrFail();
             GrobidProperties.getInstance(grobidHomeFinder);
-            LibraryLoader.load();
         } catch (final Exception exp) {
             System.err.println("Grobid initialisation failed: " + exp);
         }
