@@ -623,8 +623,12 @@ public class AstroParser extends AbstractParser {
             List<LayoutToken> theTokens = cluster.concatTokens();
             String clusterContent = LayoutTokensUtil.toText(cluster.concatTokens()).trim();
 
-            if ( (pos < text.length()-1) && (text.charAt(pos) == ' ') )
+            
+            if ((pos < text.length()-1) && (text.charAt(pos) == ' '))
                 pos += 1;
+            if ((pos < text.length()-1) && (text.charAt(pos) == '\n'))
+                pos += 1;
+            
             int endPos = pos;
             boolean start = true;
             for (LayoutToken token : theTokens) {
@@ -640,10 +644,14 @@ public class AstroParser extends AbstractParser {
                 }
             }
 
-            if ( (endPos > 0) && (text.charAt(endPos-1) == ' ') )
+            if ((endPos > 0) && (text.charAt(endPos-1) == '\n'))
+        		endPos--;
+            if ((endPos > 0) && (text.charAt(endPos-1) == ' '))
                 endPos--;
+            
 
             if (clusterLabel.equals(AstroTaggingLabels.OBJECT)) {
+            	
             	if (currentEntity == null) {
                     currentEntity = new AstroEntity();
                 }
@@ -688,7 +696,7 @@ public class AstroParser extends AbstractParser {
 
 				p.appendChild(text.substring(pos, startE));
                 entityElement.appendChild(text.substring(startE, endE));
-                pos = endE + 1;
+                pos = endE;
             }
             p.appendChild(entityElement);
         }
