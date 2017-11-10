@@ -3,12 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.grobid</groupId>
-        <artifactId>grobid-parent</artifactId>
-        <version>0.5.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
 
     <groupId>org.grobid</groupId>
     <artifactId>grobid-astro</artifactId>
@@ -67,7 +61,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.2</version>
+            <version>4.11</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -76,23 +70,12 @@
             <version>1.3</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.easymock</groupId>
-            <artifactId>easymock</artifactId>
-            <version>3.4</version>
-            <scope>test</scope>
-        </dependency>
 
         <!-- LOGS -->
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.6.6</version>
+            <version>1.7.25</version>
         </dependency>
 
         <!-- COMMONS -->
@@ -104,7 +87,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.0.1</version>
+            <version>2.5</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
@@ -125,11 +108,6 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>16.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>directory-naming</groupId>
-            <artifactId>naming-java</artifactId>
-            <version>0.8</version>
         </dependency>
 
         <!-- XML & JSON processing -->
@@ -203,21 +181,45 @@
     </dependencies>
 
     <build>
-        <!-- Not standard -->
-        <!-- finalName>${project.groupId}.${project.artifactId}_${project.version}</finalName -->
-
         <resources>
 	        <resource>
 	            <directory>src/main/resources</directory>
 	            <filtering>true</filtering>
 	        </resource>
-	        <!--<resource> -->
-	        <!--<directory>src/main/native</directory> -->
-	        <!--</resource> -->
         </resources>
 
-        <!--pluginManagement -->
         <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.4.v20170414</version>
+
+                <configuration>
+                    <scanIntervalSeconds>0</scanIntervalSeconds>
+                    <stopKey/>
+                    <stopPort/>
+                    <systemProperties>
+                        <!-- enable easy JMX connection to JConsole -->
+                        <systemProperty>
+                            <name>com.sun.management.jmxremote</name>
+                            <value/>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>jetty.port</name>
+                            <value>8060</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>maxIdleTime</name>
+                            <value>60000</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>log4j.configuration</name>
+                            <value>log4j-jetty.properties</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -253,26 +255,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin> 
-
-            <!--plugin>
-                <groupId>com.jolira</groupId>
-                <artifactId>onejar-maven-plugin</artifactId>
-                <version>1.4.4</version>
-                <executions>
-                    <execution>
-                        <configuration>
-                            <mainClass>org.grobid.core.main.batch.AstroMain</mainClass>
-                            <onejarVersion>0.97</onejarVersion>
-                            <attachToBuild>true</attachToBuild>
-                            <classifier>onejar</classifier>
-                        </configuration>
-                        <goals>
-                            <goal>one-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin-->
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -341,35 +324,6 @@
                    </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.10</version>
-                <configuration>
-                    <contextPath>/</contextPath>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <connectors>
-                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>8080</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                    <resourceBases>
-                        <resourceBase>${basedir}/src/main/webapp</resourceBase>
-                    </resourceBases>
-                    <!--jettyConfig>target/classes/jetty.xml</jettyConfig-->
-                    <systemProperties>
-                        <systemProperty>
-                            <name>log4j.configuration</name>
-                            <value>log4j-jetty.properties</value>
-                        </systemProperty>
-                    </systemProperties>
-                    <stopKey/>
-                    <stopPort/>
-                </configuration>
-            </plugin>
-
         </plugins>
 
     </build>

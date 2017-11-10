@@ -1,15 +1,17 @@
 package org.grobid.core.main.batch;
 
 import org.grobid.core.engines.AstroParser;
-import org.grobid.core.main.LibraryLoader;
-import org.grobid.core.mock.MockContext;
+import org.grobid.core.main.GrobidHomeFinder;
 import org.grobid.core.utilities.GrobidProperties;
+import org.grobid.core.utilities.AstroProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 
 /**
@@ -52,8 +54,13 @@ public class AstroMain {
     protected static void inferParamsNotSet() {
         String tmpFilePath;
         if (gbdArgs.getPath2grobidHome() == null) {
-            tmpFilePath = new File("grobid-home").getAbsolutePath();
-            System.out.println("No path set for grobid-home. Using: " + tmpFilePath);
+            tmpFilePath = AstroProperties.get("grobid.home");
+
+            if (tmpFilePath == null) {
+                tmpFilePath = new File("grobid-home").getAbsolutePath();
+                System.out.println("No path set for grobid-home. Using: " + tmpFilePath);   
+            } 
+
             gbdArgs.setPath2grobidHome(tmpFilePath);
             gbdArgs.setPath2grobidProperty(new File("grobid.properties").getAbsolutePath());
         }
@@ -63,13 +70,17 @@ public class AstroMain {
      * Initialize the batch.
      */
     protected static void initProcess() {
+        GrobidProperties.getInstance();
+    }
+
+    protected static void initProcess(String grobidHome) {
         try {
-            MockContext.setInitialContext(gbdArgs.getPath2grobidHome(), gbdArgs.getPath2grobidProperty());
-            LibraryLoader.load();
+            final GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(grobidHome));
+            grobidHomeFinder.findGrobidHomeOrFail();
+            GrobidProperties.getInstance(grobidHomeFinder);
         } catch (final Exception exp) {
             System.err.println("Grobid initialisation failed: " + exp);
         }
-        GrobidProperties.getInstance();
     }
 
     /**
@@ -165,11 +176,17 @@ public class AstroMain {
 
         if (processArgs(args) && (gbdArgs.getProcessMethodName() != null)) {
             inferParamsNotSet();
-            initProcess();
+            if (isNotEmpty(gbdArgs.getPath2grobidHome())) {
+                initProcess(gbdArgs.getPath2grobidHome());
+            } else {
+                LOGGER.warn("Grobid home not provided, using default. ");
+                initProcess();
+            }
+            
             int nb = 0;
-
             long time = System.currentTimeMillis();
-			AstroParser astroParser = AstroParser.getInstance();
+
+            AstroParser astroParser = AstroParser.getInstance();
 			
             //if (gbdArgs.getProcessMethodName().equals(COMMAND_PROCESS_TEXT)) {
             //    nb = astroParser.batchProcess(gbdArgs.getPath2Input(), gbdArgs.getPath2Output());
