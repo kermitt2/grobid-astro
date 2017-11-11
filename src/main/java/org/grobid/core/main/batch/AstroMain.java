@@ -4,6 +4,7 @@ import org.grobid.core.engines.AstroParser;
 import org.grobid.core.main.GrobidHomeFinder;
 import org.grobid.core.utilities.GrobidProperties;
 import org.grobid.core.utilities.AstroProperties;
+import org.grobid.core.main.LibraryLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -78,6 +79,7 @@ public class AstroMain {
             final GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(grobidHome));
             grobidHomeFinder.findGrobidHomeOrFail();
             GrobidProperties.getInstance(grobidHomeFinder);
+            LibraryLoader.load();
         } catch (final Exception exp) {
             System.err.println("Grobid initialisation failed: " + exp);
         }
