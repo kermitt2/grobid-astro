@@ -196,7 +196,7 @@ public class AstroParser extends AbstractParser {
                         FullTextParser.getDocumentFullTextTokens(toProcess, rese, tokenizationBody.getTokenization());
 
                     if (documentBodyTokens != null) {
-                            processLayoutTokenSequences(documentBodyTokens, entities);
+                        processLayoutTokenSequences(documentBodyTokens, entities);
                     }
                 }
             }
@@ -252,26 +252,21 @@ public class AstroParser extends AbstractParser {
                                                   List<AstroEntity> entities) {
         for(LayoutTokenization layoutTokenization : layoutTokenizations) {
             List<LayoutToken> layoutTokens = layoutTokenization.getTokenization();
-
-            // List<LayoutToken> for the selected segment
-            List<LayoutToken> tokenizationParts = layoutTokens;
+            layoutTokens = AstroAnalyzer.getInstance().retokenizeLayoutTokens(layoutTokens);
 
             // text of the selected segment
             String text = LayoutTokensUtil.toText(layoutTokens);
             
-            // list of textual tokens of the selected segment
-            //List<String> texts = getTexts(tokenizationParts);
-            
             // positions for lexical match
-            List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNames(tokenizationParts);
+            List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNames(layoutTokens);
             
             // string representation of the feature matrix for CRF lib
-            String ress = addFeatures(tokenizationParts, astroTokenPositions);     
+            String ress = addFeatures(layoutTokens, astroTokenPositions);     
            
             // labeled result from CRF lib
             String res = label(ress);
-
-            entities.addAll(extractAstroEntities(text, res, tokenizationParts));
+//System.out.println(res);
+            entities.addAll(extractAstroEntities(text, res, layoutTokens));
         }
         return entities;
     }
