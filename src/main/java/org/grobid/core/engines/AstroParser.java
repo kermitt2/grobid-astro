@@ -558,7 +558,7 @@ public class AstroParser extends AbstractParser {
                     continue;
                 }
 
-                isAstroPattern = true;
+                //isAstroPattern = true;
 
                 // do we have a unit at position posit?
                 if ((localPositions != null) && (localPositions.size() > 0)) {
