@@ -57,7 +57,7 @@ public class AstroParserTest {
         List<AstroEntity> entities = AstroParser.getInstance().processText(text);
         //System.out.println(text);
         //System.out.println(entities.size());
-        assertThat(entities, hasSize(2));
+        assertThat(entities, hasSize(5));
     }
 
     //@Test
