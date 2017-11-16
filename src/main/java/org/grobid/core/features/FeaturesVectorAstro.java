@@ -88,13 +88,13 @@ public class FeaturesVectorAstro {
         // punctuation information (1)
         res.append(" " + punctType); // in case the token is a punctuation (NO otherwise)
 
-		// lexical information (1)
+		// lexical information (1), token is a token in the astro vocabulary
         if (astroName)
             res.append(" 1");
         else
             res.append(" 0");
 		
-		// lexical feature: belongs to a known astro name (1)
+		// lexical feature: belongs to a known full astro name (1)
 		if (isAstroToken)
 			res.append(" 1");
         else

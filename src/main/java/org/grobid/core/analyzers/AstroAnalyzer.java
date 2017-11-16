@@ -1,6 +1,7 @@
 package org.grobid.core.analyzers;
 
 import org.grobid.core.layout.LayoutToken;
+import org.grobid.core.lang.Language;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +49,12 @@ public class AstroAnalyzer implements org.grobid.core.analyzers.Analyzer {
     }
 
     public List<String> tokenize(String text) {
+        // TBD: if we want to support non Indo-European languages, we should make the tokenization
+        // language specific
+        return tokenize(text, null);
+    }
+
+    public List<String> tokenize(String text, Language lang) {
         List<String> result = new ArrayList<>();
         StringTokenizer st = new StringTokenizer(text, DELIMITERS, true);
         while (st.hasMoreTokens()) {

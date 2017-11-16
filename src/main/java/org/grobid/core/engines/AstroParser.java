@@ -86,7 +86,6 @@ public class AstroParser extends AbstractParser {
             text = text.replace("\n", " ");
             text = text.replace("\t", " ");
             List<LayoutToken> tokens = AstroAnalyzer.getInstance().tokenizeWithLayoutToken(text);
-
             if (tokens.size() == 0) {
                 return null;
             }
@@ -544,21 +543,22 @@ public class AstroParser extends AbstractParser {
             for (LayoutToken token : tokens) {
                 if (token.getText().trim().equals("@newline")) {
                     result.append("\n");
+                    posit++;
                     continue;
                 }
 
                 String text = token.getText();
                 if (text.equals(" ") || text.equals("\n")) {
+                    posit++;
                     continue;
                 }
 
                 // parano normalisation
                 text = UnicodeUtil.normaliseTextAndRemoveSpaces(text);
                 if (text.trim().length() == 0 ) {
+                    posit++;
                     continue;
                 }
-
-                //isAstroPattern = true;
 
                 // do we have a unit at position posit?
                 if ((localPositions != null) && (localPositions.size() > 0)) {

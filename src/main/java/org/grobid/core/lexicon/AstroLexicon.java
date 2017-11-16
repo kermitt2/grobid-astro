@@ -1,6 +1,6 @@
 package org.grobid.core.lexicon;
 
-import org.grobid.core.analyzers.GrobidDefaultAnalyzer;
+import org.grobid.core.analyzers.AstroAnalyzer;
 import org.grobid.core.exceptions.GrobidException;
 import org.grobid.core.exceptions.GrobidResourceException;
 import org.grobid.core.utilities.GrobidProperties;
@@ -70,13 +70,13 @@ public class AstroLexicon {
         BufferedReader dis = null;
         // read the lexicon file
         try {
-            astroPattern = new FastMatcher(file);
+            astroPattern = new FastMatcher(file, AstroAnalyzer.getInstance());
 
             dis = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
             String l = null;
             while ((l = dis.readLine()) != null) {
                 if (l.length() == 0) continue;
-                List<String> tokens = GrobidDefaultAnalyzer.getInstance().tokenize(l);
+                List<String> tokens = AstroAnalyzer.getInstance().tokenize(l);
                 for(String token : tokens) {
                     if (token.length() > 1) {
                         // should we filter out 100% numerical tokens?
@@ -114,7 +114,4 @@ public class AstroLexicon {
         List<OffsetPosition> results = astroPattern.matchLayoutToken(vector);
         return results;
     }
-
-    // TBD: methods working on List<LayoutToken> directly instead of List<String> to avoid 
-    // copies
 }
