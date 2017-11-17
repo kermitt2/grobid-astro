@@ -47,7 +47,7 @@ public class AstroLexiconTest {
         astroLexicon = AstroLexicon.getInstance();
     }
 
-    @Test
+    //@Test
     public void testTokenPositionsAstroNames() throws Exception {
         String testString = "GRB 10002 and other GRBs, but also GRB 050219. Still we have Magellanic Clouds around and M4-37934 in the corner, of M 4 or other NGC.";
 
@@ -62,7 +62,7 @@ public class AstroLexiconTest {
         assertThat(astroTokenPositions, hasSize(8));
     }
 
-    @Test
+    //@Test
     public void testTokenPositionsAstroNameShort() throws Exception {
         String testString = "GRBs";
 
@@ -89,7 +89,7 @@ public class AstroLexiconTest {
         assertThat(astroTokenPositions, hasSize(1));
     }
 
-    @Test
+    //@Test
     public void testTokenPositionsAstroNameComplex() throws Exception {
         String testString = "there is M4-37934 in the corner";
 
