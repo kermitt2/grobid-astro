@@ -29,7 +29,6 @@ var grobid = (function ($) {
         $("#divAbout").show();
         $("#divRestI").hide();
         $("#divDoc").hide();
-        //$('#consolidateBlock').show();
 
         createInputTextArea('text');
         setBaseUrl('processAstroText');
@@ -334,7 +333,7 @@ var grobid = (function ($) {
                 }
                 else {
                     newString += string.substring(pos, start)
-                        + ' <span id="annot-' + currentEntityIndex + '" rel="popover" data-color="' + entityType + '">'
+                        + '<span id="annot-' + currentEntityIndex + '" rel="popover" data-color="' + entityType + '">'
                         + '<span class="label ' + entityType + '" style="cursor:hand;cursor:pointer;" >'
                         + string.substring(start, end) + '</span></span>';
                     pos = end;
@@ -348,21 +347,12 @@ var grobid = (function ($) {
 
         display += '<td style="font-size:small;width:60%;border:1px solid #CCC;"><p>' + newString + '</p></td>';
         display += '<td style="font-size:small;width:40%;padding:0 5px; border:0"><span id="detailed_annot-0" /></td>';
-
         display += '</tr>';
-
-
         display += '</table>\n';
-
-
         display += '</pre>\n';
-
-
         display += '</div> \
                     <div class="tab-pane " id="navbar-fixed-json">\n';
-
         display += "<pre class='prettyprint' id='jsonCode'>";
-
         display += "<pre class='prettyprint lang-json' id='xmlCode'>";
         var testStr = vkbeautify.json(responseText);
 
@@ -495,11 +485,14 @@ var grobid = (function ($) {
             "<table style='width:100%;display:inline-table;'><tr style='display:inline-table;'><td>";
 
         if (type) {
-            string += "<p>quantity type: <b>" + type + "</b></p>";
+            string += "<p>object type: <b>" + type + "</b></p>";
         }
 
         if (rawForm) {
             string += "<p>raw form: <b>" + rawForm + "</b></p>";
+
+            string += '<p><a target="_blank" href="http://simbad.u-strasbg.fr/simbad/sim-basic?Ident=' + 
+                        encodeURI(rawForm) + '&submit=SIMBAD+search"><img src="resources/img/simbad_small.png" width="50%"/></a></p>';
         }
 
         string += "</td></tr>";
@@ -516,18 +509,7 @@ var grobid = (function ($) {
             createInputTextArea();
             //$('#consolidateBlock').show();
             setBaseUrl('processAstroText');
-        }
-        /*else if (selected == 'processAstroTEI') {
-            createInputFile(selected)
-            //$('#consolidateBlock').show();
-            setBaseUrl('processAstroTEI');
-        }
-        else if (selected == 'processAstroPDF') {
-            createInputFile(selected);
-            //$('#consolidateBlock').hide();
-            setBaseUrl('processAstroPDF');
-        }*/
-        else if (selected == 'annotateAstroPDF') {
+        } else if (selected == 'annotateAstroPDF') {
             createInputFile(selected);
             //$('#consolidateBlock').hide();
             setBaseUrl('annotateAstroPDF');
@@ -535,10 +517,7 @@ var grobid = (function ($) {
     }
 
     function createInputFile(selected) {
-        //$('#label').html('&nbsp;'); 
         $('#textInputDiv').hide();
-        //$('#fileInputDiv').fileupload({uploadtype:'file'});
-        //$('#fileInputDiv').fileupload('reset');
         $('#fileInputDiv').show();
 
         $('#gbdForm').attr('enctype', 'multipart/form-data');
@@ -546,21 +525,13 @@ var grobid = (function ($) {
     }
 
     function createInputTextArea() {
-        //$('#label').html('&nbsp;'); 
         $('#fileInputDiv').hide();
-        //$('#input').remove();
-
-        //$('#field').html('<table><tr><td><textarea class="span7" rows="5" id="input" name="'+nameInput+'" /></td>'+
-        //"<td><span style='padding-left:20px;'>&nbsp;</span></td></tr></table>");
         $('#textInputDiv').show();
-
-        //$('#gbdForm').attr('enctype', '');
-        //$('#gbdForm').attr('method', 'post');
     }
 
     var examples = ["GRB 050219 was not among the originally proposed targets (neither the SFR nor mass was known at the time of observation), but was observed as an ATCA filler target in otherwise not usable gaps.",
         "We detect GRB 020819B at 4σ at 3 GHz, at about 11 yr after the burst. We argue that a good fraction of this emission, if not all, is due to afterglow emission, thus adding GRB 020819B to the group of GRBs with very long-lasting detected radio afterglows, where GRB 030329 is the most prominent example (van der Horst et al. 2008). In a similar case, GRB 980425, with a radio-bright knot at the GRB position, an afterglow interpretation has been excluded (Michałowski et al. 2014).",
-        ".",
+        "IC 1805 was also observed during 80 ks with Chandra in November 2006 (PI Townsley, ObsID 7033, see Table 1, Feigelson et al. 2013; Townsley et al. 2014). We processed these data using the CIAO v.4.7 software (with CALDB 4.6.9). Using specextract, we extracted the spectra and generated sourcespecific response matrices for six massive stars (BD+60 498, BD+60 499, BD+60 501, HD 15558, HD 15570, and HD 15629) as well as six bright XMM-Newton sources (see Sect. 4.3) with at least 100 net ACIS counts as reported in Townsley et al. (2014). To this aim, we used circular regions of radius between 2 and 15, depending on the o -axis angle and crowding. Circular background regions as close as possible to the targets were used and a similar grouping as for the XMM-Newton data was applied. \n\nFinally, we also retrieved an archival ROSAT observation (PI Pauldrach, ObsID 201263, see Table 1) obtained in August 1992. These data were processed using the xselect software. Spectra for five O-stars (BD+60 497, BD+60 501, HD 15558, HD 15570, and HD 15629) were extracted using circular extraction regions of radius 42. The background was evaluated over a circular source-free region of 75 radius. We used the standard response matrix pspcb_gain2_256.rmf and generated source-specific ancillary response files using the pcarf command.\n",
         "."]
 
 
