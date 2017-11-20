@@ -68,13 +68,14 @@ def main(args):
         #catch all rs tags
         rs = [] #rs contain all rs values
         sfiles = "" #sfiles is all files in a string variable it serves at line 47
-        files = [file_ for file_ in files if ".xml" in file_]
+        files = [file_ for file_ in files if ".tei" in file_]
 
         for file in files:
             with open(args[0] + os.sep + file, 'r') as file_:
                 sfiles = sfiles + ''.join(file_.readlines())
             #try:
             tree = ET.ElementTree()
+            print args[0]+os.sep+file
             tree.parse(args[0]+os.sep+file)
             tree = tree.getroot()
             for t in tree.findall("{http://www.tei-c.org/ns/1.0}text"):
@@ -124,3 +125,4 @@ def main(args):
 
 if __name__=="__main__":
     main(sys.argv[1:])
+
