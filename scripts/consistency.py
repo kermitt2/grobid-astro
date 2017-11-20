@@ -90,35 +90,39 @@ def main(args):
             if (dic.has_key(textContent)):dic[textContent] = list(set(dic.get(textContent) + [elt.get("type")]))
             else:dic[textContent] = [elt.get("type")]
 
-        
-        for tok in sorted(dic.keys()):
-            #first print part where a dic key has no annotation (while it had at least one somewhere) 
-            print tok," ",dic[tok] ,":\n"
-            if len(tok)==1:
-                print "\t-> object name too short !","\n"
-                continue
-            if tok.isdigit() and len(tok)<4:
-                print "\t-> object name only digits and too short (<4) !","\n"
-                continue 
-            regex = '".{0,80}[^>]%s[^<].{0,80}"'%(re.escape(tok))
-            result = subprocess.check_output(['egrep -Eo ' + regex + ' ' + args[0] + os.sep + '*.xml; exit 0'], shell=True)
-            if (result):
-                print result.replace("\n", "\n\n")
-            else:
-                print "\t-> nothing stinky found !","\n"
-            
-            #then print part where a dic key has multiple value
-            if len (dic[tok])>1:
-                print tok," :\n"
-                for class_ in dic[tok]:
-                    regex = ur'.{,80}<rs type="%s">%s<.{,80}'%(class_,tok)
-                    try:
-                        shortexample = re.search(regex, sfiles).group(0).replace("\t","")
-                    except:
-                        shortexample = "/" #problem with encodage (line 21 opened without utf-8)
-                    print class_,": ",shortexample,"\n"
-                print "_____\n"
+        #for tok in sorted(dic.keys()):
+        #    try:print tok
+        #    except:print ""
 
+        for tok in sorted(dic.keys()):
+            try:
+                #first print part where a dic key has no annotation (while it had at least one somewhere) 
+                print tok," ",dic[tok] ,":\n"
+                if len(tok)==1:
+                    print "\t-> object name too short !","\n"
+                    continue
+                if tok.isdigit() and len(tok)<4:
+                    print "\t-> object name only digits and too short (<4) !","\n"
+                    continue 
+                regex = '".{0,80}[^>]%s[^<].{0,80}"'%(re.escape(tok))
+                result = subprocess.check_output(['egrep -Eo ' + regex + ' ' + args[0] + os.sep + '*.xml; exit 0'], shell=True)
+                if (result):
+                    print result.replace("\n", "\n\n")
+                else:
+                    print "\t-> nothing stinky found !","\n"
+                
+                #then print part where a dic key has multiple value
+                if len (dic[tok])>1:
+                    print tok," :\n"
+                    for class_ in dic[tok]:
+                        regex = ur'.{,80}<rs type="%s">%s<.{,80}'%(class_,tok)
+                        try:
+                            shortexample = re.search(regex, sfiles).group(0).replace("\t","")
+                        except:
+                            shortexample = "/" #problem with encodage (line 21 opened without utf-8)
+                        print class_,": ",shortexample,"\n"
+                    print "_____\n"
+            except:print "Encoding issue with key token"
     else:
         print "Come on, I need at least 1 argument"
         sys.exit()
