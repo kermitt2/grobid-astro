@@ -187,15 +187,30 @@ public class AstroParser extends AbstractParser {
                         logger.debug("Fulltext model: The input to the CRF processing is empty");
                     }
 
-                    // do not process the references markers, figure markers, table markers, 
-                    // formula markers, formula label and the formula
-                    List<TaggingLabel> toProcess = Arrays.asList(TaggingLabels.PARAGRAPH, TaggingLabels.ITEM, 
-                        TaggingLabels.SECTION, TaggingLabels.FIGURE, TaggingLabels.TABLE);
-                    List<LayoutTokenization> documentBodyTokens = 
-                        FullTextParser.getDocumentFullTextTokens(toProcess, rese, tokenizationBody.getTokenization());
+                    TaggingTokenClusteror clusteror = new TaggingTokenClusteror(GrobidModels.FULLTEXT, rese, 
+                        tokenizationBody.getTokenization(), true);
+                    List<TaggingTokenCluster> clusters = clusteror.cluster();
+                    for (TaggingTokenCluster cluster : clusters) {
+                        if (cluster == null) {
+                            continue;
+                        }
 
-                    if (documentBodyTokens != null) {
-                        processLayoutTokenSequences(documentBodyTokens, entities);
+                        TaggingLabel clusterLabel = cluster.getTaggingLabel();
+                        Engine.getCntManager().i(clusterLabel);
+
+                        List<LayoutToken> localTokenization = cluster.concatTokens();
+                        if ((localTokenization == null) || (localTokenization.size() == 0))
+                            continue;
+
+                        String clusterContent = LayoutTokensUtil.normalizeText(LayoutTokensUtil.toText(cluster.concatTokens()));
+                        if (clusterLabel.equals(TaggingLabels.PARAGRAPH) || clusterLabel.equals(TaggingLabels.ITEM)
+                            || clusterLabel.equals(TaggingLabels.SECTION) ) {
+                            processLayoutTokenSequence(localTokenization, entities);
+                        } else if (clusterLabel.equals(TaggingLabels.TABLE)) {
+                            processLayoutTokenSequenceTableFigure(localTokenization, entities);
+                        } else if (clusterLabel.equals(TaggingLabels.FIGURE)) {
+                            processLayoutTokenSequenceTableFigure(localTokenization, entities);
+                        }
                     }
                 }
             }
@@ -253,6 +268,9 @@ public class AstroParser extends AbstractParser {
             List<LayoutToken> layoutTokens = layoutTokenization.getTokenization();
             layoutTokens = AstroAnalyzer.getInstance().retokenizeLayoutTokens(layoutTokens);
 
+            if ( (layoutTokens == null) || (layoutTokens.size() == 0) )
+                continue;
+
             // text of the selected segment
             String text = LayoutTokensUtil.toText(layoutTokens);
             
@@ -267,6 +285,50 @@ public class AstroParser extends AbstractParser {
 //System.out.println(res);
             entities.addAll(extractAstroEntities(text, res, layoutTokens));
         }
+        return entities;
+    }
+
+    /**
+     * Process with the astro model a set of arbitrary sequence of LayoutTokenization
+     * from tables and figures, where the content is not structured (yet)
+     */ 
+    private List<AstroEntity> processLayoutTokenSequenceTableFigure(List<LayoutToken> layoutTokens, 
+                                                  List<AstroEntity> entities) {
+
+        layoutTokens = AstroAnalyzer.getInstance().retokenizeLayoutTokens(layoutTokens);
+
+        int pos = 0;
+        List<LayoutToken> localLayoutTokens = null;
+        while(pos < layoutTokens.size()) { 
+            while((pos < layoutTokens.size()) && !layoutTokens.get(pos).getText().equals("\n")) {
+                if (localLayoutTokens == null)
+                    localLayoutTokens = new ArrayList<LayoutToken>();
+                localLayoutTokens.add(layoutTokens.get(pos));
+                pos++;
+            }
+
+            if ( (localLayoutTokens == null) || (localLayoutTokens.size() == 0) ) {
+                pos++;
+                continue;
+            }
+
+            // text of the selected segment
+            String text = LayoutTokensUtil.toText(localLayoutTokens);
+
+            // positions for lexical match
+            List<OffsetPosition> astroTokenPositions = astroLexicon.tokenPositionsAstroNames(localLayoutTokens);
+            
+            // string representation of the feature matrix for CRF lib
+            String ress = addFeatures(localLayoutTokens, astroTokenPositions);     
+            
+            // labeled result from CRF lib
+            String res = label(ress);
+    //System.out.println(res);
+            entities.addAll(extractAstroEntities(text, res, localLayoutTokens));
+            localLayoutTokens = null;
+            pos++;
+        }
+       
         return entities;
     }
 
