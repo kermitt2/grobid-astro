@@ -698,11 +698,10 @@ public class AstroParser extends AbstractParser {
                 }
             }
 
-            if ((endPos > 0) && (text.charAt(endPos-1) == '\n'))
+            if ((endPos > 0) && (text.length() >= endPos) && (text.charAt(endPos-1) == '\n'))
         		endPos--;
-            if ((endPos > 0) && (text.charAt(endPos-1) == ' '))
+            if ((endPos > 0) && (text.length() >= endPos) && (text.charAt(endPos-1) == ' '))
                 endPos--;
-            
 
             if (clusterLabel.equals(AstroTaggingLabels.OBJECT)) {
             	
