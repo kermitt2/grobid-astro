@@ -10,3 +10,4 @@ astro.log*
 .project
 .settings
 resources/dataset/astro/corpus
+scripts/allCorpusNames.txt
