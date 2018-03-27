@@ -11,3 +11,4 @@ astro.log*
 .settings
 resources/dataset/astro/corpus
 scripts/allCorpusNames.txt
+.gradle

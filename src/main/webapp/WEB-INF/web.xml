@@ -1,6 +1,4 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
 
 <web-app>
   <display-name>GROBID Astro web service - RESTful services for astronomical entity recognition and disambiguation</display-name>
@@ -50,12 +48,6 @@
       <env-entry-value>../grobid-home/config/grobid.properties</env-entry-value>
       <env-entry-type>java.lang.String</env-entry-type>
     </env-entry>
-    
-    <!--env-entry>
-      <env-entry-name>org.grobid.property.service</env-entry-name>
-      <env-entry-value>${_GROBID_SERVICE_PROPERTY}</env-entry-value>
-      <env-entry-type>java.lang.String</env-entry-type>
-    </env-entry-->
     
     <env-entry>
       <env-entry-name>org.grobid.home</env-entry-name>
