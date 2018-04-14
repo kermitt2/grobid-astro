@@ -1,3 +1,4 @@
+out
 target
 *.class
 .idea
@@ -12,3 +13,4 @@ astro.log*
 resources/dataset/astro/corpus
 scripts/allCorpusNames.txt
 .gradle
+build
