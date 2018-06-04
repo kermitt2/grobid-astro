@@ -7,7 +7,7 @@
     <groupId>org.grobid</groupId>
     <artifactId>grobid-astro</artifactId>
     <name>${project.artifactId}</name>
-    <version>0.5.1-SNAPSHOT</version>
+    <version>0.6.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
@@ -31,6 +31,15 @@
             <url>http://download.java.net/maven/2/</url>
             <layout>default</layout>
         </repository>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-rookies-maven</id>
+            <name>bintray</name>
+            <url>https://dl.bintray.com/rookies/maven</url>
+        </repository>
+
     </repositories>
 
     <dependencies>
@@ -39,12 +48,12 @@
         <dependency>
             <groupId>org.grobid</groupId>
             <artifactId>grobid-core</artifactId>
-            <version>0.5.1-SNAPSHOT</version>
+            <version>0.6.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.grobid</groupId>
             <artifactId>grobid-trainer</artifactId>
-            <version>0.5.1-SNAPSHOT</version>
+            <version>0.6.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>fr.limsi.wapiti</groupId>
@@ -182,10 +191,10 @@
 
     <build>
         <resources>
-	        <resource>
-	            <directory>src/main/resources</directory>
-	            <filtering>true</filtering>
-	        </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
         </resources>
 
         <plugins>
@@ -320,8 +329,8 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>jar</goal>
-                        </goals>                    
-                   </execution>
+                        </goals>
+                    </execution>
                 </executions>
             </plugin>
 
@@ -343,13 +352,13 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
         </plugins>
 
     </build>
 
     <profiles>
-    	<profile>
+        <profile>
             <id>trainer</id>
             <build>
                 <plugins>
@@ -372,7 +381,7 @@
                 </plugins>
             </build>
         </profile>
-    
+
         <profile>
             <id>train_astro</id>
             <build>
@@ -418,7 +427,7 @@
                                 <argument>org.grobid.trainer.AstroTrainerRunner</argument>
                                 <argument>1</argument>
                                 <argument>astro</argument>
-                                <argument>-gH</argument> 
+                                <argument>-gH</argument>
                                 <argument>../grobid-home</argument>
                             </arguments>
                         </configuration>
@@ -448,10 +457,11 @@
                                 <argument>org.grobid.trainer.AstroTrainerRunner</argument>
                                 <argument>2</argument>
                                 <argument>astro</argument>
-                                <argument>-gH</argument> 
+                                <argument>-gH</argument>
                                 <argument>../grobid-home</argument>
-                                <argument>-s</argument> 
-                                <argument>0.8</argument> <!-- to be changed for another ratio of training/evaluation segmentation -->
+                                <argument>-s</argument>
+                                <argument>0.8
+                                </argument> <!-- to be changed for another ratio of training/evaluation segmentation -->
                             </arguments>
                         </configuration>
                     </plugin>
