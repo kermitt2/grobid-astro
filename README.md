@@ -33,7 +33,7 @@ Run some test:
 
 ## Start the service
 
-> mvn -Dmaven.test.skip=true jetty:run-war
+> mvn -DskipTests jetty:run-war
 
 Demo/console web app is then accessible at ```http://localhost:8080```
 
