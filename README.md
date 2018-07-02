@@ -1,8 +1,6 @@
 # grobid-astro
 
-<!--[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html) -->
-
-__Work in progress.__
+[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 The goals of this GROBID module are: 
 
