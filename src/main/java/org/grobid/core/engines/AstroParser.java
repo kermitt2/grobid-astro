@@ -103,7 +103,7 @@ public class AstroParser extends AbstractParser {
             ress = addFeatures(tokens, astroTokenPositions);
             String res;
             try {
-System.out.println(ress);
+//System.out.println(ress);
                 res = label(ress);
             } catch (Exception e) {
                 throw new GrobidException("CRF labeling for astro parsing failed.", e);
