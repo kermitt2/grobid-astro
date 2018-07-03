@@ -460,7 +460,7 @@
                                 <argument>-gH</argument>
                                 <argument>../grobid-home</argument>
                                 <argument>-s</argument>
-                                <argument>0.8
+                                <argument>0.9
                                 </argument> <!-- to be changed for another ratio of training/evaluation segmentation -->
                             </arguments>
                         </configuration>

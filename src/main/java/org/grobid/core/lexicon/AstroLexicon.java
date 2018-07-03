@@ -70,7 +70,7 @@ public class AstroLexicon {
         BufferedReader dis = null;
         // read the lexicon file
         try {
-            astroPattern = new FastMatcher(file, AstroAnalyzer.getInstance());
+            astroPattern = new FastMatcher(file, AstroAnalyzer.getInstance(), true);
 
             dis = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
             String l = null;
