@@ -41,7 +41,18 @@ public class AstroAnalyzer implements org.grobid.core.analyzers.Analyzer {
     private AstroAnalyzer() {
     }
 
-    public static final String DELIMITERS = " \n\r\t([^%‰°,:;?.!/)-–−=≈<>+\"“”‘’'`$]*\u2666\u2665\u2663\u2660\u00A0";
+    public static final String DELIMITERS = " \n\r\t([^%‰°,:;?.!/)-–−=≈<>+\"“”‘’'`$]*\u2666\u2665\u2663\u2660\u00A0"
+			+ "\u002D\u2010\u2011\u2012\u2013\u2014\u2015\u207B\u208B\u2212"
+                        + "\u0096\u058A\u2043\uFE58\uFE63\uFF0D" // \u05BE ->8 \u1806 -> A 
+                        + "\u002B"
+                        + "\u002E\u2024\u2027\u2219\uFE52"
+                        + "\u0027\u2032\uFF07"
+                        + "\u003C"
+                        + "\u003D"
+                        + "\u003E"
+                        + "\u0020\u00A0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007"
+                        + "\u2008\u2009\u200A\u202F\u205F\u3000\uF0A0";
+
     private static final String REGEX = "(?<=[a-zA-Z])(?=\\d)|(?<=\\d)(?=\\D)";
 
     public String getName() {
