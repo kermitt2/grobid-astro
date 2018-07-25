@@ -6,12 +6,12 @@
  
     :Command:
  
-    python consistency.py _absolute_path_
+    python consistency.py _absolute_path_to_training_directory_
  
     Short summary
     -------------------
  
-    In Python 2.7, parse each xml files of the inputdirectory to catch all <rs> tag and put their value in a dictionary as the key and classes as the value.
+    In Python 3.*, parse each xml files of the input directory to catch all <rs> tag and put their value in a dictionary as the key and classes as the value.
     First check if the string value occurs somewhere in the corpus not annotated (rough/overgenerating estimation, in particular for super short entities
     but it should be useful enough to point to this type of unconsistency)
     Second it just shows all keys with multiple class values (with short example for each values).
@@ -56,20 +56,42 @@ import xml.etree.ElementTree as ET
 import re
 import subprocess
 
+# for making console output less boring
+green = '\x1b[32m'
+red = '\x1b[31m'
+bold_red = '\x1b[1;31m'
+orange = '\x1b[33m'
+white = '\x1b[37m'
+blue = '\x1b[34m'
+score = '\x1b[7m'
+bright = '\x1b[1m'
+bold_yellow = '\x1b[1;33m'
+reset = '\x1b[0m'
+
+
 def main(args):
     if len(args) == 1:
 
-        #listing files in the directory (args[1] has to be an absolute path)
-        try:files = os.listdir(args[0])
+        # listing files in the directory (args[1] has to be an absolute path)
+        try:
+            files = os.listdir(args[0])
         except:
-            print "path unfound (be sure to put an absolute path)"
+            print("path unfound (be sure to put an absolute path):")
             sys.exit()
 
+<<<<<<< HEAD
         #catch all rs tags
         rs = [] #rs contain all rs values
         sfiles = "" #sfiles is all files in a string variable it serves at line 47
         files = [file_ for file_ in files if ".tei" in file_]
 
+=======
+        # catch all rs tags
+        rs = [] # rs contain all rs values
+        sfiles = "" # sfiles is all files in a string variable it serves at line 127
+        files = [file_ for file_ in files if file_.endswith(".xml") ]
+        #print(files)
+>>>>>>> 9fe1dd0e31b47683ca6239c2b1b5996909f100e7
         for file in files:
             with open(args[0] + os.sep + file, 'r') as file_:
                 sfiles = sfiles + ''.join(file_.readlines())
@@ -78,55 +100,68 @@ def main(args):
             print args[0]+os.sep+file
             tree.parse(args[0]+os.sep+file)
             tree = tree.getroot()
-            for t in tree.findall("{http://www.tei-c.org/ns/1.0}text"):
-                for p in t.findall("{http://www.tei-c.org/ns/1.0}p"):
-                    rs = rs + p.findall("{http://www.tei-c.org/ns/1.0}rs")
+            for t in tree.findall(u"{http://www.tei-c.org/ns/1.0}text"):
+                for p in t.findall(u"{http://www.tei-c.org/ns/1.0}p"):
+                    rs = rs + p.findall(u"{http://www.tei-c.org/ns/1.0}rs")
 
-        #the dictionary "ambiguous" contains the text annotation (string) as key and class (list) as values
+        # the dictionary "ambiguous" contains the text annotation (string) as key and class (list) as values
         dic = {}
         for elt in rs:
-            #if dic contain the token as key add new value else initialize token with first value
+            # if dic contain the token as key add new value else initialize token with first value
             textContent = elt.text.strip()
-            if (dic.has_key(textContent)):dic[textContent] = list(set(dic.get(textContent) + [elt.get("type")]))
-            else:dic[textContent] = [elt.get("type")]
-
-        #for tok in sorted(dic.keys()):
-        #    try:print tok
-        #    except:print ""
-
+            #print(textContent)
+            if textContent in dic:
+                dic[textContent] = list(set(dic.get(textContent) + [elt.get("type")]))
+            else:
+                dic[textContent] = [elt.get("type")]
+        """
+        for tok in sorted(dic.keys()):
+            try: 
+                print(tok)
+            except: 
+                print("")
+        """
         for tok in sorted(dic.keys()):
             try:
-                #first print part where a dic key has no annotation (while it had at least one somewhere) 
-                print tok," ",dic[tok] ,":\n"
-                if len(tok)==1:
-                    print "\t-> object name too short !","\n"
+                # first print part where a dic key has no annotation (while it had at least one somewhere) 
+                print(bold_yellow, tok, reset, " ", dic[tok],  ":\n")
+                if len(tok) == 1:
+                    print("\t-> object name too short !","\n")
                     continue
                 if tok.isdigit() and len(tok)<4:
-                    print "\t-> object name only digits and too short (<4) !","\n"
+                    print("\t-> object name only digits and too short (<4) !","\n")
                     continue 
-                regex = '".{0,80}[^>]%s[^<].{0,80}"'%(re.escape(tok))
-                result = subprocess.check_output(['egrep -Eo ' + regex + ' ' + args[0] + os.sep + '*.xml; exit 0'], shell=True)
+                regex = '".{0,80}'+'[^>]{}[^<]'.format(re.escape(tok))+'.{0,80}"'
+                #print(regex)
+                #print("sheel command:", 'egrep -Eo ' + regex + ' ' + args[0] + os.sep + '*.xml; exit 0')
+                result = subprocess.getoutput(['egrep -Eo ' + regex + ' ' + args[0] + os.sep + '*.xml; exit 0'])
                 if (result):
-                    print result.replace("\n", "\n\n")
+                    res = result.replace("\n", "\n\n")
+                    res = res.replace(tok, bold_red + tok + reset)
+                    print(res, "\n")
                 else:
-                    print "\t-> nothing stinky found !","\n"
+                    print("\t-> nothing stinky found !","\n")
                 
                 #then print part where a dic key has multiple value
                 if len (dic[tok])>1:
-                    print tok," :\n"
+                    print(tok, " :\n")
                     for class_ in dic[tok]:
-                        regex = ur'.{,80}<rs type="%s">%s<.{,80}'%(class_,tok)
+                        regex = '".{,80}'+'<rs type="{}">{}<'.format(class_, tok)+'.{,80}"'
                         try:
                             shortexample = re.search(regex, sfiles).group(0).replace("\t","")
                         except:
                             shortexample = "/" #problem with encodage (line 21 opened without utf-8)
-                        print class_,": ",shortexample,"\n"
-                    print "_____\n"
-            except:print "Encoding issue with key token"
+                        print(class_, ": ", shortexample, "\n")
+                    print("_____\n")
+            except:
+                print("Issue with key token:", tok)
     else:
-        print "Come on, I need at least 1 argument"
+        print("Come on, I need at least 1 argument")
         sys.exit()
 
 if __name__=="__main__":
     main(sys.argv[1:])
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9fe1dd0e31b47683ca6239c2b1b5996909f100e7
