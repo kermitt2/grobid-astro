@@ -7,7 +7,7 @@
     <groupId>org.grobid</groupId>
     <artifactId>grobid-astro</artifactId>
     <name>${project.artifactId}</name>
-    <version>0.5.1-SNAPSHOT</version>
+    <version>0.5.2-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <properties>
@@ -48,12 +48,12 @@
         <dependency>
             <groupId>org.grobid</groupId>
             <artifactId>grobid-core</artifactId>
-            <version>0.5.1</version>
+            <version>0.5.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.grobid</groupId>
             <artifactId>grobid-trainer</artifactId>
-            <version>0.5.1</version>
+            <version>0.5.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>fr.limsi.wapiti</groupId>
@@ -460,7 +460,7 @@
                                 <argument>-gH</argument>
                                 <argument>../grobid-home</argument>
                                 <argument>-s</argument>
-                                <argument>0.8
+                                <argument>0.9
                                 </argument> <!-- to be changed for another ratio of training/evaluation segmentation -->
                             </arguments>
                         </configuration>
