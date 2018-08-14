@@ -38,6 +38,7 @@
 1SWXRT
 1SXPS
 1WGA
+1WHSP
 1XMM
 1XRS
 20P
@@ -56,6 +57,7 @@
 2EG
 2EGS
 2EUVE
+2FAV
 2FGL
 2FHL
 2HERMES
@@ -80,6 +82,7 @@
 2RE
 2RXF
 2RXP
+2RXS
 2SLAQ
 2XLSS
 2XLSSd
@@ -87,6 +90,7 @@
 2XMMi
 2XMMp
 2XRF
+2XXL-ATCA
 30Dor
 30P
 31P
@@ -98,6 +102,7 @@
 3EG
 3FGL
 3FHL
+3PBC
 3XLSS
 3XMM
 40P
@@ -128,264 +133,67 @@
 87GB
 8pc
 A2012
-aaa
-aab
-aae
-aaf
-aaj
 AAO
-aas
 AAVSO
-abb
-ABb
-ABC
-Abell
-abk
 ABMMR
-abn
-abo
-abq
-abr
 ABW
 AC2000
-ACAMAR
 ACCG
-AcD
 ACG
 ACH
-ACHERNAR
-Acheron
-Achird
-ACHV
 ACO
-acq
-Acrab
 ACRS
-Acrux
-acs
 ACS
 ACSRG
 ACSVCS
 ACT
-acu
-Acubens
-ACVHV
-acw
-acx
-ada
-adb
 ADBS
-ade
-adf
-adg
-adh
-Adhafera
-Adhara
-Adhil
-adk
-adl
-adn
-ado
-adq
-ads
 ADS
-aed
-aee
-AEgir
 AEGIS
 AEGIS20
 AEGISXD
-aen
-aep
-aer
-aeu
-aew
-aex
-aez
-afa
-AFGL
-AFlanking
 AG82
 AGAL
 AGAPE
 AGASC
 AGC
-Agena
 AGES
-Aggregate
 AGKR
 AGL
 AGM
-agn
-ago
-agp
 AGP
 AGPRS
-AGPS
 Aguero
-agv
-agw
-agy
-Ahadi
-ahb
-ahd
-ahf
-AHH
-AHHNW
-ahj
-ahr
-ahs
-ahv
-ahx
-aic
-aid
-aii
-Ain
-aip
-aiq
-AIR
-aix
-aiy
-aja
-ajf
 AJG
-ajh
-ajk
-ajl
-ajn
-ajo
-ajp
-aju
-ajy
 AKARI
-akf
-akk
-akl
-Aladfar
-Alathfar
-Albaldah
-Albali
-Albereo
-Albireo
-Albus
-Alcaid
-Alchiba
-Alcor
-Alcyone
-Aldebaran
-Alderamin
-Aldhibah
 ALESS
 Alessi
-AlessiTeutsch
 ALEXIS
-alf
 ALFA
 ALFALFA
-Alfirk
-Algedi
-Algenib
-Algieba
-Algol
-Algorab
-Alhena
-Alioth
-Alkafzah
-Alkaid
-Alkalurops
-Alkes
-Allen
-Allens
 ALMA
-Almaaz
-Almach
-Alnair
-Alnasl
-Alnilam
-Alnitak
-Alniyat
-ALPHA
-Alphard
-Alphecca
-Alpheratz
-Alpherg
 ALR
-Alrakis
-Alrescha
 ALS
-Alsafi
-Alsciaukat
-Alshain
-Alshat
-Altair
-Altais
-Altaleban
-Altarf
-Alterf
-Alto
-Aludra
-Alula
-Alv
 ALW
-Alya
-Amas
-Amateru
-Ambartsumians
 AMDM
-AMER
-America
 AMI2011
 AMI2011b
 AMI2012b
 AMI2012c
 AMI2012d
-AMICL
 AMIGPS
 AMS
-AMU
-Ancha
-Anchor
-and
 And
 Andrews
-Andromeda
-ANEPDCXO
-ANGEL
-Angetenar
 ANGST
-Ankaa
-ann
-Annihilator
 Annizam
 Anon
-Anonymous
-Anser
-Ant
 Antalova
-Antares
-Antennae
-ANTHYA
-Anti
-Anticenter
-ANTICENTER
-Anticentre
-Antigalactic
-AntiLeonid
 Antipin
-Antlia
-AntliaSextans
-AntSex
-ANW
 AOC
 AOH
-aot
-aoz
-APACS
 APASS
 APG
-aph
-Aphrodite
-APM
 APMBGC
 APMCC
 APMGS
@@ -394,391 +202,101 @@ APMS
 APMSCC
 APMUKS
 APOP
-APPLES
-apr
-aps
-apv
-apw
 APX
-aqf
-Aql
-AqlG
-AqlOph
-AqlSct
-aqp
-Aqr
-AQR
-AQRCAP
 AqrCC
-AQRCET
-AqrDIG
-aqs
-Aquarius
-AQUARIUS
-AquariusCetus
-AQUARIUSCETUS
-Aquila
-Aquilae
-AquilaOphiuchus
-aqv
-aqy
-aqz
-Ara
-ARA
-arc
-Arc
-ARC
-ArcCore
 Arch
-Arched
-Arches
-Archinal
-Arclet
-Arcs
-Arcturus
-ard
 ARDB
-Argo
 ARGO
-Argus
-AriesPerseus
-Arion
 Ark
-Arkab
-Arkas
-arm
-Arm
 ARMA
-Arneb
-around
-Arp
-Arps
-arq
-arr
-Arrowhead
 ARS
-art
 Arty
-arx
 ARXA
 ASAS
 ASASSN
-asb
 ASB
-asc
 ASCC
-Ascella
-asd
-ase
-Asellus
-asf
-ash
-ASM
-Asmidiske
 ASP03
-Aspidiske
 ASR
 Ass
-ASS
-assoc
-Assoc
-ASSOC
-Association
-Asterope
-Asturias
+ASTEP
 ASV
 ASW
+ASXDF
 AT20G
-ATadj
 ATATS
 ATCA
 ATCDFS
 ATELAIS
 ATESP
 ATESP5
-ATgkg
 ATHDFS
-Atik
-Atlantic
-Atlas
 ATLAS
 ATLBS
-Atoms
-AtomsforPeace
+ATO
 ATPMN
-Atria
-Attractor
-atu
-atv
-atw
-atx
-aub
-aud
-aue
-aug
-Auner
-Aur
-Auriga
-AurigaCalifornia
-Aurigas
-AurPer
-AurTau
-Australis
-Austrina
-aux
-ave
-AveniHunter
-avh
-Avior
-avk
-avy
-awb
-awf
-awk
 AWM
-aws
-awz
-AXAF
-axb
-axe
-axg
-axi
-axn
-axr
-AXS
-axw
-aya
-ayb
-ayd
-ayf
-ayh
-ayi
-ayj
-ayl
-aym
-ayn
-ayo
-ayp
-ayq
-ayr
-ays
-ayt
-ayu
-Azelfafage
 AzGN
-Azha
-Azmidiske
 AzTEC
-AZtec
 AzV
 B3VLA
-Baade
-Baades
-Babcocks
-Baby
-BAC
-Backdoor
-Background
 Bad
-Balbinot
-Ball
 Balloon
-bam
-Banana
 Bania
-bap
-baq
-bar
-Bar
-Barbell
-Barbons
-Barkhatova
-Barn
 Barnard
-Barnards
 Barta
-bas
 Basel
 BASV
 BASW
-BAT
 BAT99
-Baten
-Batesons
 Batten
-bau
 BAX
-Bay
 BBB
 BBDS
-bbe
 BBG
 BBH
-bbk
-bbn
 BBRCG
 BBRW
 BBW
-bby
-BCD
 BCDSP
-BCG
 BCLMP
-bcy
-bcz
 BDA
-bdb
 BDB
-BDN
-bdr
 BDS
-BDSer
-bdt
-bdv
-bdy
-Bean
-Bear
-BearPaw
-Bears
-Beaver
-BecklinNeugebauer
 BEE
-Beehive
-Beid
-BEL
-Bellatrix
-Belt
-bep
-ber
-Ber
-Berenices
-Bergfors
-Bernes
 BES
 BEST
-beta
-Betelgeuse
-between
-bev
-BeVa
-bex
-bey
-bez
-bfa
-bfb
-bfc
-bfd
-BFM
 BFS
-bfu
-bfv
 BFW78
 BGE
 BGG
 BGLO
-bgo
 BGP
 BGPS
-bgt
+BGPSv2
 BHA
-bHB
-bhe
-bhh
-bhi
 BHI
-bhj
 BHJ
-bhm
-bho
-bhr
 BHR
-bhs
-Bica
-bid
-Bidelmans
-bif
-Big
 BIG
-bih
-Biham
-bij
-binary
-bio
-bip
-Bip
-Bipolar
-Bird
 BIRS
-bis
 BIS
-bit
-bjc
-bjd
 BJF
-bjg
-bji
-bjj
 BJM
-bjv
-bjz
 BK85
-bka
-bke
-bkg
 BKGS
-bkj
 BKK
 BKLT
-bkm
-bkr
-bku
-bkv
-bkx
-bky
-Black
 BLAST
-blb
-blc
-blf
-BLG
-BLGb
-BLGB
-BLGL
-BLGLABc
-BLGLb
-BLGN
-bli
-Blinking
-blj
-blk
 BLMC
-bln
-Blob
 BLOX
-blq
-bls
-Blue
-Blum
-blv
-blw
-blx
 BlX
-blz
 BMB
 BMG
-BML
 BMLH2
 BMP
 BMW
 BNKL
-BNLMH
-bnr
-BNW
-bnz
-BOB
-bod
-Bodes
-BOH
 BOI
 Bok
 BoKa
@@ -786,314 +304,98 @@ BOKS
 Bol
 Boller
 Bolocam
-Bologna
-bom
-Bonds
-Boo
-BOO
-Boomerang
-Bootes
-Bootis
-Borealis
-Borg
 BoRG
 Borngen
-Borrellys
-Boss
-BOSS
-Botein
 BOW
-Box
-Boyajians
-bpa
 BPM
-bPMG
-bpo
 BPS
-BPulsars
-bpz
-bqc
-bqk
-bqn
-bqq
-Brace
-Brachium
 Braes
-Brahe
 Braid
 BRAN
-BRC
-Bretz
 Brey
-BRGA
 Brh
 BRHT
 BRI
-Briceno
-Brick
-Bridge
-Bright
 BRLT
 Bro
-Brocchis
-Broom
-Browning
 BRRG
 Bruck
 Brun
-Bryan
 BSAS
 BSCC
 BSCG
 BSD
 BSDL
-BSE
-bsg
-bsh
-BSHCEP
 BSI*
-BSMM
-bsn
 BSNS
 BSNSN
 BSNSS
 BSO
-bsp
-bsq
 BSS
-bst
 BTA91
 BTC40
 BTS
 BTS87
-Bubble
-Bug
-bul
-BULb
-Bulge
-BULL
-BULLb
-BULLc
-Bullet
-Bunda
-Burnham
-Burnhams
-Burst
-Burster
-Butlers
-Butterfly
-bvb
 BVF
 BVMC
-bvp
-bvr
 BVS
-bvx
 BW79
-bwd
 BWE
-bwh
 BWI
 BWSH
 BWSS
-bww
-bxb
-bxc
 BYB
-byu
-BYY
-BZB
-BZG
-BzK
-BZQ
-bzz
 C*
 C84
 CABS
 CABS III
 CADIS
-Cae
-CAELUM
 CAIRNS
 CAL
-Calabash
-Calar
-California
-Calvera
-Cam
+CALYMHA
 Camargo
 Cambridge
-Camel
-Camelopardalis
-Campbells
 CAN
-Canarias
-Cancer
-CANCER
-CancerLeo
 CANDELS
-Candidate
-Candle
-Candy
-Cane
-Canes
-Canis
-Canonball
-Canopus
-Cap
 CAP
-Capella
-Caph
-Capricorn
-Capricornus
-Car
-CAR
-Carafe
-CARAFE
-CarCen
-Carina
-Carinanear
-CarinaSagittarius
-CarinaVela
 CARLA
-Caroli
-Carolines
-Carraro
-CarSge
-CarSgr
-Cartwheel
-CarVel
-Cas
-CAS
-Casado
-CasCep
 Case
 CASG
 CasHII
-CasPer
-Cassilda
-Cassiopeia
-CasTau
-CASTAU
-Castor
 Caswell
-Cat
-Cats
-Cave
-Cavity
 CAVS
-Cayanne
 CBB
 CBF
-CBI
-cbm
-CBNIR
 CBS
 CBSS
-cbt
-CBV
-cby
 CCABS
 CCAC
 CCC
-CCD
 CCDM
 CCDS
-ccf
-CCG
-cci
 CCM
 CCOS
 CCPC
-ccv
-ccw
-ccx
-CDC
-CDFN
-CDFS
-CDFSCl
 CDGS
-CDN
 CDS90
 CDT
-Cebalrai
 Ced
-CED
-cej
-cek
-cel
 CEL
-Celaeno
-Celeno
-Celestial
-cem
 CEMM
-Cen
-CEN
-CenA
-CenCru
-CenCrux
-CenHya
-CenHyaVirPavo
-CenLup
-CenLupCrux
-CENPAV
-CenPavo
 CENSORS
-Centauri
-Centaurus
-CENTAURUS
-CentaurusCrux
-CentaurusLupus
-Center
-Central
-Centre
-CENTRE
 Century
-Cep
-CEP
-CEPBC
-CEPBS
-CepCas
-CepCygLyrVul
-CEPH
-Cepheus
-CepLac
-CER
-Cervantes
-ces
-Cet
-CET
-CETARI
-Ceti
-Cetus
-CETUS
-CetusAries
-CExtension
-cez
-CFA
 CFBDS
 CFBDSIR
 CFDF
-CFgA
-CFgB
 CFHIZELS
 CFHQS
 CFHT
 CFHTLS
 CFHTWIR
-cfn
 CFRS
-cgc
 CGCS
-cgd
-cge
 CGF
-CGG
 CGG*
-cgh
-CGH
-cgi
 CGKB
 CGMW
 CGO
@@ -1102,250 +404,79 @@ CGPS
 CGPSE
 CGR
 CGRaBS
-cgx
 Ch90
-cha
-Cha
-CHA
-ChaEast
-ChaHa
-ChaHab
-Chair
-Chalawan
-Cham
-Chamaeleon
-Chamaeleontis
-ChaMus
-Chanals
-Chandra
-Chanear
-Chapel
-Chara
 Charon
 ChASeM33
 ChCl
-Checkmark
-Chereul
-Chertan
-Cheshire
-Chest
-chi
 CHIIXR
-Chimney
 ChIPS
 Chiron
 Chiu
 CHLT
 ChMM
 ChOPS
-Chow
-Christmas
 CHSM
 CHSS
-Chunk
 CHX
 CHXR
 CHXX
 CID
-Cigar
-CII
 CIII
-Cir
-Circinus
-Circumnuclear
-CIRCUMNUCLEAR
-Cirrus
 CIRSI
 CIT
 CIZA
 CJ1
 CJ2
 CJF
-cjr
-cke
-cKE
-ckf
-cki
-ckj
-ckk
-ckm
-ckn
-cko
-cku
-cKW
 Cl*
 CLANS
 CLASH
+CLASHVLT
 CLASS
 CLASXS
-Claw
 ClG
 Cl.G
-ClI
-CLIC
-clm
-CLN
-Cloak
-Clone
-cloud
-Cloud
-CLOUD
-Cloudet
-CloudN
-Clouds
-Cloverleaf
-Clown
 CLS
-Clump
-cluster
-Cluster
-CMa
-CMaWest
 CMC
 CMC14
 CMFT
-cmp
-cmq
-cmr
-cms
 CMS
-cnc
-Cnc
-CNC
-CND
 CNOC
 CNOC2
 CNOC2XGG
-cnr
 CNSS
-CoA
-COAL
-Coalsack
-Coathanger
-Cocoon
-Cocytos
-cod
-Coddingtons
-Cohen
-CohenSchwartz
-Coin
 CoKu
-Col
-COLA
-Cold
-Colless
-Collinder
-Columba
-COLUMBA
-Column
-Com
-COM
-Coma
-COMA
-ComaA
-COMAA
-ComaABCG
+COLDz
 CoMaC
-Comae
-ComaScl
-ComaSculptor
-ComaVirACO
 COMBO
-Cometary
-Comoving
-Compact
-companion
-Comparison
-complex
-Complex
-Component
-ComScl
-Concentration
-Condensation
-Cone
-coo
-Cool
 COP
-Copeland
-Copelands
-Copernicus
-Cor
-Core
-CORE
-Cork
 CORNISH
-Corona
-Coronet
 CoRoT
-Corvi
-Corvus
 COS
-Cosmic
 COSMOS
 COSMOSLABOCA
 COSMOSMAMBO
 COSMOSPC
-COSMOSQSO
 COSMOSVLA
 COSMOSVLA3
+COSMOSVLA327
 COSMOSVLADP
-COSzs
-Cotton
-CounterJet
 COUP
 COVET
 Cowie
-cox
 CPC
 CPC2
 CPD
 CPM
 CPOC
 CPSDP
-cpt
-CPT
-cqw
-cqx
-CrA
-CRA
-Crab
-CRAB
 CrAPMS
-Crater
 CRATES
-CRATESVA
-CrB
-CRB
 CRBB
-CrBHSpot
 CRBR
-Crescent
 CRGC
-crh
-cri
-CrissCross
-crj
-crk
-CRL
-Cross
-Crossbones
-Crosspiece
-crp
-crs
 CRSS
-Crt
 CRTS
-Cru
-Crucis
-CruSct
-Crux
-CruxCen
-CruxSct
-CruxScutum
-CSA
-CSB
-CSC
-csd
 CSI
 CSIMon
 CSL
@@ -1356,53 +487,22 @@ CSS2
 CSST
 CSV
 CSWA
-CSX
 CTA
 CTB
 CTCV
 CTD
-ctg
 CTI
 CTIO85
 CTLGD
 CTLGM
 CTQ
 CTS
-ctw
 CUDSS
-Cujam
 Cul
-Cursa
-Curved
-Cusp
 CUYS
 CVMP
-cvn
-CVn
-CVnCam
 CVSO
-cvv
-cvw
-cvx
-cvy
-cvz
-cwa
 CWAT
-cwb
-cwc
-cwd
-cwe
-cwg
-cwh
-cwi
-cwj
-cwk
-cwm
-cwo
-cwv
-cww
-cwx
-cwz
 CXCAnt
 CXCCLASXS
 CXH
@@ -1416,7 +516,6 @@ CXOCepB
 CXOComa
 CXOCY
 CXOCyg
-CXOCYG
 CXOECDFS
 CXOEGS
 CXOEN1
@@ -1460,260 +559,107 @@ CXOSEXSI
 CXOSW
 CXOTr16
 CXOU
+CXOVVV
 CXOW40
 CXOXB
 CXOYECDF
 CXR
-Cyg
-CYG
-CygLyr
-Cygni
-Cygnus
-CygnusLyra
-CygOri
-cyh
-cyk
-cym
-cyn
-cyo
-cyz
-czc
-cze
-Cze
-CzeV
 D0K
 D31
 D33
-Dabih
 Dachs
-Dagon
-DANA
 DANCe
-Dark
 DASCH
-Davies
-Day
 DAY
-dbd
-DBO
-dbp
 DBS
 dCAZ94
-dcld
 DCld
-DCLD
 DCMC
-DCO
-dcw
 DDB
-DDE
 DDO
-DDONW
-ddr
-Debehogne
-Debehognes
-Deep
 DEEP
 DEEP2
-Defiant
-del
+DELS
 DEM
-Deneb
-Denebola
 DENIS
-Densest
-Dentists
 DES
-DESCabhe
-DESCabht
 DETWC
-Deutschs
-Devil
-Dewdrop
 DFBS
-dfr
-dfs
-dft
-dfu
-dfv
-dfw
-dfx
-dfy
-dfz
-dga
-dgb
-dgc
-dgd
 DGF
 DGL
-DGSAT
 DGSW
-Dhanab
 DHK
 DHM
 DHW
 DIA
-Diabolo
-Diadem
 diameter
-Diamond
-Dias
-Dickinson
-Diffuse
-dIG
-DIG
 DIK
 DIL
-Dimidium
-Dionatos
-Diphda
-Dipper
 DIR
 DIRBE
 DIRECT
-Disk
-DISK
 distance
 DJM
-Djorgovski
-DJRS
-djw
 DKB
 DKH
 DKI
 DKIB
-dlq
 DLS
 DLSCL
 DLT
-dme
-dmf
-dmp
 DMS
-dnf
-dng
 DoAr
 DOBASHI
 DOC
-Dog
 DOH
-Dol
 Dor
-Dorado
-Doradus
-Doright
-Double
-Dougie
-dox
-dpa
-dpq
-DPR
 DPT00
 DPV
-dqt
-dqx
 dr5EGal
 dr5EGr
 dr5NGal
 dr5NGr
-Dra
-Draco
-DRACO
-DRACOURSA
-Dragon
-Dragonfish
-Dragonfly
 DRaGONS
-Draugr
 DRCG
-drg
 DRIL
-Drissen
 DROXO
 DRT03
 DRT05
-Dschubba
 DSH
-dsk
-DSM
-dSph
 DSW
-dtm
-Dubhe
-Duck
-Dudley
-DufayOHP
 DUGRS
-Dulcinea
-Dumbbell
 DUO
-Dushera
-Dust
-DustBall
-Dutra
-dvr
-dwA
-DwA
-Dwarf
-dwB
 DWB
 DWH
 Dwingeloo
-DwX
-DXSDXS
-Dynasty
-dze
-dzeta
-Dzim
 DZOA
 EAD
-Eagle
-East
-Eastern
 EBL
 EBLM
-EBSS
-ECDFS
 ECHA
-Ecliptic
 ECO
-ECX
 ECX6
-Edasich
 EDCC
 EDCS
-Edd
-Edge
-Edinburgh
 EDS
 EDSGC
-EELR
 EES
 EGB
-Egg
 EGG
-Eggens
 EGGR
 EGM
 EGNoG
 EGO
 EGR
 EGRc
-EGS
 EGS06
 EGS70
 EGSD2
 EGSIRAC
-EGSY
-EGSYp
-EGSzs
-EHDFS
 EHR
 EHVHCOP
 EIC
-EightBurst
 Einstein
-EIR
 EIRS
 EIS
 EISD
@@ -1722,94 +668,41 @@ ELAISC15
 ELAISC7
 ELAISP90
 ELAISR
-Electra
-Elephant
 ELHC
 Elia
-Elias
-ELISE
-Ellipse
-Elliptical
-Elnath
-Elvis
 EM*
-Embedded
-Embryo
-EMILIA
-Emission
-EmissionLine
-Emm
 EMNO
+EMU
 ENACS
-Engraved
-Enhancement
-Enif
 EON
 EOri
 EPIC
-eps
 EQS
-Erakis
-Eri
-ERID
-Eridanus
-EridanusPhoenix
-Eridion
-EriFor
-ERIFOR
-EriOri
-EriPhe
 ERO
 EROS
 EROS2
-EROSstar
-Errai
 Escorial
 ESDO
 ESG
 ESHC
 ESIS
-Eskimo
 ESO
-ESOBDSer
-ESOe
-ESOw
 ESP
 ESSENCE
-eta
-Etamin
-Etched
-Ethos
 EUVE
 EV*
-EVANS
 EVCC
-Evil
 EVSG
 EWS
-Exclamation
-EXE
 EXMS
 EXO
 EXP1
-Expanding
 EXS
 EXSS
-Extended
-Extension
-Extragalactic
-Eye
-Eyelash
-Eyes
 F2M
 F2MS
 F3R
-Face
-Fafnir
-Farther
-Fast
 FASTT
-FATH
 FAUST
 FBDC
 FBFTA
@@ -1821,286 +714,145 @@ FCC
 FCOS
 FCSS
 FDF
-FDGC
 FDQ
-FEGU
 Fe_H
-FEHDUF
-Fehrenbachs
-Feibelman
 Feige
-Feigelson
-Ferguson
 Fermi
-FermiLAT
-Ferrero
 FEST
-fFilament
 FGC
 FGCA
 FGCE
 FGES
 FGF
-FGL
-FGN
 FGW
 FHB
-FHLCS
 FHO
-Field
-FieldNorth
-FieldSouth
-FIGS
-Filament
-Filamentary
-Filaments
-Fine
-Finger
-FIR
 FIRBACK
-FIRSSE
 FIRST
-FJCHP
 FJJ
 FJM
 FK5
-FKLB
 FKSZ
 FL29
-flake
-Flame
-Flaming
-Flare
-Flash
 FLASH
-Flasher
 FLMN
 Flo
 FLS
 FLS160
 FLS70
 FLSBG
-FLSEF
 FLSGMRT
 FLSVLA
-Flying
 FMC
 FMF
-FMOS
-FNa
-FNb
-FNW
 FOCA
 FOCAP
-Fomalhaut
-Footprint
-for
-For
-FOR
 Ford
-Foreground
-FORERI
-ForLeoScl
-Forming
-Fornax
-FornaxEridanus
-FornaxLeoSculptor
-FORS
-Fortitudo
-Fountain
-FourcadeFigueroa
 FOV
-Foxhead
 FPM
-Frank
 FRB
-Fred
-Fried
-Friend
 FRL
-Frolov
-Frosty
 FrSh
-Frying
 FSAO
 FSG
-fShaped
 FSO
 FSVS
 FSW
 FSZ
 FTHP
 Fuen
-Furud
 Furuhjelm
-FUV
-FVV
 FVW
 FXP
 FZH2010
 G3CC
 GAB
-Gabi
 GaBoDS
 Gabuzda
-Gacrux
-GAFO
 Gaia
-Gal
 GAL
-Galactic
-Galaxies
-galaxy
-Galaxy
 GALEX
 GALEXASC
 GALEXMSC
-Galileo
-gam
 GAMA
-gamma
-GAMMA
 GAPO
-Garland
-Garnet
-Garrison
-gas
-Gas
 GASS
 GAT
 GAVC
-gay
 GB07
 GB1
 GB2
 GB3
 GB6
 GBC
-gbl
+GBL
 GBS
-GBT
-GCA
 GCIRS
+GCK
 GCl
-GCL
-GCLNW
-GCLSW
 GCM
-GCN
 GCNM
-GCP
 GCPS
-GCRA
-GCRCB
 GCRT
 GCRV
 GCS
-GCT
 GCX
 GDC
 GDDS
 GDP
-GDRRLYR
 GDS
 GEL
-Gem
-Geminga
-Gemini
-GeminiMonoceros
-GemMon
 GEMS
 GEN
 GEN#
-Genderen
 Gershberg
 GES
 GeV
-Gezari
-Gezaris
-gfo
 GGD
 GGSS
 GH2O
 GHCG
-GHIGO
 GHISA
-GHK
 GHO
-Ghost
 GHVC
-GHz
-Giant
-Giausar
 GIBS
-Giedi
-Gienah
 Gilmore
 GIN
 Ginga
-Ginger
-Gingrich
 Giovanelli
 GIRL
 GIU
-gjd
 GJTGTZ
 GJTR
-gkk
-gkt
 GLARE
 Glass
 Glazar
-glb
-GLC
 GLEAM
 GLG
 GLIMPSE
 GLIPN
 GLMP
-Globular
-GLOBULAR
-Globule
-GLX
 GLXY
 GMASS
 Gmb
 GMBCG
-GMC
 GMM
 GMP
-gmr
 GMR
 GMRTEN1
 GMRTLH
 GNA
 GNB
-GNE
 GNH
 GNRB
 GNS
-GNStar
 GNX
 GNY
 GNZ
 GOALS
-Goldfish
-Golf
-Gomeisa
-Gomez
-Gomezs
 GOODS
-GOODSN
-GOODSNorth
-GOODSS
-GOODSSouth
 Gopal
-Gordo
-Gores
-Gorgonea
 GOS
-Goss
-Gould
-Goulds
 Goy
 GPA
 GPFW
@@ -2111,42 +863,20 @@ GPSA
 GPSC
 GPSR
 GPSR5
-gqd
-gqe
 GR*
 GRA
-Graham
 Granat
-GRASDALEN
-Grasshopper
 GRB
 GRDG
-Great
-Greenberg
-GRETA
-GrG
 GRH
-Gri
-Grillmair
 GRM
 GRO
-Groth
-GrothWestphal
-GROU
-group
-Group
 GRRV
 GRS
 GRSMC
-Gru
-GRUIND
-Grumium
-Grus
-GrusIndus
 GRV
 GrW
 GSA
-GSAB
 GSAN
 GSC
 GSC2
@@ -2163,51 +893,22 @@ GSN
 GSP
 GSPC
 GSS
-GSSET
 GSW
-Guitar
-Gum
 GUM
-GUN
 Gunn
 GUSBAD
 GUVV
-GWa
 GWAYL
 Gwyn
-Gyulbudaghians
 H2O
 H88
 Had
-Hadir
 HAG
-Half
-Halls
-Halo
-Hamal
-Hamburger
-Hamuy
-Hamuys
-Handle
 Hanes
-Hannys
-HAQ
-HAR
-Hardcastle
 Haro
 HaroChavira
-Haros
-HarringtonWilson
-Harriot
-Hassaleh
-Hassforther
-Hat
 HAT
-HATLAS
 HATS
-HATTR
-Hatysa
-Hawaii
 Hawk
 Hawkins
 HBC
@@ -2217,141 +918,67 @@ Hbg
 HBH
 HBHA
 HBK
-HBootes
 HBQS
 HBW
 HCC
-HCD
 HCG
-hchi
 HCL
-HCM
-HCO
 HCW
-HDF
 HDFFF
-HDFN
-HDFNJD
-HDFoMD
 HDFS
 HDM
 HEA
-Head
-Heart
 HEC
-HECDFS
-Heeschen
-HEGS
-Heiles
-Heimat
-Heka
-HELICAL
-Helix
 HELLAS
 HELLAS2XMM
-Helvetios
 Hen
-Her
-HER
-HerAql
-Herbigs
-HerBoo
-HerCrB
-Hercules
-HERCULES
-HerculesAquila
-HerculesCorona
-HerculesLyra
 HERMES
-Hermus
 HerS
 herschel
-Herschel
-Herschels
 HERZ
 HES2014
 HESS
 HETE
 Hetzler
 Hewett
-Heze
 HFE
-HFF
-HFFTom
-HFLLZOA
-HFLS
-HFS
 HGAM
 HGGK
 HGT
-HHC
 HHG
 HHL
-HHR
 HIC
 HIDEEP
+HIGALBM
 HIGALP
-High
-HII
 HIJASS
 Hilt
-Himiko
-Hinds
 HIP
 HIPASS
 HIPEQ
 HIPPIES
 HIR
 HIROCS
-Hisa
-HiTS
 HiZELS
 HIZOA
 HIZSS
 HJM
-HKII
 HKK
 HKPN
 HLF
-HLock
 HLS
-HLX
 HMDS
-HMPO
 HMS
-HMSC
 HMST
 HMV
-HMW
 HMWS
 HNM
 HNT
-Hoag
-Hoags
+HOBYS
 HOD07
-Hodge
-Hole
-HoleNorthwest
 Holmberg
-Holoea
-Homam
-Homunculus
-Hondas
-Honeycomb
 HOPS
-Hor
 Hornoch
-Horologium
-HorologiumReticulum
-HOROLOGIUMRETICULUM
-HORRET
-Horsehead
-Horseshoe
-host
-Host
-HOST
-Hot
-Hourglass
 HOY
 HPD
 HPRA
@@ -2362,136 +989,61 @@ HRDS
 HRG
 HRG14
 HRK
-HRR
 HRS
 HRW
 HSC
 hSDF
-HSe
 HSGP
 HSK
 HSNH
 HSO
-HSpot
-HST
 HSTNGC602
 HSVMT
-HSw
 HTR
 Hubble
-Hubbles
-HUBBLES
-Huchras
-Hudec
-Hudecs
-HUDF
-HUDFJ
-HUDFJD
 HuLo
-HulseTaylor
-Humasons
-Huntsman
 HVABG
 HVC
 HVCS
-HWD
 HWW
-HWX
-HXMM
-Hya
-HYA
-HYAANT
-HyaCen
-HYACEN
-HyaCenPavInd
-HYACENPAVIND
-HyaCenPavIndTel
-HyaCet
-Hyades
-HYADES
-Hyadum
-Hydra
-HYDRA
-HydraCen
-HydraCentaurus
-Hydrae
-Hydrogen
-Hyllus
 Hyn
 Hyp
-Hypatia
 IAC
 IBAN
 IC5
 ICA
-ICR
+IceCube
 ICRF
-ICSGS
-ICSySt
-ICWest
 IDCS
 IDK
 IDS
 IERO
 IERS
-IfA
 IfAHA
 IFM
-IGI
 IGR
-IIHz
-III
-IIIs
-iki
-IKN
 IKPM
 IKT
 ILF1
-ILL
 ILT
 IMS
 IMSCl
-Ind
-Indus
-Innes
-Integral
 INTEGRAL1
-IntegralShaped
-Intercloud
-Intercrus
-Interface
-IntermediateVelocity
-Interstellar
-Inti
 INTREF
 INVS
 IOK
-iot
 IPHAS
 IPHASX
 iPTF
-IRAM
 IRAS
-IRASA
-IRc
 IRC
 IRCO
-IRDC
 IREC
-IRIS
-IRN
-Ironclad
-Irr
-IRR
-Irregular
-IRS
-IRSB
 IRSF
 IRSV
 Irwin
 IRXS
 ISCS
-ISF
 ISG
 ISI96
 ISO
@@ -2505,108 +1057,55 @@ ISS
 ITG
 IUE
 IVC
-IVLA
 IVS
 IXO
-ixz
-Izar
-JAB
-JABb
-Jabbah
 Jacoby
-Jan
-Janssen
 JaSt
 JaSt2
 JBF
-JCMT
 JCMTLSG
+JCMTLSP
 JCMTSE
 JCMTSF
 JCO
-Jdw
-Jellyfish
 JENA
-Jet
-Jewel
-JHU
-JII
 JKB
 JKCS
 JMG
-JNE
-JNW
 JoDi
 Jonckheere
 Joshi
 JP11
 JPS
-JSE
-JSW
 JTS
 JTX
 Juchert
-JuchertSaloranta
-Jug
-Juggler
-Jul
-Jumbo
-Junior
-Jupiter
-Jupiters
 JVAS
 JWT
 K20S
 K68
 K73
 K79
-Kaew
-Kaffaljidhma
-Kaimana
-KAIT
-Kaitos
-KAITX
-Kangaroo
-kap
-kappa
-Kapteyn
-Kapteyns
-Kastner
 KAT7HI
-Kathryns
-Kaus
 KAZF
-KBS
 KCS
 Keeler
-Keenans
-Keid
 KELT
-Kelu
-Kemp
-Kentaurus
 Kepler
-Keplers
 Kes
-KES
 KESR
-Keyhole
 KFR
 KGX
 KHA
-Khambalia
 KHBG
 KHG
-khi
 KHM31
 KHW
 KHWD
 KIC
+KIDS
 Kiev
-KIL
 Kim
-Kink
-Kinman
 KIS
 Kiso
 KISS
@@ -2614,63 +1113,34 @@ KISSB
 KISSBx
 KISSR
 KISSRx
-Kitalpha
-Kite
-Kiwi
 KJD
 KJK
 KKC
 KKDAB
-KKH
 KKL
 KKM
 KKO
-KLBN
-Kleinmann
-KLEINMANNLOW
-Kleinmanns
-KleinmannWright
-Kleins
 Klem
 KLSS
 KLW
 KMAC1
 KMHK
-KMHKe
-KMHKn
-KMHKnw
-KMHKs
-KMHKse
-KMHKw
 KMJ
 KMJB
 KMK88
 KMS
 KNMF
-Knot
 KNOWS
-Kochab
-KOD
-Kodaira
 KODIAQ
-Koekemoer
 Koenig
 Koenigstuhl
 Kohoutek
 KOHX
 KOI
-KOIA
-KOIB
-KOIX
 KOM
-Konkoly
 KONUS
-Kookaburra
 Kooreman
-Kopff
 Koposov
-KORA
-Kornephoros
 KOS
 KOSS
 KPAIR
@@ -2678,73 +1148,32 @@ KPBM
 KPD
 KPG
 KPS
-Krautters
-Kraz
-Kron
 Kronberger
 KRS
-Krzeminski
-Krzeminskis
 KSG
-KSH
-ksi
-KSN
-KSNa
-KSPOTa
 KSRWR
 KSw
 KUG
-Kuma
-Kur
-Kurage
-Kurhah
 KURT
-Kutners
 KUV
-Kuwano
-KuwanoHonda
-Kuwanos
 KWC
 KWE
-KWO
 KWW
-LABALMA
-LABd
 LABoCa
-Lac
-Lacaille
-Lacerta
-Lae
 LAE
-Laevens
-Lagoon
 LAL
 LALA
-lam
-lambda
-Lamost
 LAMOST
-LAMOSTHVS
 Lan
-Lancaster
-Lane
-Laniakea
 LARCS
-Large
 LARS
-LAS
 Lasker
-Latham
-LAURA
 LAWD
 LAWDS
-LBG
 LBLS
 LBN
 LBQS
 LBS
-LBV
-LCC
 LCCG
 LCDCS
 LCG
@@ -2759,30 +1188,13 @@ LCSB
 LDN
 LDR
 LDSS
-LDu
 LDUW
-Leading
-lEcu
 LEDA
 LEE
 LEGC
 LEGO
 LEHPM
-Lemon
-lens
-Lens
-Leo
-LEO
-Leon
-Leoncino
-Leonis
-LeoSextans
-LEOVIRGO
-LEP
-Lepus
-Lesath
 LESS
-Lethe
 LFAM
 LFT
 LGC
@@ -2790,130 +1202,53 @@ LGG
 LGGS
 LGS
 LHA
-LHB
 LHE
-LHn
-LHne
-LHNorth
-LHnw
-LHNW
 LHO
-LHs
 LHS
-LHse
-LHsw
-LHw
-LHWGM
-Libertas
-Libra
-LIC
-Lich
 LID
 Liller
-Lillers
-Lily
 LIN
-Lindblad
-Lindblads
-Lindsay
-LindsayShapley
 LINEAR
-Lipperhey
 LIRAS
-LIRS
-LISM
-Little
 LJHY
-LJM
-LkHa
-LkHA
-LKHA
 LkHa101CXO
 LkHa101SST
 LkHa101VLA
-LLIV
 LLM
 LLNS
 LMA
 LMC
 LMCN
-LMCSC
 LMH
-LMi
-lmn
 LMPU
 LMV
 LMZ
-LNA
-Lobe
-LOBE
-Lobster
-Local
-LOCAL
-Lockman
 Loden
-Lodestar
-Loiano
-Loop
 lOri
 LOri
-Lower
-Lowers
-Lowne
 LOX
-LpA
-LpB
 LPM
 LPRST
 LPS
 LQAC
-LRG
-LRLWW
 LRWR
-lsb
 LSB
-LSBC
 LSBVCC
-LSC
 LSE
-LSF
-LSMM
 LSPM
 LSQ
 LSR
 LSWR
 LSXPS
-LTBC
 LTNF
-LTS
 LTT
-Ludoviciana
-LUM
 Lund
-Lup
-LupCen
-LupNor
 Lupus
-LupusA
-LupusNorma
-Luytens
 LVC
-LVS
-LVT
 LWD
-LWe
 LWHM
 LWKHK
-LWw
 LXP
-Lyalpha
-Lyn
-LYNGA
-LYNUMA
-Lynx
-LynxUrsa
-Lyr
-Lyra
 LZK
 M17WF
 M31ACSV
@@ -2931,83 +1266,33 @@ M33SSS
 M3T
 M81N
 MAAB
-Maanen
-Maanens
-Maasym
-MAb
 MAC
 MacC
 MaCCo
 MACHO
 MACHO*
-MackeyGC
 MACS
 MACSg
-MACSJ
-MADCASH
-Maddalena
-Maddalenas
 Maffei
-Magellanic
 MAGIC
-MagLiteS
-Magnificent
 MAGPIS
-Mahasim
 Mahtessian
-Maia
 Mailyan
-Main
-Mairans
-Maja
-Majaess
-Major
-MAJORIS
-Majriti
 Malin
 Mamajek
-MAMMOTH
-Man
-MANGER
-Manipogo
+MaNGA
 Mantaqah
-Manzana
 MAPS
-MAPSNGP
-MARA
-Marano
-Marfik
-Margon
-Mark
-Markab
-Markeb
-Markkanen
-Markkanens
 Marsalkova
-Marsic
 Martin
-MartinGC
 MARVELS
-Maser
+MASCARA
 Masgomas
 MASIV
-Masosa
-MASS
-MASSGC
-massive
-MASSW
 MASTER
 MAT
-Matar
-Matryoshka
-Maurys
 MAX
 MAXI
-May
-Mayall
-Mayalls
-Mayer
-MAYER
 Mayrit
 MBG
 MBM
@@ -3025,22 +1310,11 @@ MCBA
 MCBB
 MCC
 McClure
-McClureGriffiths
 McD
 MCELS
 MCG
-McGuire
-MCha
-McL
 MCL
-MCld
-MCLD
-McLeishs
 MCMS
-McNaughts
-McNeil
-McNeils
-McO
 MCO
 MCP
 MCPS
@@ -3055,33 +1329,8 @@ MDM
 MDS1
 MDS2
 MDV
-MdwA
-Mebsuta
-MEC
-Media
-Medusa
 MEGA
-Megrez
-MEIR
-Meissa
-Mekbuda
 MENeaCS
-Menkalinan
-Menkar
-Menkent
-Menkhib
-Menkib
-Merak
-Mercer
-Merga
-Merger
-Merope
-Merrills
-Mesarthim
-Met
-Methanol
-Mexico
-Meztli
 MFBL
 MFDC
 MFJ
@@ -3101,156 +1350,61 @@ MGWR
 MHA
 MHO
 MHR
-Miaplacidus
-Mic
-Mice
-Microcavity
-Microscopium
-MICROSCOPIUM
-Mighell
-Milky
 Mill
-Miller
 Mills
-Milne
-Mimosa
 Min
-Minelauva
-Miniature
-Minicavity
-Minispiral
-Mink
-Minkar
-Minkowski
-Minkowskis
-Minor
-Mintaka
-MIPS
-MIR
-Mira
-MIRACH
-Miram
 MIRES
-Mirfak
-Mirzam
 Mis
-Misam
-Miss
 MITG
-Mizar
 MJV
 MKW
 MLA
 MLB
 MLLA
-MLM
-MLMcCall
 MMB
-MMC
 MML
 MMMBC
-MMS
 MMT
-MMV
 MNLSJ
-MNO
-MNUSNO
 MOA
-MOABLG
-MOABLGb
-MOABLGL
-MOABLGLb
-MOAI
 MODS
-Moffat
-MOFFAT
-Moitinho
 Mol
-MOL
-molecular
-Molecular
-Molecule
-Mon
-MON
-MonGem
-Monkey
-MonNGC
-Monoceros
-MONOCEROS
-Monogem
-MONOGEM
-Monorion
-MonPupVel
-MonR
-MONS
 MOO
-Moskalenko
 MOST
 MOTESS
-Mothallah
-Mouse
-moving
-Moving
 MPA
 MPCM
 MPE
 MPMM
-MPSS
 MPWK
 MQS
 MRC
 Mrk
-MRK
-MRR
 MRS
-MRSS
 MSB
 MSC
 MSCC
 MSDM
 MSH
-MSilhouette
-MSO
-MSP
 MSS
-MSW
-MSWFIR
-MSWn
-MSWs
 MSX
 MSX5C
 MSX6C
 MSXDC
 MTM
-MUC
-MUCD
-Mul
-Muliphein
-MULS
-MULX
 MUNICS
-Munoz
-Muphrid
-Musca
-Muscida
-Mushroom
-Musica
-Musket
+MUSE
 MUSR
 MUSYC
 Muzzio
-MVD
-MVDWR
-MVLA
 MWACS
-MWC
+MWAEOR
 MWD
 MWISP
 MWK
 MWKZ
 MWMM
 MWP
-MWSC
 MXB
 MZZ
 N30
@@ -3259,114 +1413,43 @@ NAB
 NAIC
 NAICGB
 NAME
-NAN
-NANTEN
-Naos
 Nap
-Napoleon
-Napoleons
-Nashira
-NaSt
-NAv
 NBG
 NBGG
-NBH
 NBol
 NBP
-NBv
 NCCS
-NCL
-Nclm
-NCP
-NCv
-Ndw
-NDWF
 NDWFS
-near
-Near
-Nearby
-NEB
-NebIR
-nebula
-Nebula
-Nebular
-Nebulous
-Necklace
-NED
-Negative
-Neighbour
 NEK
-Nekkar
-NEP
-NEPSC
 Neptune
-NER
-NESMM
-Nessie
-Nest
-NESW
 NeVe
-New
 NEWPS5
 NEWPS55
-NeyAllen
 NFGS
 NFP
 NGC
 NGC205N
-NGCOT
 NGFS
-NGH
 NGP
 NGP9
 NGPFG
-NGPR
 NGVS
-NHDF
-NHG
 NHU
 NHzG
-NICMOS
-Nihal
 NIKC
 NIPSS
-NIR
-NIRS
-NJT
-NLMH
 NLTT
 NMBS
 NML
 NMS
-NNWSSE
-NOAO
 NOGG
 NOMAD1
-NonThermal
-Nor
-NorCen
-NorCyg
-Norma
-NORMA
-NormaCygnus
-NorSct
-North
-NORTH
-NorthEast
-Northern
-Northwest
-NorthWest
 Notni
-NOV
-Nova
 NOVA
-Novalike
 NPF
 NPM1
 NPM1G
 NPM2
-NPS
-NQC
 NRAO
 NRL
 NRRF
@@ -3374,186 +1457,58 @@ NS87
 NSC
 NSCS
 NSL
-NSMM
 NSV
 NSVS
-NSW
 NTB
 NTF
-NTFs
-NTT
 NTTDF
 NTTS
-Nubecula
-Nuclear
-NUDF
-Nunki
-Nusakan
 NuSTAR
 NVSS
-NWB
-NWN
-NWS
-NWW
 NYU
-OAC
 OACDF
-OAO
-OBA
-OBAssociation
 OBC
-OBD
-OBE
-Object
-OBR
 OCISM
 OCl
-OClock
-Oct
-Octans
-Octansnear
 OFHH
 OFXP
 OGC
 OGLE
 OGLE2
-OGLEBLG
-OGLEBLGA
-OGLEBLGAb
-OGLEBLGb
-OGLEBLGB
-OGLEBLGL
-OGLEBLGLb
-OGLEBLGLc
-OGLECL
 OGLEGC
 OGLEII
 OGLEIII
-OGLEL
-OGLEMUS
-OGLENOVA
-OGLESMC
-OGLETR
-OGLETRb
-OGLETRL
-OGLETRLb
-Ogma
-OHCE
 OHIO
 OHPN
 OHSC
-Okroy
 OKYM
 Olsz
-OMA
-Ombo
 OMC
-OMCN
-OMCS
-ome
-omega
 OMHR
-omi
-OMS
-ONC
 Onsala
-OOS
 Oost
-Open
 OPG
-Oph
-OPH
 OphB2
-Ophiuchi
-Ophiuchus
-OPHIUCHUS
-Ophiucus
-OPHIUCUS
-OphSco
-OphScoCen
-OphScoLup
-OphSgr
-Orbitar
-ORBS
-Ori
-ORI
 OriBsmm
-Oric
-OriCyg
-OriEri
-Origem
-OriKL
-OriLepus
-OriMon
-OriNE
-OriNTT
-Orion
-OrionBar
-OrionBN
-OrionCygnus
-Orionis
-OrionKL
-Orions
-OrionSFBO
-OriS
-Orphan
 oRV
-Osca
 OSHA
-Osiris
 OSS
 OSSH
 OSU
 OTL
 OTS
-Outer
-Outflow
-OUTFLOW
-Overdensity
-Overlay
-Owl
 p.
 P60
 PACH
 PACN
-Padova
-Pair
 PAJ
-Pal
-Paley
-Paloma
 PALS
-PAMELA
-Pan
-PAN
-Pancake
 PAndAS
-Papillon
-Parachute
 Parenago
-Parent
-PARENT
-Parrots
 Parsamian
-parsec
-Patch
 Patchick
-PatchickTeutsch
-PaTe
-Patuxent
-Pav
-PavInd
-PAVIND
-PavIndTel
-Pavo
-PAVO
-PavoAra
-PavoIndus
-Paw
 PBC
 PBCX
-PBin
-PBZ
 PCCS1
 PCCS2
 PCCS2E
@@ -3562,108 +1517,30 @@ PCYC
 PDCS
 PDF
 PDS
-Peace
-Peacock
-Peak
-Peanut
 PEARS
 PEB
-Peculiar
-Peg
-Pegasus
-PegasusPisces
-PEGASUSPISCES
-PegDIG
-PegPer
-PEGPSC
-Pelican
-Pencil
-Pentagon
-Peony
 PEP
 PEPPRI
-Per
-PER
-periodic
-Perky
-PerOri
-PerPeg
-PERPEG
-PerPsc
-PERPSC
-Persei
-PERSEI
-Perseus
-PERSEUS
-PerseusPegasus
-PERSEUSPEGASUS
-PerseusPisces
-PerseusTaurus
-Perssons
-PerTau
-PerTauAur
-Pfleiderer
 PFP
-PGC
 PGCC
 PGMW
 PHA
-Phact
-Phantom
-PHb
-Phe
 PhebusB
-Phecda
-Pherkad
 PHG
 PhJa
 PHK
-phl
 PHL
-Phobetor
-Phoenix
 Pholus
 PHR
-PHz
 PHZ
-Pic
-Pictor
-Pictoris
-PIGG
 PiGSS
-Pillar
-Pillars
-Pinwheel
-Pipe
-PIPE
-Pisces
-PISCES
-PiscesAries
-PiscesCetus
-PISCESPERSEUS
-PiscisAustinus
-PISCISAUSTINUS
-PISMIS
-PismisMoreno
-Pistol
-PKD
-PKP
 PKS
-Planetary
-Plaskett
-Plasketts
 Plaut
-Plauts
 PLCKECC
 PLCKERC
 PLCKESZ
-Pleiades
-PLEIADES
-Pleione
 PLHX
-Plume
 Pluto
-PLUTO
 PLX
 PM2000
 PMC
@@ -3676,106 +1553,44 @@ PMSC
 PNS
 PNV
 POLA
-Polar
-Polaris
-Polarissima
-Pole
-Polis
-Pollux
-Poltergeist
-Poole
-Porrima
 pos
 posa
-Position
-POSITION
-Positive
-Posterior
 POTS
 Pottasch
 POUB
 POUL
 POVR
 POX
-Pozzo
 PPA
-PPD
 PPM
 PPMX
 PPMXL
-PPR
 PPS
-PPScl
-PQV
 PRA
-Praecipua
-Praesepe
 PRC
 PRD
-Prestons
-Pretzel
 PRH
-Prima
-Principes
-Prior
-Procyon
-Proplyd
-Propus
-Protocluster
-Protostar
-Proxima
-Przybylskis
 PS1
-PSagp
 Psc
-PSC
-PscAus
-PscCet
-PSCCET
-PSckh
-PscPer
-PSCPER
 PSCz
 PSH
 PSK
 PSN
 PSO
-Psr
 PSR
 PSS
-PSZ
 PSZ1
+PSZ2
 PTB
 PTF
 PTF1
-PTFO
-Ptolemys
 PTSS
-PTSSA
-PTSSbrc
-PTSSbwt
-PTSScfd
-PTSScfg
-PTSSckr
-PTSSuyml
 Pul
 PULS
-Pulsar
-Pup
-PUP
-PupCMa
-PUPCMA
-Puppis
-PuppisCarina
 Putney
 PvdB
-PWM
-PWN
 PWP
 PWWF
-PYX
-Pyxis
-PZT
 Qatar
 QDOT
 QMIT85
@@ -3783,45 +1598,21 @@ QNQ
 QNQC
 QORG
 QRM
-QSM
 QSO
-Quadrant
-Quarta
-Quartet
-Quasar
-Queen
 QUEST
 QUEST1
-Question
-Quijote
-Quintet
-Quintuplet
-QUIT
 QVS2
 R15
 Raab
-RAB
-Rabbit
-Radio
-RADIO
-Radiosource
 RadSCG
 RAFGL
 RafV
-Rakke
-RaMul
-Ran
-Rana
-Rapid
-Rasalas
-Rasalgethi
-Rasalhague
 RASSCALS
-Rastaban
 RasTyc
 RAT
 RAVE
 RAW
+RBPL
 RBQS
 RBS
 RBTB
@@ -3832,28 +1623,13 @@ RCSGA
 RCW
 RDCS
 RDS
-Rectangle
 RECX
-Red
-Redford
-Redux
 REFL
-Reflection
-REFLECTION
-Refsdal
-Region
-Regor
-Regulus
-Reinmuth
 Reipurth
 Reiz
-Relic
 Renson
 RES
 RESOLVE
-Ret
-Reticulum
-Revolver
 REX
 RFD
 RFGC
@@ -3861,61 +1637,29 @@ RFS
 RGB
 RGC
 RGH
-RGM
 RGO
 RGZ
-RGZCL
-RHLS
-rho
-RHO
 RHS
 RHV
-Ribbon
 Riddle
-Ridge
-RIDGE
-RiegelCrutcher
-Rift
-Rigel
-Rim
-ring
-Ring
-Ringtail
-Ripple
 RIXOS
-RJC
-RKA
 RKK
-RKKP
 RLP
 RMB
 RMC
 RMS
-RNM
 RNO
-Rob
-ROBZ
 ROC
-Rocinante
 ROE
-Romano
-Romanos
 Rood
 RORF
 ROS
 ROSC
-Rosette
-ROSETTE
 Rosino
-RosinoZwicky
 Ross
 ROT
-Rotanev
-ROTSE
 ROTSE1
 ROTSE3
-Rotten
-Rousseau
 ROX
 ROXA
 ROXASDC
@@ -3926,26 +1670,18 @@ ROXRA
 ROXRF
 ROXs
 RR95
-RRAT
 RRF
 RRG
 RRS
 RSA
 RSCG
-RSF
 RSG
 RSGC
 RSMV
-Ruber
-Ruchbah
 Ruiz
-Rukbat
-Running
 RVel
 RWPF
 RXC
-RXJSW
-RXS
 RXSC
 RXT
 RzCS
@@ -3957,62 +1693,20 @@ S3MC
 S80
 S96
 SA57X
-SAB
-Sabik
-SABMIR
-SABVLA
-SACK
-Sacred
 SACS
-Sadachbia
-Sadalbari
-Sadalmelik
-Sadalsuud
-SADR
-Saffar
-Sag
-SagittaireCarene
-Sagittarius
-SagittariusCarina
 SAI
-Saiph
-Sakurai
-Sakurais
-Salm
-Saloranta
-Samh
 SAMS
-Sancho
-Sancisivan
 Sand
 Sandage
-SANDb
 Sandqvist
-Sanduleak
-SanduleakPesch
-Sanduleaks
-Sangarius
-Sano
 SAO
-Saraswati
-Sargas
-Sarin
 SARS
 SAS
-SASLBG
-Sasquatch
-sat
-Satellite
 Sato
-Saturn
-Saucer
-Saurer
-Sausage
 SAVS
 Sawicki
 SAX
 SAXWFC
-SBB
 SBC7
 SBC8
 SBC9
@@ -4025,341 +1719,152 @@ SBSG
 SBSMH
 SBSS
 SBTP
-Scamander
 SCAMP
 SCAMPS
 SCANDELS
 SCAP
 SCC
-Sceptrum
 SCG
 SCG2
 Sch96
-Schaefer
-Schaefers
 SCHB
 SCHD
-Scheat
-Schedar
 SCHG
 SChM
-Schmidt
-Schmidts
-Schoenball
 Schulte
-SCHUSTER
-Schusters
-SCHUSTERWEST
 Schwartz
-SchwartzHenize
-SchweizerMiddleditch
-Scissors
-Scl
 SCl
-SCL
-ScldE
-SCLPHE
 SCM
 SCMS
-SCN
-Sco
-SCO
-ScoCen
-SCOCEN
-ScoCenLup
-ScoCenLupCru
-ScoOph
-SCOOPH
 ScoPMS
 SCORPIO1
-Scorpius
-SCORPIUS
-ScoSgr
 SCOSMOS160
 SCOSMOS70
-Scovil
 SCP
 SCR
 SCSO
-Sct
-SctCen
-SctCru
-SctCrux
-ScuCruNor
-Sculptor
-SCULPTOR
-Scutum
-ScutumCentaurus
-ScutumCrux
 SDC
-SDF
-SDFNGP
 SDFPM
 SDG
 SDH
-SDIG
 SDP
-sdsb
 SDSS
 SDSSCG
 SDSSCGA
 SDSSCGB
-SDSSMEB
-SDSSSN
 SDWFS
-SDWFSMT
-Seashell
-SEBN
 SECCO
-Secunda
 SED
 SEDS
-Segin
-Seginus
-Segners
-Segue
-Sellgrens
-Sep
-SEP
-Septet
 Ser
-SER
-SERC
-SerO
-Serpens
-SERPENS
-Serpentine
-Sersic
-SERSIC
-SERVIR
 SESG
-Seven
-Sex
-SEX
-SexLeo
-SexsiSer
-Sext
-Sextans
-SextansLeo
-Sextant
-Sextet
-Seyfert
-Seyferts
 SFAM
-SFBO
 SFO
-SFR
 SGAS
 SGC
 SGGR
-SGP
 SGPA
-Sgr
-SGR
-SgrAIR
-SgrBM
-SgrBOH
 SGRC
-SgrCar
-SgrCarina
-SgrOph
 SGRS
-SGS
 SHADES
 ShAl
-Sham
-Shane
-Shangs
 Shanks
-Shaped
 Shapley
-SHAPLEY
-SHAPLEYCEN
-SHAPLEYCENTAURUS
 SHARDS
-Shaula
+ShaSS
 SHB
 SHBL
 SHEEP
-Sheet
-Sheliak
-Shell
-Shells
 SHELS
-Sher
-Sheratan
 SHiZELS
 Shk
 SHOC
-SHOOTef
-SHOOTgp
-SHOOTha
-SHOOTjr
-SHOOTor
-Shorlin
+SHOOT
 SHS
-ShV
 SHV
 SHWB
 SHZ
-Sickle
-Siderick
-sig
-sigma
-Sign
-Silkworm
-Silver
 SIM
 SIMP
 SIMPLE
 SINGG
 SiOOP
 SIPS
-SIR
-Sirius
-SiriusUMa
-Sirrah
 SISN
-Sisters
-Situla
 Siv
-SKA
-SkAc
-Skat
 SKB
-Skeleton
 SKHB
 Skiff
-SKK
 SKK98
 SkKM
-SKN
 SKY#
 SKZKB
 SL2S
 SLACS
 Slee
-Sloan
-Slow
 SLSBG
 SLW
 SLX
-SMA
 SMAC
-Small
-SMASH
 SMC
-SMCA
-SMCDEM
 SMCN
-SMCRRLYR
-SMCs
-SMCSMP
-Smertrios
 Smethells
 SMFC
-SMG
 SMH
-Smith
-smm
-SMM
 SMMV
-SMOKING
 SMP
-SMS
 SMSNPL
 SMSP
 SMSS
 SMT
 SMZ
-Snail
-Snake
-Snaky
 SNF
 SNGP
 SNHiTS
 SNhunt
 SNLS
-SNLSDjz
-SNO
 Snow
-Snowball
 SNR
 SNSDF
 SNUQSO
-Soap
-Sobieski
-Soccer
-Soft
 SOGRAS
-SOH
 SOI
 SOK
-Solovyovs
-Sombrero
 Song
 SONYC
 SOPS
 SOS
-Sothwest
-source
-Source
-South
-Southeast
-SouthEast
-Southern
-SouthWest
 SOXS
 SP77
 SP82
 SpA
 SpARCS
 SPB
+SPCM
 SPD
-Spe
-Speca
-Speedy
 SPH
-Spheroidal
-Spica
-Spider
-Spiderweb
-Spindle
-Spiral
 SPIRITS
-SPLIT
-SPM
 SPM1.0
 SPM2.0
 SPM3.2
 SPM4.0
-Spock
 SPOCS
-Spokes
-Spot
 SPRC
 SPS
 SPT
-Spur
-Square
 SRBY
-SRG
-SRN
 SRS
 SRWW
 SS73
 SS77
 SSA
-SSAHCM
-SSC
 SSCC
 SSGC
 SSGSS
-SSM
-SSS
 SSSD
 SSSG
 SSSPM
+SSTB213
 SSTc2d
 SSTCYGX
 SSTDUSTF
@@ -4371,12 +1876,12 @@ SSTGLMC
 SSTISAGE1C
 SSTISAGEMA
 SSTISAGEMC
-SSTLup
 SSTM1SAGE1
 SSTM20
 SSTM3307
 SSTNGC602
 SSTOCEN
+SSTOERC
 SSTS3MC
 SSTSL2
 SSTtau
@@ -4390,197 +1895,57 @@ SSV
 SSWMW
 STACS
 STAGES
-Stanek
-star
-Star
-Starburst
-Stark
-Stars
-STE
-Steidel
-Stein
-Steine
-Stella
-stellar
-Stellar
-Stem
-Stepanian
-Stepanians
-Stepanyans
-Steph
-Stephans
 STEPSS
 Stetson
-STFA
 STGM
 STHO
-Stingray
 StKM
 StM
-Stock
-Stockert
 Str
-Straight
-Streak
-Stream
-Streamer
-Streamers
 STRESS
-Strip
-Strolger
-Strong
-STRONG
 StRS
-structure
-Struves
-STTA
 STVS
 STWR
-Styx
-Subaru
-SubaruXMM
-Subcluster
-Subgroup
-Subra
-SUFIs
-Suganos
-Suhail
-Sulafat
 SUMSS
-Sunflower
-Super
-Superantennae
-Superba
-Superbubble
-SUPERC
-Supercl
-SUPERCL
-SUPERCLU
-SUPERCLUS
-SUPERCLUST
-supercluster
-Supercluster
-Supergiant
-Supernebula
-Supernova
-Superradionebula
-Supershell
-supersoft
-Surounding
-Survey
 SUUSS
 Suzaku
 SV*
-Svalocin
 SVISS
-SVS
-SvW
 SW2002
-Swan
-SWASP
-SWE
 SWEEPS
 SWELLS
-SWex
-SWext
 SWIFT
 SWIRE
 Swope
-Sword
-SWS
-SWW
 SWXCS
-SXDF
-SXDFE
-SXDFN
-SXDFNB
-SXDFS
-SXDFW
 SXDS
-SXDSF
 SXDSPM
 SXP
 SYCA
 SYCSW
 SYHG
-Symbiotic
-SYPHON
-Syrma
-SySt
-system
-System
-SzN
 T62
 T89
-Tabit
-Tadmor
-Tadpole
-Taffy
-Tail
-Taipei
-Taleban
-Talitha
 Tam
-Tamura
-Tania
 TAOS
 TAP
-Taphao
 Tapia
-Tarantula
-Tarazed
-Tasmanian
 TASS
 TASS4
-TASV
-tau
-Tau
-TauAur
-TAUAUR
-TauAurPer
-Tauc
-TauG
-TauOri
-TauPer
-Tauri
-Taurion
-Taurus
-TAURUS
-TaurusAuriga
-TAURUSAURIGA
-TauVLA
-TAV
 TaWe
-Taygeta
-Taygete
-TAZ
 TBHD
 TBJ
 TCC
 TCG
 TCP
-TCrB
 TCS
-TCSS
 TD1
 TDC
 TDR
 TDS
 TDSC
 TDXF
-Teacup
-Teegardens
-Tegmine
-Tejat
-Tel
-Telephone
-Telescopium
-TelPavInd
-TER
-Tertia
 Terz
-Terzan
-tet
 Teutsch
 TeV
 TFW
@@ -4588,128 +1953,50 @@ TGRS
 TGSSADR
 TGU
 THA
-Thames
-the
-Theemin
-Thestias
-THETA
 ThG
-ThickDisk
-third
-Thong
-Thread
-Thuban
-Thumbprint
-Tidal
 Tifft
-Tip
-Titawin
 TKK
 TKRS
 TKRS2
-TLD
 TLE
-TLF
 TMB
 TMC
-TMF
 TMGS
 TMR
 Tmz
 TNG
-TOA
-Toby
 TOC
-Toepler
 Tol
-Tombaughs
 Ton
-Tonantzintla
-Tonatiuh
-Tongue
 TONS
 TONS08
 TOOT
-Toothbrush
-Torcular
-Tornado
-Torngasek
 Tou
-TPHE
 TPSC
-TrA
-trans
-Transient
-Transit
-Trapezium
 TRAPPIST
-Treasure
-Tree
-TREE
-Treffers
 TrES
-TrESA
-TrESb
-TrESB
-TrESHer
-Tri
-TriAnd
-Triangulum
-TriangulumAndromeda
-Trifid
 Trigger
 Trimble
-Trinity
-Triple
-triplet
-Triplet
 Triton
 TRM
-Trunk
 TSPS
-TSS
-TSUBOI
 Tsvetkov
 TSVSC1
 TSWR
-TTau
-Tuc
-TUC
-Tucana
-Tucanae
-TucanaHorologium
-TUCANAHOROLOGIUM
-TucHor
-Tureis
-TurnerWelch
 TVLM
 TWA
-Twin
-twins
-TXE
-TXFS
 TXS
-Tyc
 TYC
-Tycho
-Tychos
-Tyl
 UBV
 UCAC1
 UCAC2
 UCAC3
 UCAC4
-UCD
-UCDFORS
-UCDm
-UCL
 UCM
 UDF
 UDFP
-UDSWil
 UDXS
 UDXS2MASS
-UFD
 UGC
 UGCA
 UGCl
@@ -4719,35 +2006,14 @@ UGP
 UGPS
 UGPS2MASS
 UGRS
-UJP
-UKFS
 UKS
-UKSCe
 ULAS
 ULAS2MASS
-ULS
-Ultra
-ULX
-UMa
-UMA
-UMaSirius
-Umbrella
-UMi
-UMI
 UMJI
 UNSW
-Unukalhai
-UOT
 UPC
 UPM
-Upper
-UPPER
-UpperSco
 Uranus
-Ursa
-USA
-USB
-USCA
 USco
 UScoCTIO
 USGC
@@ -4760,22 +2026,16 @@ uvby1
 uvby98
 UVEX
 UVISTADR1
+UVQS
 UWISH2
-UYSO
 UZC
 V*
-van
-Var
-VAR
-Variable
 VASC
-VaucouleursDolidze
 VCC
 VCCA
 VCDFS
 VCNS
 VCO
-VCS
 VCS1
 VCS2
 VCS3
@@ -4785,35 +2045,15 @@ VCS6
 vdA
 VDB
 VDBG
-vdBH
 VdBH
 vdBK
+VDES
 VDK
 VDP
 vdWG
-Vega
-Veil
-Vel
-VEL
-Vela
-VELA
-VelaA
-VelaB
-VelaC
-VelaD
-VelaPup
-VelaPuppis
-VelCar
-VelCarCen
 velocities
-Velocity
-Velorum
-Venatici
 VER
 VeRa
-Veritate
-Veronica
-Very
 VFTS
 VGHC
 VGS
@@ -4821,55 +2061,30 @@ VHJ
 VHK
 VHS
 VHT
-VHVC
-Vidal
 VIDEO
-VII
-VIIa
-VIIb
-VIII
 VIKING
-Vindemiatrix
 VIPERS
 VIPS
-Vir
-VirCen
-Virgo
-VIRGO
-VIRGOCOMA
 VIRGOHI
-VirgoLibra
-VIRHYACEN
-VIRLIB
 VIRMOS
 VIRTUAL
-VKN
+VISION
 VLA
-VLBI
 VLGG
 Vlk
 VLRS
 VLSB
-VLSBA
-VLSBB
-VLSBC
 VLSS
-VLT
 vMa
-vMA
 VMCC
 vMo
 VMR
-Vogt
-Void
-Voorwerp
 VPC
 VPCX
 VPHAS
 VPMS
 VRO
 VSgr
-VShaped
 VSOP
 VSP
 VSS
@@ -4877,48 +2092,30 @@ VSSG
 VSST
 VST
 VSX
+VTC
 VUDS
-Vul
-VUL
 Vulcan
-Vulpecula
 VVD
 VVDS
 VVO
 VVV
-VVVWIT
-VWBS
 VXR
 W51H2
 W61
-Wachmann
-Wachmanns
-Wack
-Wakudas
-Walborn
-Wall
-Walnut
 WAMS
-War
 WARPS
 Was
-Wasat
 WASP
 WASP0
 WATCH
-Water
-Watson
-Way
-Wazn
 WB89
 WBB
 WBBe
+WBBH
 WBHA
 WBL
 WBP
-WCB
 WDG
-WDP
 WDS
 WEB
 WeBo
@@ -4927,37 +2124,15 @@ Weinberger
 Weis
 WeKG
 WEL
-Welchs
-West
-Westbrook
-Western
-WestMD
 Westphal
-Wezen
-WFC
 WFS
-Whale
 WhBe
-WHDF
-Wheel
-WHERO
 WHHW
 WHI
 WHIQII
-Whirlpool
-Whiting
 WHJ
-WHPA
-Wide
-Widow
 WiggleZ
-Wild
-Wilds
-Willman
-Window
-Wing
 WINGS
-Winnecke
 WIRD
 WIRED
 WISE
@@ -4970,59 +2145,38 @@ WISEPF
 WISER
 WISH
 WISP
-WISPb
-Witch
-Witchs
-Wittman
 WJN
 WK81
 WKB
 WKG
 WKK
 WKK98
-WLK
-WLM
 WLY
 WMAP
-WMB
 WMF
 WMIF
 WMMA
 WMOKK
-WNB
-WNOH
-Wnr
 WOCS
-Woerden
 WOH
 Wolf
-WolfLundmarkMelotte
-Wolszczans
-Wombat
-Wool
 WOOTS
 WOOV
 WORC
-Worthey
 WOS
 WOSH
 WOW
 WPS
-WPV
 WPVS
 WR33
 WR89
 WRAM
-Wray
 WRAY
-Wright
-Wrights
 WRW
 WSB
 WSCG
 WSLS
 WSPN
-WSR
 WSRTGP
 WSTB
 WTS
@@ -5033,21 +2187,16 @@ WVSC
 WWN
 XBCS
 XBS
+XCLASS
 XDCP
 XDCS
 XDEEP2
 XEST
-xFGL
 XGPS
-XII
-XIII
-XIV
-XIX
 XLEO
 XLSS
 XLSSC
 XLSSU
-XMAS
 XMDS
 XMM
 XMM2DF
@@ -5055,89 +2204,48 @@ XMMC
 XMMCDFS
 XMMES1
 XMMGWS
-XMMLSS
 XMMM31
-XMMNewton
 XMMOM
 XMMPT
 XMMSL1
+XMMSL2
 XMMU
 XMMXCS
 XMS
-XOSb
-XOSc
-XRay
 XRF
 XRR
-XRT
 XSS
 XTE
-XVI
-XVII
-XVIII
 XWAS
-XXI
-XXII
-XXIII
-XXIV
-XXIX
 XXL
-XXV
-XXVI
-XXVII
-XXVIII
-XXX
-XXXI
-XXXII
-XXXIII
-XYZ
+XXL-ATCA
 XZLJ
 YALO
 YBD
-YBP
-YBPb
-YCSW
-Yed
 YGKOW
-Yildun
 YLW
-Young
-Yowie
 YPAC
 YRGFG
 YSO
 YYG
 YYW
 YZC
-Zaniah
-Zaurak
-Zavijava
 zCOSMOS
 Zel
-zet
-ZET
-Zheng
+ZFIRE
+ZFOURGE
 ZHT
-Zibal
 Zkh
 ZOA
 ZOAG
-Zol
-Zosma
 ZSFW
-Zubenelgenubi
-Zubeneschamali
 ZwCl
-ZWCL
-Zwicky
-Zwickys
 ZYCJ
 * 38 Psc AB
 * f Pup AB
 * iot UMa BC
 * ksi Sco AB
 * mu. Oph Group
-** STFA 1
 ** STFA 21
 ** STTA 230
 0917+75 Relic
@@ -5189,6 +2297,7 @@ ZYCJ
 2M1207Ab
 2M1207b
 2MASS 0122-2439 b
+2MASS 0219-3925 b
 2MASS J01033563-5515561(AB)b
 2MASS J10364483+1521394 A
 2MASS J10364483+1521394 B
@@ -5300,6 +2409,9 @@ ZYCJ
 47 Tuc W
 47 Tuc X
 47 Tuc Y
+47 Tuc Z
+47 Tuc aa
+47 Tuc ab
 47 Tuc bHB1
 47 Tuc bHB2
 4C +25.56.1
@@ -5311,7 +2423,6 @@ ZYCJ
 4C 55.16 Cluster
 51 H. Cep
 53W002-HERO1
-5BZG J1414+3430
 5C 12.251 Cluster
 5C 2.10 Cluster
 5C 6.142 Cluster
@@ -5326,8 +2437,6 @@ A 1228A
 A 1228B
 A Flying Bird
 A-30
-A1758 NE
-A1758 NW
 A2069 Supercluster
 A2124 Arc
 A2197E
@@ -5350,8 +2459,6 @@ AB Pic b
 AC 114 Northern
 AC 114 Southern
 AC Dwarf I
-ACAMAR
-ACHERNAR
 ACHV Complex
 ACO 1035A
 ACO 1035B
@@ -5429,7 +2536,6 @@ AFGL 333 Cloud
 AFGL 4029 Cluster
 AFGL 4029 IRS 1
 AFGL 4029 IRS 2
-AFGL 4176 mm1
 AFGL 490 Cluster
 AFGL 490-iki
 AFGL 5142 Cluster
@@ -5486,6 +2592,7 @@ AQUARIUS-CETUS SUPERCLUST
 AS 310 Cluster
 AS 310 Stellar Group
 ASASSN 14jh
+ASASSN-V J211256.97+313724.6
 ASM 2000+25
 ASS CHA T
 ASS CYG OB 3a
@@ -5562,6 +2669,7 @@ AT 2016baq
 AT 2016bar
 AT 2016bas
 AT 2016bau
+AT 2016bbb
 AT 2016bbk
 AT 2016bcy
 AT 2016bcz
@@ -5597,12 +2705,175 @@ AT 2016bli
 AT 2016blj
 AT 2016blk
 AT 2016bln
+AT 2016blp
 AT 2016bls
 AT 2016blv
 AT 2016blw
 AT 2016blx
 AT 2016blz
+AT 2016bmc
+AT 2016bmd
+AT 2016bme
+AT 2016bmf
+AT 2016bmh
+AT 2016bmo
+AT 2016bpr
+AT 2016bqr
+AT 2016bqv
+AT 2016bqz
+AT 2016bro
+AT 2016brv
+AT 2016brw
+AT 2016brx
+AT 2016bry
+AT 2016bsa
+AT 2016bsc
+AT 2016bsd
+AT 2016bse
+AT 2016btk
+AT 2016btl
+AT 2016buv
+AT 2016cbx
+AT 2016cby
+AT 2016ccb
+AT 2016ccf
+AT 2016ccj
+AT 2016cck
+AT 2016ccl
+AT 2016ccm
+AT 2016ccs
+AT 2016cct
+AT 2016cda
+AT 2016cdb
+AT 2016cdc
+AT 2016cdd
+AT 2016cdx
+AT 2016cdz
+AT 2016cid
+AT 2016cky
+AT 2016ckz
+AT 2016cmn
+AT 2016cnx
+AT 2016cny
+AT 2016coa
+AT 2016cob
+AT 2016coi
+AT 2016cok
+AT 2016cor
+AT 2016cpd
+AT 2016cpe
+AT 2016cpg
+AT 2016cph
+AT 2016cpi
+AT 2016cpl
+AT 2016cpu
+AT 2016cpv
+AT 2016cpw
+AT 2016cpx
+AT 2016cpy
+AT 2016cqj
+AT 2016cqk
+AT 2016cqz
+AT 2016csd
+AT 2016csg
+AT 2016csi
+AT 2016csj
+AT 2016csk
+AT 2016csl
+AT 2016csr
+AT 2016css
+AT 2016cst
+AT 2016csu
+AT 2016csv
+AT 2016cvj
+AT 2016cvl
+AT 2016cvm
+AT 2016cvn
+AT 2016cvv
+AT 2016cvw
+AT 2016cxa
+AT 2016cxr
+AT 2016cyh
+AT 2016cyj
+AT 2016cyk
+AT 2016cyl
+AT 2016cym
+AT 2016cyr
+AT 2016cyt
+AT 2016cyu
+AT 2016cyv
+AT 2016cyw
+AT 2016cyx
+AT 2016cyz
+AT 2016cza
+AT 2016czc
+AT 2016czq
+AT 2016dah
+AT 2016daj
 AT 2016dsk
+AT 2016dxc
+AT 2016dxj
+AT 2016dxx
+AT 2016dyn
+AT 2016dyr
+AT 2016dzt
+AT 2016eae
+AT 2016edr
+AT 2016edv
+AT 2016edw
+AT 2016edy
+AT 2016eef
+AT 2016eei
+AT 2016efc
+AT 2016efe
+AT 2016egz
+AT 2016ehs
+AT 2016ehy
+AT 2016eiy
+AT 2016eja
+AT 2016ejb
+AT 2016ejq
+AT 2016eki
+AT 2016ekt
+AT 2016eku
+AT 2016ekw
+AT 2016ekx
+AT 2016ekz
+AT 2016eld
+AT 2016ele
+AT 2016elj
+AT 2016elw
+AT 2016emb
+AT 2016emj
+AT 2016emw
+AT 2016enf
+AT 2016enk
+AT 2016enl
+AT 2016enm
+AT 2016enn
+AT 2016eno
+AT 2016enp
+AT 2016enu
+AT 2016enw
+AT 2016enx
+AT 2016eny
+AT 2016enz
+AT 2016eoa
+AT 2016eow
+AT 2016epa
+AT 2016epb
+AT 2016epc
+AT 2016epd
+AT 2016epe
+AT 2016eqb
+AT 2016eqw
+AT 2016esh
+AT 2016esn
+AT 2016eso
+AT 2016esw
+AT 2016esx
+AT 2016euj
+AT 2016evh
 AT 2016xb
 AT 2016yr
 AT 2016ys
@@ -5610,17 +2881,201 @@ AT 2016za
 AT 2016zb
 AT 2016zc
 AT 2016zd
+AT 2017aur
+AT 2017be
+AT 2017bkj
+AT 2017eaw
+AT 2017egv
+AT 2017ejx
+AT 2017ffk
+AT 2017gar
 AT 2017gas
 AT 2017gay
 AT 2017gbl
 AT 2017gfo
+AT 2017gge
+AT 2017ggq
 AT 2017gjd
+AT 2017gjp
 AT 2017gkk
 AT 2017gkt
 AT 2017glb
+AT 2017glc
+AT 2017gld
+AT 2017glg
 AT 2017gmr
+AT 2017gop
+AT 2017gpp
 AT 2017gqd
 AT 2017gqe
+AT 2017gqq
+AT 2017gqw
+AT 2017grf
+AT 2017grk
+AT 2017grm
+AT 2017grw
+AT 2017gry
+AT 2017gsa
+AT 2017gsc
+AT 2017gso
+AT 2017gsu
+AT 2017guh
+AT 2017gul
+AT 2017gum
+AT 2017guq
+AT 2017gvi
+AT 2017gvo
+AT 2017gwx
+AT 2017gyv
+AT 2017haf
+AT 2017hag
+AT 2017haj
+AT 2017har
+AT 2017hbc
+AT 2017hbf
+AT 2017hbg
+AT 2017hcb
+AT 2017hcd
+AT 2017hdn
+AT 2017hfv
+AT 2017hfx
+AT 2017hgz
+AT 2017hia
+AT 2017hid
+AT 2017hiq
+AT 2017hje
+AT 2017hjp
+AT 2017hjs
+AT 2017hkm
+AT 2017hkn
+AT 2017hks
+AT 2017hle
+AT 2017hmx
+AT 2017hna
+AT 2017hni
+AT 2017hnj
+AT 2017hnt
+AT 2017hnw
+AT 2017hof
+AT 2017hoq
+AT 2017hpj
+AT 2017hpl
+AT 2017hqb
+AT 2017hqk
+AT 2017hrg
+AT 2017hrm
+AT 2017hrq
+AT 2017hrw
+AT 2017hsl
+AT 2017hta
+AT 2017hvi
+AT 2017hvl
+AT 2017hvr
+AT 2017hvt
+AT 2017hwz
+AT 2017hxc
+AT 2017hxj
+AT 2017hxt
+AT 2017hxv
+AT 2017hxy
+AT 2017hxz
+AT 2017hya
+AT 2017hyf
+AT 2017hyi
+AT 2017hyj
+AT 2017hyt
+AT 2017hyw
+AT 2017hyx
+AT 2017hyy
+AT 2017hyz
+AT 2017hzc
+AT 2017hzi
+AT 2017hzv
+AT 2017hzw
+AT 2017ict
+AT 2017icu
+AT 2017icv
+AT 2017icw
+AT 2017idg
+AT 2017iez
+AT 2017ifb
+AT 2017ifh
+AT 2017ift
+AT 2017ifu
+AT 2017ige
+AT 2017igq
+AT 2017igs
+AT 2017iha
+AT 2017ihl
+AT 2017iim
+AT 2017iit
+AT 2017iji
+AT 2017ijn
+AT 2017ijr
+AT 2017ijw
+AT 2017ile
+AT 2017ilf
+AT 2017ilo
+AT 2017ilt
+AT 2017ilu
+AT 2017ilv
+AT 2017imy
+AT 2017inu
+AT 2017ipi
+AT 2017iqk
+AT 2017iqn
+AT 2017irv
+AT 2017irw
+AT 2017ise
+AT 2017isj
+AT 2017ita
+AT 2017iul
+AT 2017iuo
+AT 2017ivc
+AT 2017ivg
+AT 2017ivh
+AT 2017ivv
+AT 2017iwj
+AT 2017iwp
+AT 2017iwy
+AT 2017ixd
+AT 2017ixe
+AT 2017ixh
+AT 2017ixp
+AT 2017ixq
+AT 2017ixu
+AT 2017ixw
+AT 2017ixx
+AT 2017ixz
+AT 2017iye
+AT 2017iyk
+AT 2017iyl
+AT 2017iyw
+AT 2017jbj
+AT 2017jbl
+AT 2017jco
+AT 2017jcv
+AT 2017jdh
+AT 2017jdm
+AT 2017jdx
+AT 2017jdy
+AT 2017jdz
+AT 2017jea
+AT 2017jeg
+AT 2017jeh
+AT 2017jei
+AT 2017jet
+AT 2018amz
+AT 2018aoh
+AT 2018apy
+AT 2018asm
+AT 2018id
+AT 2018tw
+AT 2018tx
+AT 2018uh
+AT 2018ux
+AT 2018vd
+AT 2018vm
 AT Mic A
 AT Mic B
 AT2016adj
@@ -5658,9 +3113,158 @@ ATLAS 16ahx
 ATLAS 16aid
 ATLAS 16aiq
 ATLAS 16aja
+ATLAS 16axt
+ATLAS 16ayg
+ATLAS 16ayo
+ATLAS 16ays
+ATLAS 16ayw
+ATLAS 16azu
+ATLAS 16azy
+ATLAS 16bac
+ATLAS 16bbx
+ATLAS 16bcb
+ATLAS 16bcd
+ATLAS 16bce
+ATLAS 16bcg
+ATLAS 16bcm
+ATLAS 16bdg
+ATLAS 16bek
+ATLAS 16bel
+ATLAS 16bem
+ATLAS 16beo
+ATLAS 16bsz
+ATLAS 16bwb
+ATLAS 16bws
+ATLAS 16bwu
+ATLAS 16bwv
+ATLAS 16bwx
+ATLAS 16bwz
+ATLAS 16bxa
+ATLAS 16bxb
+ATLAS 16bxt
+ATLAS 16byy
+ATLAS 16bzb
+ATLAS 16bzd
+ATLAS 16bzg
+ATLAS 16bzh
+ATLAS 16dod
 ATLAS 16dvr
+ATLAS 17ace
 ATLAS 17aeu
+ATLAS 17ber
 ATLAS 17ixz
+ATLAS 17jrp
+ATLAS 17jsb
+ATLAS 17jsu
+ATLAS 17kgv
+ATLAS 17khl
+ATLAS 17kht
+ATLAS 17kjl
+ATLAS 17klo
+ATLAS 17koa
+ATLAS 17kol
+ATLAS 17kvk
+ATLAS 17kwe
+ATLAS 17kwg
+ATLAS 17kwi
+ATLAS 17kxb
+ATLAS 17lau
+ATLAS 17lax
+ATLAS 17lbg
+ATLAS 17lbl
+ATLAS 17lcr
+ATLAS 17lcs
+ATLAS 17lfh
+ATLAS 17lqv
+ATLAS 17lsn
+ATLAS 17lsr
+ATLAS 17lss
+ATLAS 17lui
+ATLAS 17lwk
+ATLAS 17lxm
+ATLAS 17lyt
+ATLAS 17lyu
+ATLAS 17lzl
+ATLAS 17mai
+ATLAS 17mei
+ATLAS 17mfa
+ATLAS 17mfr
+ATLAS 17mft
+ATLAS 17mgh
+ATLAS 17mgm
+ATLAS 17mgt
+ATLAS 17mhp
+ATLAS 17mip
+ATLAS 17mlp
+ATLAS 17mlu
+ATLAS 17mlv
+ATLAS 17mmm
+ATLAS 17mmu
+ATLAS 17mnc
+ATLAS 17mnr
+ATLAS 17mns
+ATLAS 17mnu
+ATLAS 17mrm
+ATLAS 17msd
+ATLAS 17msi
+ATLAS 17msj
+ATLAS 17muk
+ATLAS 17mum
+ATLAS 17mup
+ATLAS 17muy
+ATLAS 17mvp
+ATLAS 17mvx
+ATLAS 17mwk
+ATLAS 17mwl
+ATLAS 17mwu
+ATLAS 17mwv
+ATLAS 17mwz
+ATLAS 17mxj
+ATLAS 17myf
+ATLAS 17mzy
+ATLAS 17nan
+ATLAS 17naq
+ATLAS 17nbg
+ATLAS 17nbj
+ATLAS 17ncr
+ATLAS 17ncv
+ATLAS 17ndw
+ATLAS 17nef
+ATLAS 17nek
+ATLAS 17nel
+ATLAS 17ner
+ATLAS 17nfm
+ATLAS 17nfs
+ATLAS 17ngb
+ATLAS 17nhc
+ATLAS 17nhp
+ATLAS 17nic
+ATLAS 17nja
+ATLAS 17njg
+ATLAS 17njh
+ATLAS 17nkf
+ATLAS 17nmh
+ATLAS 17nmo
+ATLAS 17nmp
+ATLAS 17nmr
+ATLAS 17nnf
+ATLAS 17nnh
+ATLAS 17nni
+ATLAS 17nnn
+ATLAS 17nno
+ATLAS 17nnw
+ATLAS 17npa
+ATLAS 17nph
+ATLAS 17npk
+ATLAS 17nqf
+ATLAS 17nqj
+ATLAS 17nrq
+ATLAS 17nsd
+ATLAS 17nse
+ATLAS 17nsf
+ATLAS 17nsg
+ATLAS 17nwt
+ATLAS 17nxr
 AV Ori/c
 AX J0058-7203
 AX J1601-5143
@@ -5672,6 +3276,8 @@ Abell 2319A
 Abell 2319B
 Abell 3527-bis
 Abell 89B
+Acamar
+Achernar
 Acheron Stream
 Achird
 Acrab
@@ -5684,7 +3290,7 @@ Agena
 Ahadi
 Ain
 Ain b
-Al Dhanab
+Ainalrami
 Aladfar
 Alathfar
 Albaldah
@@ -5698,7 +3304,9 @@ Alcor
 Alcyone
 Aldebaran
 Alderamin
+Aldhanab
 Aldhibah
+Aldulfin
 Alessi 24
 Alessi GN J2005.5-1019
 Alessi J2327+55
@@ -5711,6 +3319,7 @@ Alessi-Teutsch 12
 Alessi-Teutsch 5
 Alessi-Teutsch 7
 Alfirk
+Algedi
 Algenib
 Algieba
 Algol
@@ -5720,9 +3329,13 @@ Algol C
 Algorab
 Alhena
 Alioth
+Aliqa Uma Stream
+Aljanah
 Alkafzah
 Alkaid
 Alkalurops
+Alkaphrah
+Alkarab
 Alkes
 Allen IRS
 Allen's Source
@@ -5739,8 +3352,10 @@ Alpheratz
 Alpherg
 Alrakis
 Alrescha
+Alruba
 Alsafi
 Alsciaukat
+Alsephina
 Alshain
 Alshat
 Altair
@@ -5752,6 +3367,7 @@ Aludra
 Alula Australis
 Alula Borealis
 Alya
+Alzirr
 Amas de l'Ecu de Sobieski
 Amateru
 Ambartsumian's Knot
@@ -5858,6 +3474,7 @@ Aquila
 Aquila Cloud
 Aquila Region
 Aquila Rift
+Aquila South Cloud
 Aquila Supershell
 Aquila-Ophiuchus Cloud
 Ara
@@ -5922,6 +3539,7 @@ Arrowhead Supercluster
 Ascella
 Asellus Australis
 Asellus Borealis
+Ashlesha
 Asmidiske
 Aspidiske
 Ass ARA OB 1a
@@ -5955,6 +3573,7 @@ Ass Vel OB 1-A
 Ass Vel OB 1-B
 Ass Vel OB 1-C
 Asterope
+Athebyne
 Atik
 Atlantic Nebula
 Atlas
@@ -5977,6 +3596,7 @@ Aveni-Hunter 1
 Avior
 Azelfafage
 Azha
+Azmidi
 Azmidiske
 B 19
 B 59-1
@@ -6003,18 +3623,23 @@ B59-1
 B59-2
 BAC 209
 BAT Trigger 311603
+BAT99 85a
+BAT99 85b
 BB Complex
 BCD 1
 BD +40 4124 Cluster
 BD 65NE
 BD 65SW
 BD+06 2986 System
+BD+26 2091Ab
 BD+43 3573AB
 BD+46 2054AB
+BD+46 2629Ab
 BD+49 435AB
 BD+56 509AB
 BD+75 510 System
 BD-08 1666AB
+BD-12 2042AB
 BD-Ser 1
 BD3 Galaxy
 BDN
@@ -6048,10 +3673,6 @@ BSD WC9
 BSD WC9B
 BW
 BY Dra C
-BYY2014 RCS J051834-4325.1 BCG
-BYY2014 RCS J051855-4315.0 BCG
-BYY2014 RCS J110723-0523.2 BCG
-BYY2014 RCS J110752-0516.5 BCG
 BZB J1008+0621
 BZB J1243-0613
 BZB J1314+2348
@@ -6116,11 +3737,14 @@ Becklin-Neugebauer Object
 Becklin-Neugebauer Source
 Beehive
 Beehive Proplyd
+Beemim
+Beetle
 Beid
 Bellatrix
 Bergfors-6
 Bernes 135
 Betelgeuse
+Bharani
 Bidelman's Star
 Big Arc in Orion Nebula
 Big Dipper
@@ -6183,6 +3807,7 @@ Bruck Bipolar
 Bubble Nebula
 Bubble around HD 191765
 Bug Nebula
+Bulb Nebula
 Bullet Cluster
 Bunda
 Burnham Nebula
@@ -6235,6 +3860,7 @@ CB34V
 CBI
 CCD J01361-2954AB
 CCG 1
+CCPC-z37-001
 CD-39 8581ne
 CD-39 8581sw
 CD-50 8098AB
@@ -6379,8 +4005,9 @@ CTB2016 Cloud E
 CTB2016 Cloud W
 CTB2016 Starburst
 CTQ 414 Cluster
-CV 5
 CV Mon Cluster
+CVSO 114NE
+CVSO 114SW
 CVSO 30 b
 CVSO 30 c
 CVn Cluster
@@ -6436,9 +4063,10 @@ Cancer-Leo Cloud
 Candle Star
 Canes Venatici Cloud
 Canes Venatici Dwarf
+Canis Major Cloud
 Canis Major Dwarf Galaxy
 Canis Major Galaxy
-Canonball
+Cannonball
 Canopus
 Cap Galaxy
 Capella
@@ -6452,27 +4080,30 @@ Car 291.6-01.9 Outflow
 Car Arm
 Car Association
 Car Dwarf Galaxy
-Car I
-Car II
+Car I HII Region
+Car II Dwarf Galaxy
+Car II HII Region
+Car III Dwarf Galaxy
 Car Nebula
 Car OB2 HI Shell
 Car dSph
 Car-Cen Region
 Car-Sge
-Car-Sgr
 Car-Sgr Arm
 Car-Vel Region
 Carafe Group
 Carafe Nebula
-Carina 2
+Carina 2 HII Region
 Carina Arm
 Carina Association
 Carina Defiant Finger
 Carina Dwarf Galaxy
 Carina Flare Supershell
 Carina Galaxy
-Carina I
-Carina II
+Carina I HII Region
+Carina II Dwarf Galaxy
+Carina II HII Region
+Carina III Dwarf Galaxy
 Carina Loop
 Carina Molecular Cloud Complex
 Carina Moving Group
@@ -6531,6 +4162,7 @@ Castor AB
 Castor B
 Castor C
 Castor Moving Group
+Castula
 Cat's Eye Nebula
 Cat's Paw Nebula
 Cave Nebula
@@ -6572,6 +4204,7 @@ Cen-Pavo
 Centaurus A
 Centaurus A Group
 Centaurus Arm
+Centaurus B
 Centaurus Bipolar Nebula
 Centaurus Cluster
 Centaurus Concentration
@@ -6625,8 +4258,10 @@ Cepheus Bubble
 Cepheus Cloud
 Cepheus Flare
 Cepheus IV
+Cepheus North Cloud
 Cepheus Region
 Cepheus Ring
+Cepheus South Cloud
 Cervantes
 Cet Dwarf Galaxy
 Cet Group
@@ -6687,6 +4322,7 @@ Chamaeleon I
 Chamaeleon II
 Chamaeleon III
 Chamaeleon Region
+Chamukuy
 Chanal's Object
 Chandra Deep Field North
 Chandra Deep Field South
@@ -6694,10 +4330,12 @@ Chandra Deep Field-North
 Chandra Deep Field-South
 Chara
 Checkmark Nebula
+Chenab Stream
 Chereul 2
 Chereul 3
 Chertan
 Cheshire Cat
+Cheshire Cat Group
 Chow
 Christmas Tree Cluster
 Cigar Galaxy
@@ -6808,6 +4446,7 @@ Coma Cluster Arc
 Coma Dwarf Galaxy
 Coma I Group
 Coma II Group
+Coma P
 Coma Pinwheel
 Coma Relic
 Coma Star Cluster
@@ -7014,13 +4653,8 @@ DJRS J20134796-4502414
 DJRS J20162915-4431031
 DK Tau A
 DK Tau B
-DLT 17cq
 DO Tau/c
 DP Leo b
-DPR1
-DPR2
-DPR3
-DPR4
 DR 1 in IC 1613
 DR 11 IR Cluster
 DR 13 IR Stellar Group
@@ -7060,14 +4694,6 @@ DS J03103-2244A
 DS J04423+0938AB
 DS Tau A
 DS Tau B
-DSM2016 RRAT J0156+04
-DSM2016 RRAT J0544+20
-DSM2016 RRAT J0550+09
-DSM2016 RRAT J1433+00
-DSM2016 RRAT J1554+18
-DSM2016 RRAT J1603+18
-DSM2016 RRAT J1717+03
-DSM2016 RRAT J1720+00
 DT Ser A
 DT Ser B
 DT Ser PN
@@ -7078,6 +4704,7 @@ Dabih
 Dabih Major
 Dabih Minor
 Dagon
+Dalim
 Dark Bay in OMC-1
 Davies' Cloud
 Debehogne Object
@@ -7147,6 +4774,7 @@ Dw1-X1
 Dwarf Elliptical Galaxy in Sex
 Dwarf Elliptical in Sextans
 Dwarf Nova in Pavo
+Dziban
 E 1
 E 1 Region
 E 2
@@ -7178,7 +4806,6 @@ E8 Region
 E9 Region
 EAD 1 ID
 EAD 2 ID
-EBLM J0555-57
 EBLM J1219-39
 ECDF-S
 ECDFS
@@ -7192,15 +4819,16 @@ ECX6-25 IR Cluster
 ECX6-27 IR Cluster
 ECX6-38 Stellar Group
 EGS
+EGS-XEW-1
 EGS-zs8-1
 EGS-zs8-2
-EGSY-2008532660
 EGSY8p7
 EHDFS
 ELISE
 EM* LKHA 198 MM
 EM* MWC 1080/c
 EM* SR 20W
+EM170817
 EMILIA
 EPIC 201295312b
 EPIC 201338508b
@@ -7224,14 +4852,15 @@ EPIC 201754305b
 EPIC 201754305c
 EPIC 201912552b
 EPIC 202900527 B
+EPIC 203518244b
 EPIC 203771098b
 EPIC 203771098c
 EPIC 203826436b
 EPIC 203826436c
 EPIC 203826436d
 EPIC 204129699b
-EPIC 204221263 b
-EPIC 204221263 c
+EPIC 204221263b
+EPIC 204221263c
 EPIC 205071984b
 EPIC 205071984c
 EPIC 205071984d
@@ -7245,10 +4874,15 @@ EPIC 211351816b
 EPIC 211391664b
 EPIC 211525389b
 EPIC 211901114b
+EPIC 211945201b
+EPIC 215969174b
 EPIC 219388192b
 EPIC 220204960 B
-EPIC 220674823 b
-EPIC 220674823 c
+EPIC 220674823b
+EPIC 220674823c
+EPIC 247589423b
+EPIC 247589423c
+EPIC 247589423d
 EQ Peg A
 EQ Peg B
 ER 0047-2808
@@ -7302,9 +4936,12 @@ EWS 2003-BUL-235b
 EWS 2005-BLG-071Lb
 EWS 2005-BLG-169Lb
 EWS 2005-BLG-390Lb
+EWS 2005-BLG-390b
 EWS 2005-BUL-071Lb
 EWS 2005-BUL-169Lb
 EWS 2005-BUL-390Lb
+EWS 2006-BLG-109b
+EWS 2006-BLG-109c
 EWS 2006-BUL-109Lb
 EWS 2006-BUL-109Lc
 EWS 2007-BLG-349L(AB)c
@@ -7317,13 +4954,22 @@ EWS 2013-BLG-0132b
 EWS 2013-BLG-1721b
 EWS 2014-BLG-0676b
 EWS 2014-BLG-1112B
+EWS 2014-BLG-1722b
+EWS 2014-BLG-1722c
 EWS 2015-BLG-0954b
 EWS 2016-BLG-0263b
+EWS 2016-BLG-0613b
+EWS 2016-BLG-1190b
 EWS 2016-BLG-1195b
+EWS 2017-BLG-0173b
+EWS 2017-BLG-0482b
+EWS 2017-BLG-1140b
+EWS 2017-BLG-1522b
 EXE 1
 EXE 2
 Eagle Nebula
 Eagle SN
+Ear Nebula
 Eastern Arm in Sgr A West
 Eastern Bridge in Sgr A West
 Edasich
@@ -7340,10 +4986,14 @@ Einstein Cross
 El Gordo
 Electra
 Elephant Trunk Nebula
+Elgafar
 Elia 3-1 NE
 Elias 12N
 Elias 12S
+Elkurud
 Elnath
+Elqui Stream
+Eltanin
 Elvis SN
 Embryo Galaxy
 Engraved Hourglass Nebula
@@ -7389,7 +5039,6 @@ Errai
 Errai b
 Eskimo
 Eskimo Nebula
-Etamin
 Etched Hourglass Nebula
 Ethos 1
 Evil Eye Galaxy
@@ -7462,15 +5111,18 @@ FU Tau b
 FV Tau/c
 FVV Sct
 FVW 190.2+1.1
-FW Tau A
-FW Tau B
 FW Tau b
 Fafnir
+Fang
 Farther Sculptor Wall
+Fawaris
 Fehrenbach's star
 Feibelman 1
 Feigelson 1
+Felis
 Ferguson SN
+Fermi Bubble
+Fermi Bubbles
 Fermi-LAT J1857+027
 Ferrero 1
 Ferrero 10
@@ -7485,6 +5137,7 @@ Flaming Star Nebula
 Flying Ghost Nebula
 Flying Saucer
 Fomalhaut
+Fomalhaut B
 Fomalhaut C
 Fomalhaut b
 Footprint Nebula
@@ -7553,7 +5206,10 @@ Frosty Leo
 Frosty Leo Nebula
 Frosty Leonis Nebula
 Frying Pan
+Fulu
+Fumalsamakah
 Furud
+Fuyue
 G 1200-2038
 G 192.16
 G 35.2-0.74N
@@ -7581,8 +5237,6 @@ G15v2.481
 G169 PN
 G173 Complex
 G174+2.5 GMC
-G192N
-G192S
 G2 Dust Cloud
 G2 Galaxy
 G29.96-0.02 HMPO
@@ -7658,6 +5312,8 @@ GJ 153 BC
 GJ 2060 System
 GJ 499ABC
 GJ 644/643 System
+GK Tau A
+GK Tau B
 GK-1
 GLC 0435-59
 GLX+274.1+13.5+263
@@ -7884,7 +5540,6 @@ Galactic Bar
 Galactic Bulge
 Galactic CENTRE
 Galactic CENTRE LOBE
-Galactic CIRCUMNUCLEAR DISK
 Galactic Center
 Galactic Center Cluster
 Galactic Center IRS 16
@@ -7895,9 +5550,11 @@ Galactic Center IRS 8
 Galactic Center Lobe
 Galactic Center Lobe
 Galactic Center Minispiral
+Galactic Center Radio Arc
 Galactic Center Spur
 Galactic Center Transient
 Galactic Centre Spur
+Galactic Circumnuclear Disk
 Galactic Molecular Ring
 Galactic RADIO ARC
 Galactic Ridge
@@ -7922,7 +5579,8 @@ Giant ARC IN CL 2244-02
 Giant Void in NGH
 Giausar
 Giedi
-Gienah Corvi
+Gienah
+Ginan
 Ginga SN
 Ginger
 Gingrich 1
@@ -7991,6 +5649,8 @@ HAQ J2358+1030A
 HAQ J2358+1030B
 HAR 40
 HAT-TR-205-013
+HAT-TR-318-007
+HAWC J0543+233
 HBC 282 IR Stellar Group
 HBootes01
 HBootes02
@@ -8009,9 +5669,11 @@ HCO2016 Virgo I
 HD 101205AB
 HD 101847BC
 HD 103246AB
+HD 112998BC
 HD 114853 System
 HD 118865 System
 HD 119361AB
+HD 12108BC
 HD 124864AB
 HD 125131AB
 HD 125131CD
@@ -8032,15 +5694,18 @@ HD 170132AB
 HD 171365AB
 HD 171365CD
 HD 17743AB
+HD 177483BC
 HD 179484BC
 HD 18442AB
 HD 186587AB
 HD 188088 System
 HD 191056AB
 HD 192911 AB
+HD 193350BC
 HD 193702AB
 HD 195530BC
 HD 199005BC
+HD 200660BC
 HD 201267BC
 HD 205875AB
 HD 207171AB
@@ -8055,6 +5720,7 @@ HD 30196AB
 HD 31166AB
 HD 31356AB
 HD 32142BC
+HD 35317BC
 HD 37419AB
 HD 39445AB
 HD 40887 AB
@@ -8069,6 +5735,7 @@ HD 53891AB
 HD 5805AB
 HD 61330AB
 HD 652 System
+HD 67238AB
 HD 69740AB
 HD 72557AB
 HD 75767 CD
@@ -8178,6 +5845,8 @@ HH 25-26 B2
 HH 25-26 B3
 HH 25-26 C
 HH 25-MMS
+HH 250 IRS
+HH 250-IRS
 HH 251-254
 HH 251/254
 HH 25MMS
@@ -8330,6 +5999,7 @@ HIP 78530b
 HIP 79431b
 HIP 83071 ASSOC.
 HIP 91258b
+HIP 95086b
 HIP 97944 System
 HIP 98321 ASSOC.
 HIP 98321 Association
@@ -8341,6 +6011,8 @@ HKII 17435-00532
 HL 4
 HL Tau-VLA 1
 HLock01
+HLock01-B
+HLock01-R
 HLock03
 HLock04
 HLock05
@@ -8365,6 +6037,7 @@ HP Tau/G1
 HP Tau/G2
 HP Tau/G3
 HR 1614 Moving Group
+HR 1833 Cluster
 HR 3070 Moving Group
 HR 3661 Cluster
 HR 3672 B
@@ -8375,7 +6048,6 @@ HS 1844+637
 HS168e
 HS168w
 HS1700.850.1
-HSC J115252+004733
 HST 14113+5211
 HST 14176+5226 System
 HST 15433+5352 System
@@ -8419,9 +6091,12 @@ HYA-CEN-PAV-IND SUPERCL
 HYA/CEN SUPERCL.
 HYADES SUPERCL
 HYDRA SUPERCL
+Hadar
 Hadir
+Haedus
 Hall's Arc
 Hamal
+Hammerhead Nebula
 Hamuy Var
 Hamuy's Star
 Hanny's Voorwerp
@@ -8479,6 +6154,7 @@ Her-CrB GW
 Herbig's Anon 1
 Hercules A
 Hercules A Cluster
+Hercules Cloud
 Hercules Cluster
 Hercules Corona Borealis Stream
 Hercules Dwarf Galaxy
@@ -8578,6 +6254,7 @@ Hydra A Cluster
 Hydra Cluster
 Hydra Filament
 Hydra I Cluster
+Hydra I overdensity
 Hydra II
 Hydra-Cen Supercluster
 Hydra-Centaurus
@@ -8669,6 +6346,7 @@ IGI
 IGR J03249+4041-NE
 IGR J03249+4041-SW
 IGR J16442-554
+IGR J17456-2901b
 IGR17488-3253
 II Hz 4
 II PER ASSOC
@@ -8684,10 +6362,6 @@ III ZW 54 Group
 III Zw 104 NED02
 IKN
 ILT J225347+862146
-IMS J220417.92+011144.8
-IMSCl J2212+0045
-IMSCl J2213+0048
-IMSCl J2213+0052
 IPHAS PN-1
 IPHAS2 J211210.70+482106.8
 IPHAS2 J211223.10+481656.4
@@ -8697,8 +6371,6 @@ IRAM 04191 MMS
 IRAM 04191+1522
 IRAM 04191-IRS
 IRAS 00013+6817 Cluster
-IRAS 00338+6312 Stellar Group
-IRAS 00494+5617 Cluster
 IRAS 01546+6319 Stellar Group
 IRAS 02044+6031 Cluster
 IRAS 02048+5957 Stellar Group
@@ -8718,9 +6390,6 @@ IRAS 02497+6217 Stellar Group
 IRAS 02511+6023 Stellar Group
 IRAS 02541+6208 Stellar Group
 IRAS 02570+6028 Cluster
-IRAS 02575+6017 Cluster
-IRAS 02593+6016 Cluster
-IRAS 03064+5638 Cluster
 IRAS 03260+3111A
 IRAS 03260+3111B
 IRAS 03359+1523W
@@ -8737,26 +6406,15 @@ IRAS 04181B
 IRAS 04186+5143 cluster
 IRAS 04320+2505A
 IRAS 04320+2505B
-IRAS 04324+5106 Cluster
-IRAS 05100+3723 Cluster
 IRAS 05137+1901A
 IRAS 05137+1901B
-IRAS 05197+3355 Cluster
-IRAS 05274+3345 Cluster
 IRAS 05358+3543 mm
 IRAS 05361+3539 Cluster
-IRAS 05375+3540 Cluster
-IRAS 05377+3548 Cluster
 IRAS 05439+3035 Cluster
 IRAS 05497+1246A
 IRAS 05497+1246B
 IRAS 05506+2414 Sb
-IRAS 05553+1631 Cluster
-IRAS 06056+2131 Cluster
 IRAS 06058+2138 NIRS 1
-IRAS 06073+1249 Cluster
-IRAS 06117+1350 Cluster
-IRAS 06155+2319 Cluster
 IRAS 06238+7428
 IRAS 06319+0415 Cluster
 IRAS 06548-0815 Cluster
@@ -8804,6 +6462,7 @@ IRAS 21413+5442N
 IRAS 21413+5442S
 IRAS 23151+5912 Cluster
 IRAS 23152+6034 Stellar Group
+IRAS 23199E
 IRAS 4B1 North
 IRAS 4B1 South
 IRAS 537S
@@ -8876,10 +6535,12 @@ IVS B1335-06B
 IVS B1340+60A
 IVS B1340+60B
 IfA 0230-Z1
+Iklil
 Ind II
 Indus Cluster
 Indus I
 Indus II
+Indus Stream
 Innes' star
 Integral Sign Galaxy
 Integral-Shaped Filament
@@ -8903,6 +6564,8 @@ Jacoby 1
 Janssen
 Jellyfish Nebula
 Jewel Box
+Jhelum Stream
+Jishui
 Juchert-Saloranta 1
 Juggler Nebula
 Jumbo in NGC 3310
@@ -8913,11 +6576,13 @@ KA 1
 KA 2
 KAIT J20233743-19163425
 KAIT-16X
+KAIT-16ai
 KBS 13
 KC F5
 KES 29 IR Cluster
 KESR Galaxy
 KH 15D
+KIC 10525077b
 KIC 10905746 b
 KIC 11187332b
 KIC 11453591b
@@ -8926,18 +6591,20 @@ KIC 11550689b
 KIC 12557548b
 KIC 2718885b
 KIC 4862625b
+KIC 5522786b
 KIC 5951458b
 KIC 5955905b
 KIC 6185331 b
 KIC 6359893b
+KIC 7767559b
+KIC 8410697b
 KIC 8435766b
 KIC 8540376b
 KIC 8540376c
-KIL2016 CL2213
+KIC 9663113b
 KKH 21
 KL IRC2
 KL Nebula
-KLEINMANN-LOW NEB
 KMHK309n
 KMHK309s
 KMHK324e
@@ -8964,6 +6631,8 @@ KOI-13B
 KOI-72.X
 KORA
 KP 77
+KPS-1
+KPS-1b
 KSH R1
 KSN 2011a
 KSN 2011b
@@ -8971,11 +6640,13 @@ KSN 2011c
 KSN 2011d
 KSN 2012a
 KSN-2015a
+KSP-OT-201503a
 KSP-OT-201509a
 KW cloud
 KWO
 Kaffaljidhma
 Kaimana
+Kang
 Kangaroo Nebula
 Kapteyn Moving Group
 Kapteyn Star
@@ -9010,6 +6681,7 @@ Kinman Dwarf
 Kitalpha
 Kite
 Kiwi Shaped Cloud
+Kleinman-Low Nebula
 Kleinmann Star
 Kleinmann's Anon Star
 Kleinmann-Wright Object
@@ -9068,6 +6740,8 @@ L1415-IRS
 L1489 NE-SMM
 L1495A-S
 L1495N-A
+L1498-1
+L1498-2
 L1535 N-SMM
 L1551 IRS 5
 L1622-10A
@@ -9091,10 +6765,8 @@ LA I
 LA II
 LA III
 LA IV
-LAB1-ALMA3
 LABd05
 LAE 103027+052419
-LAMOST J004929.0+375045.4
 LAMOST-HVS1
 LAURA
 LBG-2377
@@ -9164,9 +6836,7 @@ LDN 1551 MC
 LDN 1551-2E
 LDN 1551-4W
 LDN 1599 I
-LDN 1599 I!
 LDN 1599 II
-LDN 1599 II!
 LDN 1616 IR Cluster
 LDN 1630N
 LDN 1641 Center
@@ -9328,6 +6998,10 @@ LRLWW
 LS 1 in Orion Bridge
 LS 370a
 LS 370b
+LS 3976 E
+LS 3976 W
+LS 4306 N
+LS 4306 S
 LS 484a
 LS 484b
 LS I +57 132A
@@ -9354,6 +7028,7 @@ LTBC 18B
 LTS J054427-692659
 LTT 9387B
 LUM Filament
+LV J1157+5638 sat
 LV J1217+4703
 LVT 151012
 LVT151012
@@ -9367,6 +7042,7 @@ La Superba
 Lac I
 Lacaille 8760
 Lacaille 9352
+Lacerta Cloud
 Lacerta I
 Lae 2/Tri II
 Laevens 1
@@ -9380,6 +7056,7 @@ Lagoon Nebula
 Lamost 1 Stream
 Lancaster SN
 Laniakea Supercluster
+Larawag
 Large Magellanic Cloud
 Large Molecule Heimat
 Latham 1
@@ -9431,6 +7108,7 @@ Lethe Stream
 Libertas
 Libra
 Lich
+Lilii Borea
 Liller 1 V1
 Liller's Object
 Liller's Var
@@ -9506,6 +7184,7 @@ Lower Sword
 Lower's Nebula
 Lowne 1
 Lowne 2
+Luhman 16
 Lup Cloud
 Lup Complex
 Lup I
@@ -9713,6 +7392,7 @@ M8E
 M8E-IR
 M96 Group
 MACHO 168.25201.11330
+MACS 1423-z7p64
 MACSJ0416 nebula A
 MACSJ0416 nebula B
 MADCASH J074238+652501-dw
@@ -9739,7 +7419,6 @@ MBM 53-55
 MBM 57-MBM 151
 MC 1A
 MC AC
-MCC331-90
 MCG +02-25-021 Group
 MCLD 123.5+24.9
 MCLD 123.5+24.9 CS-A
@@ -9778,45 +7457,6 @@ MNO
 MNUSNO 1866/10348
 MO Lup A
 MO Lup B
-MOA 2003-BLG-53b
-MOA 2007-BLG-192-L b
-MOA 2007-BLG-192-L c
-MOA 2007-BLG-197b
-MOA 2007-BLG-400-L b
-MOA 2007-BUL-197b
-MOA 2010-BLG-353Lb
-MOA 2011-BLG-293b
-MOA 2012-BLG-006b
-MOA 2012-BLG-505b
-MOA 2013-BLG-220Lb
-MOA 2013-BLG-605Lb
-MOA 2016-BLG-227b
-MOA-2007-BLG-192-L
-MOA-2007-BLG-192-L b
-MOA-2007-BLG-400-L
-MOA-2007-BLG-400-L b
-MOA-2008-BLG-310-L
-MOA-2008-BLG-310-L b
-MOA-2008-BLG-379Lb
-MOA-2009-232 b
-MOA-2009-BLG-266L
-MOA-2009-BLG-266Lb
-MOA-2009-BLG-319 b
-MOA-2009-BLG-387L
-MOA-2009-BLG-387Lb
-MOA-2009-BLG-411b
-MOA-2010-BLG-073L
-MOA-2010-BLG-073L b
-MOA-2010-BLG-328Lb
-MOA-2010-BLG-477L
-MOA-2010-BLG-477Lb
-MOA-2011-BLG-028Lb
-MOA-2011-BLG-104b
-MOA-2011-BLG-149b
-MOA-2011-BLG-262Lb
-MOA-2011-BLG-293L
-MOA-2011-BLG-293L b
-MOA-2011-BLG-322Lb
 MOAI 1
 MOFFAT CL
 MON NEB
@@ -9824,6 +7464,7 @@ MONOCEROS NEB
 MONOGEM SNR
 MONS OT J004240.69+405142.0
 MR 2251-178
+MRC 0052-241 Protocluster
 MRC 0156-252 Group
 MRC 0316-257 Protocluster
 MRC 0941-200 Group
@@ -9967,6 +7608,7 @@ Medusa Nebula
 Megrez
 Meissa
 Mekbuda
+Meleph
 Menkalinan
 Menkar
 Menkent
@@ -9975,6 +7617,7 @@ Menkib
 Merak
 Mercer 5
 Merga
+Meridiana
 Merope
 Merope Cloud
 Merope Dark Cloud
@@ -9983,6 +7626,7 @@ Merrill's star
 Mesarthim
 Meztli
 Miaplacidus
+Mic Cloud
 Mic Void
 Mice
 Mice Galaxy
@@ -9994,6 +7638,7 @@ Miller 1
 Milne 56
 Mimosa
 Min Footprint
+Minchir
 Minelauva
 Miniature Spiral
 Minicavity in Sgr A West
@@ -10020,6 +7665,7 @@ Moffat 1
 Moitinho 1
 Molecular Complex in NGC 3077
 Molecular Flare
+Molonglo Stream
 Mon Filament
 Mon I
 Mon II
@@ -10097,11 +7743,6 @@ N 160A-IR
 N dSph
 N lsb10
 N159 Blob in LMC
-N159W-N
-N159W-S
-N4631dw1
-N4631dw2
-N4631dw3
 N6946-BH1
 NA.v1.144
 NAN complex
@@ -10350,7 +7991,7 @@ NGC 2207 Group
 NGC 221 Group
 NGC 224 Group
 NGC 2244 Satellite Cluster
-NGC 2245 Stellar GROU[
+NGC 2245 Stellar Group
 NGC 2264 FIR
 NGC 2264 IR
 NGC 2264 IRS
@@ -10387,8 +8028,10 @@ NGC 2655 Group
 NGC 266 LBV 1
 NGC 2672 Group
 NGC 2682 Sand 364b
+NGC 2682 Sand 978b
 NGC 2682 YBP 1194b
 NGC 2682 YBP 1514b
+NGC 2682 YBP 401b
 NGC 2683 Group
 NGC 2768 Group
 NGC 2769 Group
@@ -10420,8 +8063,7 @@ NGC 2997 Group
 NGC 300 2010da
 NGC 300 Group
 NGC 300 OT2008-1
-NGC 300 SSS1
-NGC 300 SSS2
+NGC 300 ULX1
 NGC 300 X-1
 NGC 3023 Group
 NGC 3031 Group
@@ -10689,6 +8331,7 @@ NGC 5898 dE2
 NGC 5907 Group
 NGC 5907 ULX
 NGC 5907 ULX-1
+NGC 5907 ULX-2
 NGC 5920 Group
 NGC 5929 Group
 NGC 5930 Group
@@ -10821,6 +8464,7 @@ NGC 7715 Tail
 NGC 772 Group
 NGC 7771 Group
 NGC 7777 Group
+NGC 7793 X-1
 NGC 7819 Group
 NGC 784 Group
 NGC 80 Group
@@ -10831,8 +8475,12 @@ NGC 925 Group
 NGC 972 Group
 NGC 988 Group
 NGC4656-OT
+NGC5457-209.1+311.8
+NGC5457-219.4+308.7
 NGP
 NGPR
+NGTS-1
+NGTS-1b
 NHDF
 NHG2015 Source 1
 NHG2015 Source 2
@@ -10866,6 +8514,7 @@ NW449 in M 3
 NW858 in M 3
 NY Vir b
 NaSt1
+Nahn
 Naos
 Napoleon HAT
 Napoleon's Hat
@@ -10876,6 +8525,7 @@ Necklace
 Necklace Nebula
 Neighbour of UX Vir
 Nekkar
+Nembus
 Nessie Nebula
 Nest of Shells
 New Var in Crux
@@ -10973,9 +8623,9 @@ OGLE 2012-BLG-455b
 OGLE 2013-BLG-102b
 OGLE 2015-BLG-51b
 OGLE 2015-BLG-954b
+OGLE 2016-BLG-0693LB
 OGLE 2016-BLG-596b
 OGLE GC-RCB-2
-OGLE GD-RRLYR-0035
 OGLE LMC-SC2-170259
 OGLE MM3 I 58214
 OGLE SMC-RRLYR-122432
@@ -11036,11 +8686,13 @@ OGLE-2014-NOVA-02
 OGLE-2014-NOVA-03
 OGLE-2015-BLG-966Lb
 OGLE-2016-BLG-1195b
+OGLE-BLAP-001
+OGLE-BLAP-009
+OGLE-BLAP-011
+OGLE-BLAP-014
 OGLE-BLG182.1.162852
 OGLE-CL SMC 33n
 OGLE-CL SMC 33s
-OGLE-MUS101.2.60905
-OGLE-MUS101.2.82764
 OGLE-SMC-04
 OGLE-TR 10b
 OGLE-TR 111b
@@ -11061,6 +8713,7 @@ OGLE-TR-56b
 OGLE2-TR L9b
 OGLE2-TR-L9
 OGLE2-TR-L9b
+OH 0.19+0.04A
 OH 12.3+0.1A
 OH 231.8
 OHC-E
@@ -11099,6 +8752,8 @@ OMC1 Ridge
 OMS2016 S1
 OMS2016 S2
 ONC
+ONC Flank N
+ONC Flank S
 OOS in Orion Nebula
 OPH SUPERCL
 OPHIUCHUS SUPERCL
@@ -11176,6 +8831,7 @@ Octans Association
 Octans-near
 Of 23 Nebula
 Ogma
+Okab
 Okroy Cloud
 Ombo SN
 Oph 1
@@ -11195,7 +8851,6 @@ Oph J1622-2405B
 Oph J162225-240515
 Oph J1623-2338
 Oph J1623-2402
-Oph J162651-242110
 Oph Molecular Cloud
 Oph N9
 Oph Region
@@ -11324,6 +8979,7 @@ Orion Region
 Orion Ridge
 Orion S
 Orion SFBO
+Orion Source I
 Orion South
 Orion Southern Filament
 Orion Spiral Arm
@@ -11408,7 +9064,6 @@ PB-in2
 PB-in7
 PBZ 1
 PC 1643+4631A-2377
-PC 217.96+32.3
 PCG 11
 PD 1
 PD 2
@@ -11439,7 +9094,6 @@ PG 7
 PGC 69291 Star
 PH2b
 PHz G95.5-61.6
-PIPE Nebula
 PISCES PERSEUS SUPERCL
 PISCES SUPERCL
 PISCES-PERSEUS SUPERCL
@@ -11759,6 +9413,7 @@ PS 15dmf
 PS 15dmp
 PS 15dnf
 PS 15dng
+PS 15dom
 PS 15dox
 PS 15dpa
 PS 15dpq
@@ -11814,13 +9469,17 @@ PS 16axi
 PS 16axn
 PS 16ayd
 PS 16ayh
+PS 16bau
 PS 16bbe
+PS 16bbl
 PS 16bby
+PS 16bdu
 PS 16bhe
 PS 16bho
 PS 16bid
 PS 16bih
 PS 16bio
+PS 16biq
 PS 16bis
 PS 16bjc
 PS 16bjj
@@ -11828,10 +9487,55 @@ PS 16bka
 PS 16bkg
 PS 16bkm
 PS 16bku
+PS 16ble
+PS 16bnq
 PS 16bnr
 PS 16bnz
 PS 16bod
+PS 16bot
+PS 16bqu
+PS 16bqz
+PS 16bre
+PS 16brq
+PS 16bsw
+PS 16bsx
+PS 16bum
+PS 16cbu
+PS 16ccj
+PS 16ccm
+PS 16cct
+PS 16ceg
+PS 16cfh
+PS 16cfl
 PS 16cgx
+PS 16che
+PS 16chs
+PS 16cow
+PS 16cqa
+PS 16cqb
+PS 16cqc
+PS 16cro
+PS 16cvb
+PS 16cvc
+PS 16cvv
+PS 16dbn
+PS 16dcy
+PS 16ddb
+PS 16dgw
+PS 16dgy
+PS 16die
+PS 16dlr
+PS 16dnl
+PS 16dnm
+PS 16dnn
+PS 16dno
+PS 16dnp
+PS 16dnq
+PS 16dnv
+PS 16dog
+PS 16doh
+PS 16dpm
+PS 16dqv
 PS 16dtm
 PS 16el
 PS 16ez
@@ -11855,10 +9559,36 @@ PS 16yd
 PS 16yr
 PS 16yx
 PS 16zf
+PS 17em
+PS 17enk
+PS 17eox
+PS 17eqv
+PS 17erd
+PS 17ewn
+PS 17fcg
+PS 17fcj
+PS 17fek
+PS 17fig
+PS 17fih
+PS 17fim
+PS 17fio
+PS 17fiq
+PS 17fjk
+PS 17fjs
+PS 17fqz
+PS 17geo
 PS 4452-1347
 PS J1934.5+1845
 PS J1938.6+1722
 PS PS16agp
+PS1 300105
+PS1 350316
+PS1 370566
+PS1 380046
+PS1 420100
+PS1 490007
+PS1 530086
+PS1 560033
 PS15ckh
 PSC CL
 PSC PER SUPERCL
@@ -11888,18 +9618,8 @@ PSR M30 A
 PSR M30 B
 PSR M30A
 PSR M30B
-PSZ2 G093.41-16.26
-PSZ2 G126.36-19.11
 PTFO 8-8695
 PTFO 8-8695b
-PTSS 16hs
-PTSS-16A
-PTSS-16brc
-PTSS-16bwt
-PTSS-16cfd
-PTSS-16cfg
-PTSS-16ckr
-PTSS-17uyml
 PUP I assoc
 PUP-CMA ASSOC
 PV 1
@@ -11925,6 +9645,7 @@ Pal 1-I
 Pal 1-II
 Pal 1-III
 Pal 1-IV
+Palca Stream
 Paley 1
 Paley 3
 Paloma
@@ -11982,6 +9703,7 @@ Peg Void
 Peg dSph
 Peg-Per Region
 PegDIG
+Pegasus Cloud
 Pegasus Cluster
 Pegasus DIG
 Pegasus Dwarf
@@ -12008,7 +9730,6 @@ Per B1-E
 Per Cloud
 Per Cluster
 Per Complex
-Per Galaxy
 Per Globule
 Per I Cloud
 Per I Dwarf Galaxy
@@ -12082,6 +9803,7 @@ Phoenix Group
 Phoenix II
 Phoenix Stream
 Phoenix Supercluster
+Piautos
 Pic A
 Pic A East
 Pic A W
@@ -12093,6 +9815,8 @@ Pictor A West
 Pictor II
 Pictoris I
 Pinwheel
+Pipe Nebula
+Pipirima
 Pisces Cloud
 Pisces Cluster
 Pisces Dwarf Galaxy
@@ -12224,6 +9948,7 @@ RHO OPH MCLD
 RKA 1
 RKA 2
 RKK-P1
+RLC16Neb
 RMC
 RMC 127 Cluster
 RMC 128 Cluster
@@ -12266,6 +9991,7 @@ RX J0054.0-2823 Arc
 RX J0529.4+0041A
 RX J0529.4+0041B
 RX J0849+4452
+RX J0910 Supercluster
 RX J0910+5422
 RX J0919.4-7738N
 RX J0919.4-7738S
@@ -12279,6 +10005,7 @@ RX J1627.6-2404W
 RX J1832-33
 RX J2353-0-3852
 RXC J2127-1209
+RXJ0027.6+2616 Group
 RXJ1347-SW
 RZ01 2109
 Rabbit
@@ -12291,6 +10018,7 @@ Rasalas
 Rasalgethi
 Rasalhague
 Rastaban
+Ravi Stream
 Re 50 IRS
 Red Ellipse
 Red Rectangle
@@ -12314,6 +10042,7 @@ Reticulum Dwarf Galaxy
 Reticulum II
 Reticulum III
 Reticulum System
+Revati
 Revolver
 Ribbon in Sgr A West
 Riddle DC J1859.2+0050
@@ -12344,6 +10073,7 @@ Ring Nebula
 Ring Tail
 Ringtail Galaxy
 Rob1
+Robert's Quartet
 Rocinante
 Romano Star
 Romano's Star
@@ -12451,7 +10181,6 @@ SDP 17b
 SDSS J0814+5105
 SDSS J0821+5608
 SDSS J0912+0216
-SDSS J09194559+3343124
 SDSS J1000+5730 Dwarf G
 SDSS J1036+1212
 SDSS J1058+2843
@@ -12488,6 +10217,7 @@ SFR 2 Cyg
 SGP
 SGP-8884
 SGR 0755-2933
+SGR 1617-5103
 SGR B2 HII B1
 SGR CL
 SGS 1
@@ -12552,7 +10282,6 @@ SH 2-252A Cluster
 SH 2-252C IR Cluster
 SH 2-252E IR Cluster
 SH 2-255 I
-SH 2-255 I!
 SH 2-255 II
 SH 2-255 III
 SH 2-255 IR
@@ -12581,11 +10310,6 @@ SH 26235 IR Cluster
 SH2
 SHAPLEY SUPERCL
 SHAPLEY-CENTAURUS CL
-SHOOT14ef
-SHOOT14gp
-SHOOT14ha
-SHOOT14jr
-SHOOT14or
 SHV A12874
 SHV B96067
 SHV F4488
@@ -12599,7 +10323,6 @@ SM 1N
 SM 2
 SM Star
 SM1 in rho Oph Cloud
-SMA 1
 SMAC ACO 0548SW
 SMAC ACO 0569 S
 SMAC ACO 0569N
@@ -13029,24 +10752,19 @@ SMM J221806.77+001245.7
 SMM J22471-0206
 SMM J22472-0206
 SMOKING GUN
-SMT J00570506-362623
-SMT J013533283-5757506
-SMT J03054854-28503700
-SMT J03253351-5344190
-SMT J07350518-6907531
-SMT J10310056-3658262
-SMT J13254308-2932269
-SMT J13455799-3532544
-SMT J13494831-0658174
-SMT J13545988-2820020
-SMT J14323134-1339275
-SMT J21413915-5643445
+SMT16aec
+SMT16akv
+SMT16alz
+SMT16atf
+SMT16bc
+SMT17swb
 SN 2011X1
 SN Chapel
 SN EVANS
 SN EVANS 1983
 SN MRK 297A
 SN MRK 297B
+SN Nebra
 SN Refsdal
 SNLS-04D2jz
 SNR 1987A
@@ -13082,6 +10800,7 @@ SO210038
 SO210457
 SO210868
 SO430130
+SONYC ChaI-1
 SPLIT ARC IN CL 0024+1654
 SPM 57603977
 SR 12 AB c
@@ -13093,6 +10812,7 @@ SSA 22 Protocluster
 SSA22 Protocluster
 SSA22-HCM1
 SSC in NGC 6946
+SSC2017 M10-VLA1
 SSM 1
 SSS 107
 SSS 108
@@ -13125,6 +10845,7 @@ SZ 108A
 SZ 108B
 Sa 187 IRS
 Sabik
+Saclateni
 Sacred Mushroom
 Sadachbia
 Sadalbari
@@ -13254,7 +10975,6 @@ Scutum-Centaurus Arm
 Scutum-Crux Arm
 Seashell
 Seashell Galaxy
-Secunda Giedi
 Secunda Hyadum
 Segin
 Seginus
@@ -13352,6 +11072,7 @@ Sgr 0526-22
 Sgr 0526-66
 Sgr 0530-66
 Sgr 0952+69
+Sgr 1550-5418
 Sgr 1627-41
 Sgr 1745-29
 Sgr 1801-23
@@ -13462,6 +11183,7 @@ Sgr A West Bar Overlay
 Sgr A West Circumnuclear Disk
 Sgr A West Eastern Arm
 Sgr A West Eastern Bridge
+Sgr A West Filament
 Sgr A West Finger
 Sgr A West Microcavity
 Sgr A West Minicavity
@@ -13741,6 +11463,7 @@ Straight Filaments
 Strolger SN
 Struve's nebula
 Styx Stream
+Sualocin
 Subaru Deep Field
 Subaru Deep Field NGP
 Subaru XMM-Newton Deep Field East
@@ -13764,6 +11487,7 @@ Surounding Interstellar Cloud
 Suzaku J0105-72
 Svalocin
 Swan Nebula
+Swift J1644+57
 Syrma
 Sz 46N
 Sz 46NW
@@ -13844,8 +11568,11 @@ TR1 in NGC 2158
 TS 01
 TSS J003927.3+405109
 TSS J004054.4+405350
+TSS J004150.4+404222
 TSS J004242.3+410846
+TSS J004420.7+412311
 TSS J022216.4+412259.9
+TSS J022216.4+412260
 TSUBOI Shell
 TT 12
 TUC SUPERCL
@@ -13862,6 +11589,9 @@ TXE SMC7.8s
 TXFS 2226-1821
 TXS J2355-0002
 TYC 2534-698-1b
+TYC 3105-00152-1b
+TYC 3318-01333-1b
+TYC 3663-01966-1b
 TYC 3667-1280-1b
 TYC 9486-927-1 b
 TYC 9486-927-1b
@@ -13870,6 +11600,8 @@ Tadmor
 Tadpole Galaxy
 Taffy System
 Taipei star
+Taiyangshou
+Taiyi
 Taleban
 Talitha
 Tamura 8
@@ -13881,6 +11613,7 @@ Tapia 629 IRS 5
 Tarantula
 Tarantula Nebula
 Tarazed
+Tarf
 Tasmanian Devil Nebula
 Tau 1
 Tau A
@@ -13925,7 +11658,8 @@ Taurus Region
 Taurus-Auriga
 Taygeta
 Taygete
-Teacup
+Teacup AGN
+Teacup Nebula
 Teegarden's star
 Tegmine
 Tejat
@@ -13935,6 +11669,7 @@ Tel-Pav-Ind
 Telephone Nebula
 Telescopium Cluster
 Telescopium Group
+Terebellum
 Terzan 5 S2
 Teutsch DC J0210.1+5841
 Teutsch DC J0445.5+5115
@@ -14007,6 +11742,9 @@ Theemin
 Thestias
 Thuban
 Thumbprint Nebula
+Tiaki
+Tianguan
+Tianyi
 Tip in Sgr A West
 Titawin
 Toby Jug Nebula
@@ -14036,7 +11774,6 @@ TrES-4A
 TrES-4B
 TrES-4b
 TrES-5 Parent Star
-TrES-5 b
 TrES-5b
 TrES-Her0-07621
 Transit-3
@@ -14075,6 +11812,7 @@ Tucana HI Cloud
 Tucana Horologium Association
 Tucana II
 Tucana III
+Tucana III Stream
 Tucana IV
 Tucana Moving Group
 Tucana V
@@ -14082,8 +11820,10 @@ Tucana dSph
 Tucana-Horologium
 Tucanae Association
 Tucanae Moving Group
+Turbio Stream
 Tureis
 Turner-Welch Object
+Turranburra Stream
 Twin Jet Nebula
 Twin Quasar
 Tyc 1422-614-1b
@@ -14113,6 +11853,7 @@ UCD6
 UCDm
 UCL
 UDF
+UDS10275
 UDS10Wil
 UGC 11283 companion
 UGC 11283c
@@ -14137,9 +11878,11 @@ UGC 842 Group
 UGC 8760 Group
 UGC 9240 Group
 UGCA 127 sat
+UGT2018 EGS4-24985
 UJ3690P-114
 UK Schmidt 210-6A
-UKFS0030+0025
+UKIRT 2017-BLG-001
+UKIRT 2017-BLG-001b
 UKS 1
 UKS 2
 UKS Ce-1
@@ -14192,6 +11935,7 @@ USCA
 USS 1558-003 Protocluster
 USco
 UScoCTIO 108B
+UV Aur B
 UX Tau A
 UX Tau B
 UX Tau C
@@ -14207,8 +11951,10 @@ UZ Tau E
 UZ Tau W
 UZ Tau W A
 UZ Tau W B
+Ukdah
 Umbrella Galaxy
 Unukalhai
+Unurgunite
 Upper Cen-Lup
 Upper Centaurus Lupus
 Upper Centaurus-Lupus
@@ -14277,7 +12023,6 @@ VDB0
 VEL SUPERCL
 VELA MOL RIDGE
 VELA SUPERCL
-VHS J1256-1257b
 VHVC
 VI Cyg
 VI Cyg 1
@@ -14354,9 +12099,9 @@ VLBI 1830-211
 VLSB-A
 VLSB-B
 VLSB-C
+VLSB-D
 VLT J182100.4-161213
 VMR
-VPHAS J110358.0-583709.2
 VS 0329+1250
 VS J0329+1250
 VUL MOL CLOUD
@@ -14582,7 +12327,6 @@ W3 IRS 5
 W31 (1)
 W31 (2)
 W43 Main3
-W49nr1
 W51 GMC
 W51 IR Dark Cloud
 W63 X-1
@@ -14594,7 +12338,6 @@ WBB N79-299B
 WBB1
 WBB2
 WD 0137-349B
-WD 0346+246
 WD 0806-661B
 WD 0837+185
 WD 0840+205
@@ -14649,21 +12392,11 @@ WISEA J031614.34-643731.4
 WISEA J033413.65-400825.4
 WISEA J033513.88-445943.8
 WISEA J041605.82-435514.6
-WISEA J042504.27-533158.2
 WISEA J042840.41-375619.3
 WISEA J055618.74-435146.0
 WISEA J060408.61-481725.1
-WISEA J110352.22-535700.7
 WISEA J144357.20-390840.0
 WISEA J225815.00-364434.3
-WISEP J1828+2650
-WISP302
-WISP303
-WISP326
-WISP368
-WISP368b
-WISP371
-WISP379
 WK X-2
 WK X-Ray 1
 WK X-Ray 2
@@ -14683,6 +12416,8 @@ WPV
 WR 147 NIR
 WR 38-WR 38a Cluster
 WR 38/WR 38a Cluster
+WS 40 A
+WS 40 B
 WSR 1
 WX Ori/c
 WZ Sgr Cluster
@@ -14694,6 +12429,7 @@ Walborn 1
 Walborn 2
 Wall
 Walnut Nebula
+Wambelong Stream
 Wasat
 Water Fountain Nebula
 Water Lily Nebula
@@ -14714,6 +12450,7 @@ Whirlpool Galaxy
 Whiting 1
 Wild Duck Cluster
 Wild's Triplet
+Willka Yaku Stream
 Willman 1
 Willman 1 dSph
 Willman I
@@ -14727,10 +12464,10 @@ Wolszczan's Pulsar
 Wombat I
 Wool LMC I-74
 Worthey 1
-Wray
 Wray 15-751 Cluster
 Wright Cloud
 Wright's Cloud
+Wurren
 X Bootes Field
 X Comae Galaxy
 X Galaxy in Fornax Cluster
@@ -14789,12 +12526,14 @@ XTE SMC46
 XTE SMC95
 XY Per A
 XY Per B
-XZ Tau B
+Xamidimura
+Xuange
 Y10048
 Y10056
 Y99025
 YBP1194b
 YBP1514b
+YBP401b
 Yed Posterior
 Yed Prior
 Yildun
@@ -14819,16 +12558,19 @@ ZZ Tau IRS
 Zaniah
 Zaurak
 Zavijava
+Zhang
 Zheng-4008
 Zibal
 Zo 1
 Zosma
 Zubenelgenubi
+Zubenelhakrabi
 Zubeneschamali
 Zw II 33 B
 ZwCl 1710.4+6401 B
 Zwicky SN
 Zwicky's Flare
+Zwicky's Nonet
 Zwicky's Triplet
 a Car Cluster
 alf Per Cluster
@@ -14892,6 +12634,7 @@ h4636N
 h4636S
 hh 6-10
 iot Cas AB
+kait-17df
 kap Cru Cluster
 kappa Crucis Cluster
 khi Oph A Cloud
@@ -15181,134 +12924,3 @@ Vela
 Virgo
 Volans
 Vulpecula
-And
-Ant
-Aps
-Aqr
-Aql
-Ara
-Ari
-Aur
-Boo
-Cae
-Cam
-Cnc
-CVn
-CMa
-CMi
-Cap
-Car
-Cas
-Cen
-Cep
-Cet
-Cha
-Cir
-Col
-Com
-CrA
-CrB
-Crv
-Crt
-Cru
-Cyg
-Del
-Dor
-Dra
-Equ
-Eri
-For
-Gem
-Gru
-Her
-Hor
-Hya
-Hyi
-Ind
-Lac
-Leo
-LMi
-Lep
-Lib
-Lup
-Lyn
-Lyr
-Men
-Mic
-Mon
-Mus
-Nor
-Oct
-Oph
-Ori
-Pav
-Peg
-Per
-Phe
-Pic
-Ppx
-Psc
-PsA
-Pup
-Pyx
-Ret
-Sge
-Sgr
-Sco
-Scl
-Sct
-Ser
-Sex
-Tau
-Tel
-Tri
-TrA
-Tuc
-UMa
-UMi
-Vel
-Vir
-Vol
-Vul
-alf
-alfa
-alp
-alpha
-bet
-beta
-gam
-gamma
-del
-delta
-eps
-epsilon
-zet
-zeta
-eta
-tet
-theta
-iot
-iota
-kap
-kappa
-ksi
-lam
-lambda
-mu
-nu
-xi
-omi
-omicron
-pi
-rho
-sig
-sigma
-tau
-ups
-upsilon
-phi
-chi
-khi
-psi
-ome
-omega
