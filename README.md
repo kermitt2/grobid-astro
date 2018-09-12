@@ -10,7 +10,7 @@ The goals of this GROBID module are:
 
 As the other GROBID models, the module relies only on machine learning and uses linear CRF. 
 
-* Astronomical object recognition in a text segment
+* Example: Astronomical object recognition in a text segment with link to Simbad entry
 ![grobid-astro](doc/screen01.png)
 
 ## Install, build, run
