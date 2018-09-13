@@ -3,17 +3,17 @@ package org.grobid.core.lexicon;
 import org.grobid.core.analyzers.AstroAnalyzer;
 import org.grobid.core.exceptions.GrobidException;
 import org.grobid.core.exceptions.GrobidResourceException;
-import org.grobid.core.utilities.GrobidProperties;
-import org.grobid.core.utilities.Pair;
-import org.grobid.core.utilities.OffsetPosition;
-import org.grobid.core.lexicon.FastMatcher;
 import org.grobid.core.layout.LayoutToken;
-
+import org.grobid.core.utilities.GrobidProperties;
+import org.grobid.core.utilities.OffsetPosition;
+import org.grobid.core.utilities.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Class for managing the lexical resources for astronomical entities.
@@ -70,7 +70,7 @@ public class AstroLexicon {
         BufferedReader dis = null;
         // read the lexicon file
         try {
-            astroPattern = new FastMatcher(file, AstroAnalyzer.getInstance(), true);
+            astroPattern = new FastMatcher(file, AstroAnalyzer.getInstance());
 
             dis = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF8"));
             String l = null;

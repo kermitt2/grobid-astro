@@ -1,20 +1,16 @@
 package org.grobid.service;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.NoSuchElementException;
+import org.apache.commons.lang3.StringUtils;
+import org.grobid.core.data.AstroEntity;
+import org.grobid.core.engines.AstroParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import org.grobid.core.data.AstroEntity;
-import org.grobid.core.engines.AstroParser;
-import org.grobid.core.factory.GrobidPoolingFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.apache.commons.lang3.StringUtils;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * 
@@ -23,15 +19,12 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class AstroProcessString {
 
-	/**
-	 * The class Logger.
-	 */
 	private static final Logger LOGGER = LoggerFactory.getLogger(AstroProcessString.class);
 
 	/**
 	 * Parse a raw date and return the corresponding normalized date.
 	 * 
-	 * @param the
+	 * @param text
 	 *            raw date string
 	 * @return a response object containing the structured xml representation of
 	 *         the date
