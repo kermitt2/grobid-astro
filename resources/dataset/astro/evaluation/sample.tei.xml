@@ -5,9 +5,9 @@
 	</teiHeader>
 	<text xml:lang="en">
 
-		<p>Based on observations collected with <rs type="astro-object">ATCA</rs> under ID <rs type="astro-object">C2718</rs>, and at VLA under ID 13B-017.</p>
+		<p>Based on observations collected with ATCA under <rs type="astro-object">ID C2718</rs>, and at VLA under <rs type="astro-object">ID 13B-017</rs>.</p>
 
-		<p>GRB hosts of our sample have an extent smaller than about 1 arcsec; the exceptions are <rs type="astro-object">GRBs 020819B</rs>, <rs type="astro-object">050219</rs>, <rs type="astro-object">080319C</rs>, and <rs type="astro-object">110918A</rs> (see below). With <rs type="astro-object">ATCA</rs>, we observed our sample sources (project <rs type="astro-object">C2718</rs>; PI: J. Greiner) with the CFB 1M-0.5K mode in the 6 km configuration, providing 2048 channels per 2048 MHz continuum IF (1 MHz resolution) and 2048 channels per 1 MHz zoom band (0.5 kHz resolution). Most sources were observed over the full range of hour angles to ensure good uv-plane coverage.</p>
+		<p>GRB hosts of our sample have an extent smaller than about 1 arcsec; the exceptions are <rs type="astro-object">GRBs 020819B</rs>, <rs type="astro-object">050219</rs>, <rs type="astro-object">080319C</rs>, and <rs type="astro-object">110918A</rs> (see below). With ATCA, we observed our sample sources (project C2718; PI: J. Greiner) with the CFB 1M-0.5K mode in the 6 km configuration, providing 2048 channels per 2048 MHz continuum IF (1 MHz resolution) and 2048 channels per 1 MHz zoom band (0.5 kHz resolution). Most sources were observed over the full range of hour angles to ensure good uv-plane coverage.</p>
 
 		<p>We detect only one of our targets, the nearest one, namely <rs type="astro-object">GRB 020819B</rs> with a measured flux F(3 GHz) = 31 ± 8 μJy. The peak of the radio emission is at RA (2000.0) = 23:27:19.50, Dec (2000) = +06:15:55.8 with an error of 0 . 3.</p>
 

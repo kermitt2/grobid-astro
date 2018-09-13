@@ -1,8 +1,6 @@
 # grobid-astro
 
-<!--[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html) -->
-
-__Work in progress.__
+[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 The goals of this GROBID module are: 
 
@@ -11,6 +9,9 @@ The goals of this GROBID module are:
 2. to disambiguate the mention with respect to the astronomical knowledge base SIMBAD. 
 
 As the other GROBID models, the module relies only on machine learning and uses linear CRF. 
+
+* Example: Astronomical object recognition in a text segment with link to Simbad entry
+![grobid-astro](doc/screen01.png)
 
 ## Install, build, run
 
@@ -35,7 +36,7 @@ Run some test:
 
 ## Start the service
 
-> mvn -Dmaven.test.skip=true jetty:run-war
+> mvn -DskipTests jetty:run-war
 
 Demo/console web app is then accessible at ```http://localhost:8080```
 
