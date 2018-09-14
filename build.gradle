@@ -118,16 +118,16 @@ ext.getArg = { propName, defaultVal ->
 }
 
 // Evaluation
-// run like: gradle evalAstro -gH /path/to/grobid-home
-task evalAstro(dependsOn: 'classes', type: JavaExec, group: 'training') {
+// run like: gradle eval_astro -gH /path/to/grobid-home
+task eval_astro(dependsOn: 'classes', type: JavaExec, group: 'training') {
     main = 'org.grobid.trainer.AstroTrainerRunner'
     classpath = sourceSets.main.runtimeClasspath
     args 1, 'astro', '-gH', getArg('gH', '../grobid-home')
     jvmArgs '-Xmx3072m'
 }
 
-// run like: gradle evalAstroSplit -gH /path/to/grobid-home
-task evalAstroSplit(dependsOn: 'classes', type: JavaExec, group: 'training') {
+// run like: gradle eval_astro_split -gH /path/to/grobid-home
+task eval_astro_split(dependsOn: 'classes', type: JavaExec, group: 'training') {
     main = 'org.grobid.trainer.AstroTrainerRunner'
     classpath = sourceSets.main.runtimeClasspath
     args 2, 'astro', '-gH', getArg('gH', '../../grobid-home'), '-s', getArg('s', '0.8')
@@ -136,7 +136,7 @@ task evalAstroSplit(dependsOn: 'classes', type: JavaExec, group: 'training') {
 
 // One jar configuration
 
-/*import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 
 task mainJar(type: ShadowJar, group: 'test') {
     zip64 true
@@ -164,12 +164,12 @@ jar {
 artifacts {
     archives shadowJar
     archives mainJar
-}*/
+}
 
-/*tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:deprecation"
     options.compilerArgs << "-Xlint:unchecked"
-}*/
+}
 
 
 
