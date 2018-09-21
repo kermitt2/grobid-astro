@@ -1,23 +1,19 @@
 package org.grobid.service;
 
-import com.sun.jersey.multipart.FormDataParam;
-import com.sun.jersey.spi.resource.Singleton;
-
-import org.grobid.core.main.LibraryLoader;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.grobid.core.lexicon.AstroLexicon;
-import org.grobid.core.utilities.GrobidProperties;
-import org.grobid.core.utilities.AstroProperties;
 import org.grobid.core.main.GrobidHomeFinder;
-
+import org.grobid.core.main.LibraryLoader;
+import org.grobid.core.utilities.AstroProperties;
+import org.grobid.core.utilities.GrobidProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 import java.io.InputStream;
-
 import java.util.Arrays;
 
 /**
@@ -50,8 +46,7 @@ public class AstroRestService implements AstroPaths {
             LibraryLoader.load();
             AstroLexicon.getInstance();
         } catch (final Exception exp) {
-            System.err.println("GROBID astro initialisation failed: " + exp);
-            exp.printStackTrace();
+            LOGGER.error("GROBID astro initialisation failed. ", exp);
         }
 
         LOGGER.info("Init of Servlet AstroRestService finished.");

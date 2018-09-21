@@ -215,7 +215,7 @@ public class AstroTrainer extends AbstractTrainer {
                     }
 
                     for (Block block : blocks) {
-                        List<Pair<String, String>> labeled = new ArrayList<Pair<String, String>>();
+                        List<Pair<String, String>> labeled = new ArrayList<>();
                         String previousLabel = "";
                         int startBlockToken = block.getStartToken();
                         int endBlockToken = block.getEndToken();
@@ -260,7 +260,7 @@ public class AstroTrainer extends AbstractTrainer {
                                     }
                                 }
                                 Pair<String, String> thePair =
-                                        new Pair<String, String>(token.getText(), theLabel);
+                                        new Pair<>(token.getText(), theLabel);
 
                                 // we filter out entity ending with a punctuation mark
                                 if (theLabel.equals("<other>") && previousLabel.equals("<object>")) {
@@ -270,7 +270,7 @@ public class AstroTrainer extends AbstractTrainer {
                                     if (theLastToken.equals(";") ||
                                             theLastToken.equals(".") ||
                                             theLastToken.equals(",")) {
-                                        theLastPair = new Pair(theLastToken, "<other>");
+                                        theLastPair = new Pair<>(theLastToken, "<other>");
                                         labeled.set(labeled.size() - 1, theLastPair);
                                     }
                                 }
@@ -382,7 +382,7 @@ public class AstroTrainer extends AbstractTrainer {
                             if (theLastToken.equals(";") ||
                                     theLastToken.equals(".") ||
                                     theLastToken.equals(",")) {
-                                theLastPair = new Pair(theLastToken, "<other>");
+                                theLastPair = new Pair<>(theLastToken, "<other>");
                                 labeled.set(labeled.size() - 1, theLastPair);
                             }
                         }
