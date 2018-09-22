@@ -98,7 +98,7 @@ configurations.all {
 gretty {
     //httpPort = 8081
     contextPath = '/'
-//    servletContainer = "jetty9.4"
+    servletContainer = "jetty9.4"
 }
 
 // Training configuration
@@ -167,7 +167,7 @@ jar {
 
 artifacts {
     archives shadowJar
-    archives mainJar
+//    archives mainJar
 }
 
 tasks.withType(JavaCompile) {

@@ -36,9 +36,9 @@ Run some test:
 
 ## Start the service
 
-> ./gradlew runApp
+> ./gradlew appRun
 
-Demo/console web app is then accessible at ```http://localhost:8080```
+Demo/console web app is then accessible at ```http://localhost:8080```. Remember to close it by pressing a button and not via ctrl+c or the java process won't be killed. 
 
 Using ```curl``` POST/GET requests:
 
