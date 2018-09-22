@@ -38,6 +38,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.apache.commons.lang3.StringUtils.*;
 import static org.grobid.core.document.xml.XmlBuilderUtils.teiElement;
 
@@ -392,7 +393,7 @@ public class AstroParser extends AbstractParser {
         if (root != null) {
             //System.out.println(XmlBuilderUtils.toXml(root));
             try {
-                FileUtils.writeStringToFile(new File(pathTEI), XmlBuilderUtils.toXml(root));
+                FileUtils.writeStringToFile(new File(pathTEI), XmlBuilderUtils.toXml(root), UTF_8);
             } catch (IOException e) {
                 throw new GrobidException("Cannot create training data because output file can not be accessed: " + pathTEI);
             }
@@ -530,7 +531,7 @@ public class AstroParser extends AbstractParser {
         }
 
         String teiXML = teiDoc.getTei();
-		FileUtils.writeStringToFile(new File(file.getPath()+".tei.xml"), teiXML);
+		FileUtils.writeStringToFile(new File(file.getPath()+".tei.xml"), teiXML, UTF_8);
 
         // we parse this TEI string similarly as for createTrainingXML
 

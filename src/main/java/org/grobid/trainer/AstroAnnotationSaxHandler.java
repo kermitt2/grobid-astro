@@ -60,7 +60,7 @@ public class AstroAnnotationSaxHandler extends DefaultHandler {
                	writeData(qName);
 			} else if (qName.equals("p") || qName.equals("paragraph")) {
                 // let's consider a new CRF input per paragraph too
-                labeled.add(new Pair("\n", null));
+                labeled.add(new Pair<>("\n", null));
             }
         } catch (Exception e) {
 //		    e.printStackTrace();
@@ -146,19 +146,19 @@ public class AstroAnnotationSaxHandler extends DefaultHandler {
                     continue;
 
                 if (tok.equals("+L+")) {
-                    labeled.add(new Pair("@newline", null));
+                    labeled.add(new Pair<>("@newline", null));
                 } else if (tok.equals("+PAGE+")) {
                     // page break should be a distinct feature
-                    labeled.add(new Pair("@newpage", null));
+                    labeled.add(new Pair<>("@newpage", null));
                 } else {
                     String content = tok;
                     int i = 0;
                     if (content.length() > 0) {
                         if (begin && (!currentTag.equals("<other>")) ) {
-                            labeled.add(new Pair(content, "I-" + currentTag));
+                            labeled.add(new Pair<>(content, "I-" + currentTag));
                             begin = false;
                         } else {
-                            labeled.add(new Pair(content, currentTag));
+                            labeled.add(new Pair<>(content, currentTag));
                         }
                     }
                 }

@@ -19,7 +19,7 @@ var grobid = (function ($) {
     }
 
     function setBaseUrl(ext) {
-        var baseUrl = defineBaseURL(ext);
+        var baseUrl = defineBaseURL('service' + '/' + ext);
         $('#gbdForm').attr('action', baseUrl);
     }
 
@@ -121,7 +121,7 @@ var grobid = (function ($) {
         if (!message)
             message = "";
         message += " - The PDF document cannot be annotated. Please check the server logs.";
-        $('#infoResult').html("<font color='red'>Error encountered while requesting the server.<br/>"+message+"</font>");
+        $('#infoResult').html("<font color='red'>Error encountered while requesting the server.<br/>" + message + "</font>");
         responseJson = null;
         return true;
     }
@@ -135,7 +135,7 @@ var grobid = (function ($) {
         $('#requestResult').html('');
 
         var selected = $('#selectedService option:selected').attr('value');
-        if (selected == 'processAstroText') {
+        if (selected.endsWith('processAstroText')) {
             var urlLocal = $('#gbdForm').attr('action');
             {
                 $.ajax({
@@ -149,7 +149,7 @@ var grobid = (function ($) {
                 });
             }
         }
-        else if (selected == 'annotateAstroPDF') {
+        else if (selected.endsWith('annotateAstroPDF')) {
             // we will have JSON annotations to be layered on the PDF
 
             // request for the annotation information
@@ -157,14 +157,14 @@ var grobid = (function ($) {
             var formData = new FormData(form);
             var xhr = new XMLHttpRequest();
             var url = $('#gbdForm').attr('action');
-            xhr.responseType = 'json'; 
+            xhr.responseType = 'json';
             xhr.open('POST', url, true);
             //ShowRequest2();
 
             var nbPages = -1;
 
             // display the local PDF
-            if ((document.getElementById("input").files[0].type == 'application/pdf') ||
+            if ((document.getElementById("input").files[0].type === 'application/pdf') ||
                 (document.getElementById("input").files[0].name.endsWith(".pdf")) ||
                 (document.getElementById("input").files[0].name.endsWith(".PDF")))
                 var reader = new FileReader();
@@ -256,7 +256,7 @@ var grobid = (function ($) {
                         });
                     }
                 });
-            }
+            };
             reader.readAsArrayBuffer(document.getElementById("input").files[0]);
 
             xhr.onreadystatechange = function (e) {
@@ -279,7 +279,7 @@ var grobid = (function ($) {
         if (selected == 'processAstroText') {
             SubmitSuccesfulText(responseText, statusText);
         } else if (selected == 'annotateAstroPDF') {
-            SubmitSuccesfulPDF(responseText, statusText);          
+            SubmitSuccesfulPDF(responseText, statusText);
         }
 
     }
@@ -314,7 +314,7 @@ var grobid = (function ($) {
         //var string = responseJson.text;
 
         display += '<tr style="background-color:#FFF;">';
-        entities = responseJson.entities;      
+        entities = responseJson.entities;
         if (entities) {
             var pos = 0; // current position in the text
 
@@ -324,7 +324,7 @@ var grobid = (function ($) {
                 var entityRawForm = entity.rawForm;
                 var start = parseInt(entity.offsetStart, 10);
                 var end = parseInt(entity.offsetEnd, 10);
-    
+
                 if (start < pos) {
                     // we have a problem in the initial sort of the quantities
                     // the server response is not compatible with the present client 
@@ -394,18 +394,18 @@ var grobid = (function ($) {
 
         var entities = json.entities;
         if (entities) {
-            for(var n in entities) {
+            for (var n in entities) {
                 var annotation = entities[n];
                 var theId = annotation.rawForm;
                 var theUrl = null;
                 //var theUrl = annotation.url;
                 var pos = annotation.boundingBoxes;
-                pos.forEach(function(thePos, m) {
+                pos.forEach(function (thePos, m) {
                     // get page information for the annotation
                     var pageNumber = thePos.p;
-                    if (pageInfo[pageNumber-1]) {
-                        page_height = pageInfo[pageNumber-1].page_height;
-                        page_width = pageInfo[pageNumber-1].page_width;
+                    if (pageInfo[pageNumber - 1]) {
+                        page_height = pageInfo[pageNumber - 1].page_height;
+                        page_width = pageInfo[pageNumber - 1].page_width;
                     }
                     annotateEntity(theId, thePos, theUrl, page_height, page_width);
                 });
@@ -415,8 +415,8 @@ var grobid = (function ($) {
 
     function annotateEntity(theId, thePos, theUrl, page_height, page_width) {
         var page = thePos.p;
-        var pageDiv = $('#page-'+page);
-        var canvas = pageDiv.children('canvas').eq(0);;
+        var pageDiv = $('#page-' + page);
+        var canvas = pageDiv.children('canvas').eq(0);
 
         var canvasHeight = canvas.height();
         var canvasWidth = canvas.width();
@@ -424,25 +424,25 @@ var grobid = (function ($) {
         var scale_y = canvasWidth / page_width;
 
         var x = thePos.x * scale_x - 1;
-        var y = thePos.y * scale_y - 1 ;
+        var y = thePos.y * scale_y - 1;
         var width = thePos.w * scale_x + 1;
         var height = thePos.h * scale_y + 1;
 
         //make clickable the area
         var element = document.createElement("a");
-        var attributes = "display:block; width:"+width+"px; height:"+height+"px; position:absolute; top:"+
-            y+"px; left:"+x+"px;";
+        var attributes = "display:block; width:" + width + "px; height:" + height + "px; position:absolute; top:" +
+            y + "px; left:" + x + "px;";
         element.setAttribute("style", attributes + "border:2px solid; border-color: #800080;");
         element.setAttribute("data-toggle", "popover");
         element.setAttribute("data-placement", "top");
         element.setAttribute("data-content", "content");
         element.setAttribute("data-trigger", "hover");
         $(element).popover({
-            content: "<p>Astronomical Object</p><p>" +theId+"<p>",
+            content: "<p>Astronomical Object</p><p>" + theId + "<p>",
             html: true,
             container: 'body'
         });
-        
+
         pageDiv.append(element);
     }
 
@@ -453,7 +453,7 @@ var grobid = (function ($) {
         }
 
         var ind = localID.indexOf('-');
-        var localEntityNumber = parseInt(localID.substring(ind+1,localID.length));
+        var localEntityNumber = parseInt(localID.substring(ind + 1, localID.length));
         if (localEntityNumber < entities.length) {
 
             var string = toHtml(entities[localEntityNumber]);
@@ -466,7 +466,7 @@ var grobid = (function ($) {
     function toHtml(entity) {
         var string = "";
         var first = true;
-        
+
         var type = entity.type;
 
         var colorLabel = null;
@@ -478,8 +478,8 @@ var grobid = (function ($) {
 
         var rawForm = entity.rawForm;
 
-            string += "<div class='info-sense-box " + colorLabel + "'><h2 style='color:#FFF;padding-left:10px;font-size:16;'>ASTRONOMICAL " + type;
-            string += "</h2>";
+        string += "<div class='info-sense-box " + colorLabel + "'><h2 style='color:#FFF;padding-left:10px;font-size:16;'>ASTRONOMICAL " + type;
+        string += "</h2>";
 
         string += "<div class='container-fluid' style='background-color:#FFF;color:#70695C;border:padding:5px;margin-top:5px;'>" +
             "<table style='width:100%;display:inline-table;'><tr style='display:inline-table;'><td>";
@@ -491,8 +491,8 @@ var grobid = (function ($) {
         if (rawForm) {
             string += "<p>raw form: <b>" + rawForm + "</b></p>";
 
-            string += '<p><a target="_blank" href="http://simbad.u-strasbg.fr/simbad/sim-basic?Ident=' + 
-                        encodeURI(rawForm) + '&submit=SIMBAD+search"><img src="resources/img/simbad_small.png" width="50%"/></a></p>';
+            string += '<p><a target="_blank" href="http://simbad.u-strasbg.fr/simbad/sim-basic?Ident=' +
+                encodeURI(rawForm) + '&submit=SIMBAD+search"><img src="resources/img/simbad_small.png" width="50%"/></a></p>';
         }
 
         string += "</td></tr>";
