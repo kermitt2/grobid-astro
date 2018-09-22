@@ -21,6 +21,10 @@ apply from: 'https://raw.github.com/gretty-gradle-plugin/gretty/master/pluginScr
 
 group = "org.grobid"
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
@@ -47,10 +51,10 @@ dependencies {
 
     //Apache commons
     compile 'org.apache.commons:commons-collections4:4.1'
-    compile 'org.apache.commons:commons-lang3:3.0.1'
-    compile 'commons-logging:commons-logging:1.1.1'
+    compile 'org.apache.commons:commons-lang3:3.6'
+    compile 'commons-logging:commons-logging:1.2'
     compile 'commons-io:commons-io:2.5'
-    compile 'commons-pool:commons-pool:1.4'
+    compile 'commons-pool:commons-pool:1.6'
 
     // xml parsing
     compile 'org.codehaus.woodstox:stax2-api:3.1.4'
@@ -94,7 +98,7 @@ configurations.all {
 gretty {
     //httpPort = 8081
     contextPath = '/'
-//    servletContainer = "jetty9.4"
+    servletContainer = "jetty9.4"
 }
 
 // Training configuration
@@ -163,7 +167,7 @@ jar {
 
 artifacts {
     archives shadowJar
-    archives mainJar
+//    archives mainJar
 }
 
 tasks.withType(JavaCompile) {
