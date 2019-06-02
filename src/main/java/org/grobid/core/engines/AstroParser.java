@@ -2,7 +2,10 @@ package org.grobid.core.engines;
 
 import nu.xom.Attribute;
 import nu.xom.Element;
+
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.tuple.Pair;
+
 import org.grobid.core.GrobidModels;
 import org.grobid.core.analyzers.AstroAnalyzer;
 import org.grobid.core.data.AstroEntity;
@@ -26,11 +29,22 @@ import org.grobid.core.lexicon.AstroLexicon;
 import org.grobid.core.sax.TextChunkSaxHandler;
 import org.grobid.core.tokenization.TaggingTokenCluster;
 import org.grobid.core.tokenization.TaggingTokenClusteror;
-import org.grobid.core.utilities.*;
+import org.grobid.core.utilities.LanguageUtilities;
+import org.grobid.core.utilities.TextUtilities;
+import org.grobid.core.utilities.KeyGen;
+import org.grobid.core.utilities.LayoutTokensUtil;
+import org.grobid.core.utilities.OffsetPosition;
+import org.grobid.core.utilities.GrobidProperties;
+import org.grobid.core.utilities.Consolidation;
+import org.grobid.core.utilities.matching.ReferenceMarkerMatcher;
+import org.grobid.core.utilities.matching.EntityMatcherException;
+import org.grobid.core.utilities.UnicodeUtil;
+import org.grobid.core.utilities.BoundingBoxCalculator;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.xml.sax.InputSource;
 
+import org.xml.sax.InputSource;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
@@ -141,8 +155,11 @@ public class AstroParser extends AbstractParser {
             // from the header, we are interested in title, abstract and keywords
             SortedSet<DocumentPiece> documentParts = doc.getDocumentPart(SegmentationLabels.HEADER);
             if (documentParts != null) {
-                String header = parsers.getHeaderParser().getSectionHeaderFeatured(doc, documentParts, true);
-                List<LayoutToken> tokenizationHeader = doc.getTokenizationParts(documentParts, doc.getTokenizations());
+                Pair<String, List<LayoutToken>> headerStruct = parsers.getHeaderParser().getSectionHeaderFeatured(doc, documentParts, true);
+
+                List<LayoutToken> tokenizationHeader = headerStruct.getRight();
+                //doc.getTokenizationParts(documentParts, doc.getTokenizations());
+                String header = headerStruct.getLeft();
                 String labeledResult = null;
                 if ((header != null) && (header.trim().length() > 0)) {
                     labeledResult = parsers.getHeaderParser().label(header);
@@ -179,9 +196,9 @@ public class AstroParser extends AbstractParser {
                 if (featSeg != null) {
                     // if featSeg is null, it usually means that no body segment is found in the
                     // document segmentation
-                    String bodytext = featSeg.getA();
+                    String bodytext = featSeg.getLeft();
 
-                    LayoutTokenization tokenizationBody = featSeg.getB();
+                    LayoutTokenization tokenizationBody = featSeg.getRight();
                     String rese = null;
                     if ( (bodytext != null) && (bodytext.trim().length() > 0) ) {               
                         rese = parsers.getFullTextParser().label(bodytext);
@@ -238,7 +255,7 @@ public class AstroParser extends AbstractParser {
         }
 
         Collections.sort(entities);
-        return new Pair<List<AstroEntity>,Document>(entities, doc);
+        return Pair.of(entities, doc);
     }
 
     /**

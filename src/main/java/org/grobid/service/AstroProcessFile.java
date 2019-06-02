@@ -1,6 +1,8 @@
 package org.grobid.service;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
+
 import org.grobid.core.data.AstroEntity;
 import org.grobid.core.document.Document;
 import org.grobid.core.engines.AstroParser;
@@ -10,7 +12,6 @@ import org.grobid.core.factory.GrobidFactory;
 import org.grobid.core.layout.Page;
 import org.grobid.core.main.LibraryLoader;
 import org.grobid.core.utilities.IOUtilities;
-import org.grobid.core.utilities.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,8 +59,8 @@ public class AstroProcessFile {
                 Pair<List<AstroEntity>, Document> extractedEntities = parser.processPDF(originFile);
                 long end = System.currentTimeMillis();
 
-                Document doc = extractedEntities.getB();
-                List<AstroEntity> entities = extractedEntities.getA();
+                Document doc = extractedEntities.getRight();
+                List<AstroEntity> entities = extractedEntities.getLeft();
                 StringBuilder json = new StringBuilder();
 				json.append("{ ");
 

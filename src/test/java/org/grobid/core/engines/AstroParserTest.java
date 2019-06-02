@@ -1,13 +1,15 @@
 package org.grobid.core.engines;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.tuple.Pair;
+
 import org.grobid.core.data.AstroEntity;
 import org.grobid.core.document.Document;
 import org.grobid.core.factory.GrobidFactory;
 import org.grobid.core.utilities.GrobidProperties;
 import org.grobid.core.utilities.AstroProperties;
 import org.grobid.core.main.GrobidHomeFinder;
-import org.grobid.core.utilities.Pair;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -65,7 +67,7 @@ public class AstroParserTest {
     //@Test
     public void testAstroParserPDF() throws Exception {
         Pair<List<AstroEntity>, Document> res = AstroParser.getInstance().processPDF(new File("./src/test/resources/annot.pdf"));
-        List<AstroEntity> entities = res.getA();
+        List<AstroEntity> entities = res.getLeft();
 
         assertThat(entities, hasSize(19));
     }
