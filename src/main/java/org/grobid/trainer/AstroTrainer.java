@@ -480,7 +480,7 @@ public class AstroTrainer extends AbstractTrainer {
         File tmpEvalPath = getTempEvaluationDataPath();
         createCRFPPData(evalDataF, tmpEvalPath);
 
-        return EvaluationUtilities.evaluateStandard(tmpEvalPath.getAbsolutePath(), getTagger());
+        return EvaluationUtilities.evaluateStandard(tmpEvalPath.getAbsolutePath(), getTagger()).toString();
     }
 
     public String splitTrainEvaluate(Double split, boolean random) {
@@ -508,7 +508,7 @@ public class AstroTrainer extends AbstractTrainer {
         // if we are here, that means that training succeeded
         renameModels(oldModelPath, tempModelPath);
 
-        return EvaluationUtilities.evaluateStandard(evalDataPath.getAbsolutePath(), getTagger());
+        return EvaluationUtilities.evaluateStandard(evalDataPath.getAbsolutePath(), getTagger()).toString();
     }
 
     protected final File getCorpusPath() {
