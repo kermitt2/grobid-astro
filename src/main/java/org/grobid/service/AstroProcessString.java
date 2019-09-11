@@ -22,7 +22,7 @@ public class AstroProcessString {
 	private static final Logger LOGGER = LoggerFactory.getLogger(AstroProcessString.class);
 
 	/**
-	 * Parse a raw date and return the corresponding normalized date.
+	 * Parse a raw text and return the corresponding normalized astro entities.
 	 * 
 	 * @param text
 	 *            raw date string
