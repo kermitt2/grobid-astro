@@ -19,11 +19,16 @@ Building grobid-astro and JDK 1.8 (gradle wrapper is shipped with the code).
 
 First install the latest development version of GROBID as explained by the [documentation](http://grobid.readthedocs.org).
 
-Copy the module quantities as sibling sub-project to grobid-core, grobid-trainer, etc.:
+Copy the module astro as sibling sub-project to grobid-core, grobid-trainer, etc.:
 > cp -r grobid-astro grobid/
 
+> cd grobid-astro/
+
+Copy the existing trained model in the standard `grobid-home` path, type the command under `grobid/grobid-atro` path:
+
+> ./gradlew copyModels 
+
 Try compiling everything with:
-> cd PATH-TO-GROBID/grobid/
 
 > ./gradlew clean build
 
