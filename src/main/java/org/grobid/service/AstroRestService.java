@@ -43,8 +43,9 @@ public class AstroRestService implements AstroPaths {
     
             LOGGER.info(">>>>>>>> GROBID_HOME="+GrobidProperties.get_GROBID_HOME_PATH());
 
-            LibraryLoader.load();
             AstroLexicon.getInstance();
+            LibraryLoader.load();
+            
         } catch (final Exception exp) {
             LOGGER.error("GROBID astro initialisation failed. ", exp);
         }
