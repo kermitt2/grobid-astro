@@ -166,7 +166,7 @@ public class AstroParser extends AbstractParser {
 
                     BiblioItem resHeader = new BiblioItem();
                     //parsers.getHeaderParser().processingHeaderSection(false, doc, resHeader);
-                    resHeader.generalResultMapping(doc, labeledResult, tokenizationHeader);
+                    resHeader.generalResultMapping(labeledResult, tokenizationHeader);
 
                     // title
                     List<LayoutToken> titleTokens = resHeader.getLayoutTokens(TaggingLabels.HEADER_TITLE);

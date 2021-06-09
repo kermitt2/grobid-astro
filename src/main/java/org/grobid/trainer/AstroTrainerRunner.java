@@ -85,7 +85,14 @@ public class AstroTrainerRunner {
                 if (i + 1 == args.length) {
                     throw new IllegalStateException("Missing Threads number. ");
                 }
-                GrobidProperties.getInstance().setNBThreads(args[i + 1]);
+                int nbTreadsInt = 0;
+                try {
+                    nbTreadsInt = Integer.parseInt(args[i + 1]);
+                } catch (Exception e) {
+                    System.err.println("Warning: the thread number parameter is not a valid integer, " + args[i + 1] + " - using 0 as default thread number");
+                    e.printStackTrace();
+                }
+                GrobidProperties.getInstance().setWapitiNbThreads(nbTreadsInt);
             } else if (args[i].equals("-s")) {
                 if (i + 1 == args.length) {
                     throw new IllegalStateException("Missing split ratio value. ");

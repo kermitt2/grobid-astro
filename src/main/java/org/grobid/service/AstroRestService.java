@@ -16,6 +16,8 @@ import javax.ws.rs.core.Response;
 import java.io.InputStream;
 import java.util.Arrays;
 
+import org.grobid.core.utilities.GrobidConfig.ModelParameters;
+
 /**
  * RESTful service for GROBID astro extension.
  *
@@ -41,11 +43,16 @@ public class AstroRestService implements AstroPaths {
             GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
             GrobidProperties.getInstance(grobidHomeFinder);
     
-            LOGGER.info(">>>>>>>> GROBID_HOME="+GrobidProperties.get_GROBID_HOME_PATH());
+            LOGGER.info(">>>>>>>> GROBID_HOME="+GrobidProperties.getGrobidHome());
+
+            ModelParameters modelConfig = new ModelParameters();
+            modelConfig.name = "astro";
+            modelConfig.engine = "wapiti";
+            GrobidProperties.getInstance().addModel(modelConfig);
 
             AstroLexicon.getInstance();
             LibraryLoader.load();
-            
+
         } catch (final Exception exp) {
             LOGGER.error("GROBID astro initialisation failed. ", exp);
         }

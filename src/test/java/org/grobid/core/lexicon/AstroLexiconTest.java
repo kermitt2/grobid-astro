@@ -38,7 +38,7 @@ public class AstroLexiconTest {
             GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
             GrobidProperties.getInstance(grobidHomeFinder);
     
-            System.out.println(">>>>>>>> GROBID_HOME="+GrobidProperties.get_GROBID_HOME_PATH());
+            System.out.println(">>>>>>>> GROBID_HOME="+GrobidProperties.getInstance().getGrobidHome());
         } catch (final Exception exp) {
             System.err.println("GROBID astro initialisation failed: " + exp);
             exp.printStackTrace();
