@@ -11,12 +11,15 @@ import org.grobid.core.layout.Block;
 import org.grobid.core.layout.LayoutToken;
 import org.grobid.core.layout.PDFAnnotation;
 import org.grobid.core.lexicon.AstroLexicon;
-import org.grobid.core.utilities.AstroProperties;
+import org.grobid.core.utilities.AstroConfiguration;
 import org.grobid.core.utilities.GrobidProperties;
 import org.grobid.core.utilities.OffsetPosition;
 import org.grobid.core.utilities.Pair;
 import org.grobid.trainer.evaluation.EvaluationUtilities;
 import org.grobid.core.main.GrobidHomeFinder;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -33,6 +36,7 @@ import java.util.Arrays;
 public class AstroTrainer extends AbstractTrainer {
 
     private AstroLexicon astroLexicon = null;
+    private AstroConfiguration astroConfiguration = null;
 
     public AstroTrainer() {
         this(0.00001, 20, 0);
@@ -47,6 +51,10 @@ public class AstroTrainer extends AbstractTrainer {
         this.nbMaxIterations = nbMaxIterations;
 
         astroLexicon = AstroLexicon.getInstance();
+    }
+
+    public void setAstroConfiguration(AstroConfiguration config) {
+        this.astroConfiguration = config;
     }
 
     /**
@@ -512,11 +520,11 @@ public class AstroTrainer extends AbstractTrainer {
     }
 
     protected final File getCorpusPath() {
-        return new File(AstroProperties.get("grobid.astro.corpusPath"));
+        return new File(astroConfiguration.getCorpusPath());
     }
 
     protected final File getTemplatePath() {
-        return new File(AstroProperties.get("grobid.astro.templatePath"));
+        return new File(astroConfiguration.getTemplatePath());
     }
 
     /**
@@ -525,8 +533,15 @@ public class AstroTrainer extends AbstractTrainer {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
+        AstroConfiguration astroConfiguration = null;
         try {
-            String pGrobidHome = AstroProperties.get("grobid.home");
+            ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+            astroConfiguration = mapper.readValue(new File("resources/config/grobid-astro.yaml"), AstroConfiguration.class);
+        } catch(Exception e) {
+            System.err.println("The config file does not appear valid, see resources/config/grobid-astro.yaml");
+        }
+        try {
+            String pGrobidHome = astroConfiguration.getGrobidHome();
 
             GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
             GrobidProperties.getInstance(grobidHomeFinder);
@@ -538,6 +553,7 @@ public class AstroTrainer extends AbstractTrainer {
         }
 
         Trainer trainer = new AstroTrainer();
+        ((AstroTrainer) trainer).setAstroConfiguration(astroConfiguration);
         AbstractTrainer.runTraining(trainer);
         AbstractTrainer.runEvaluation(trainer);
     }

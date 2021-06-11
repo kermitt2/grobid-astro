@@ -71,10 +71,11 @@ dependencies {
     compile 'org.codehaus.woodstox:stax2-api:3.1.4'
     compile 'com.fasterxml.woodstox:woodstox-core:5.0.3'
 
-    //Json
-    compile 'com.fasterxml.jackson.core:jackson-core:2.9.0'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.9.0'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.0'
+    //Parsing xml/json/yaml
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.10.1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.10.1'
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.10.1'
 
     //Web interface
     compile 'org.glassfish.jersey.media:jersey-media-multipart:2.27'

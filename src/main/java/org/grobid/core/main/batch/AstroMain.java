@@ -3,7 +3,7 @@ package org.grobid.core.main.batch;
 import org.grobid.core.engines.AstroParser;
 import org.grobid.core.main.GrobidHomeFinder;
 import org.grobid.core.utilities.GrobidProperties;
-import org.grobid.core.utilities.AstroProperties;
+import org.grobid.core.utilities.AstroConfiguration;
 import org.grobid.core.main.LibraryLoader;
 import org.grobid.core.utilities.GrobidConfig.ModelParameters;
 import org.slf4j.Logger;
@@ -13,8 +13,10 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
  *
@@ -56,7 +58,15 @@ public class AstroMain {
     protected static void inferParamsNotSet() {
         String tmpFilePath;
         if (gbdArgs.getPath2grobidHome() == null) {
-            tmpFilePath = AstroProperties.get("grobid.home");
+            AstroConfiguration astroConfiguration = null;
+            try {
+                ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+                astroConfiguration = mapper.readValue(new File("resources/config/grobid-astro.yaml"), AstroConfiguration.class);
+            } catch(Exception e) {
+                LOGGER.error("The config file does not appear valid, see resources/config/grobid-astro.yaml", e);
+            }
+
+            tmpFilePath = astroConfiguration.getGrobidHome();
 
             if (tmpFilePath == null) {
                 tmpFilePath = new File("grobid-home").getAbsolutePath();
@@ -81,10 +91,14 @@ public class AstroMain {
             grobidHomeFinder.findGrobidHomeOrFail();
             GrobidProperties.getInstance(grobidHomeFinder);
 
-            ModelParameters modelConfig = new ModelParameters();
-            modelConfig.name = "astro";
-            modelConfig.engine = "wapiti";
-            GrobidProperties.getInstance().addModel(modelConfig);
+            AstroConfiguration astroConfiguration = null;
+            try {
+                ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+                astroConfiguration = mapper.readValue(new File("resources/config/grobid-astro.yaml"), AstroConfiguration.class);
+            } catch(Exception e) {
+                LOGGER.error("The config file does not appear valid, see resources/config/grobid-astro.yaml", e);
+            }
+            GrobidProperties.getInstance().addModel(astroConfiguration.getModel());
 
             LibraryLoader.load();
         } catch (final Exception exp) {

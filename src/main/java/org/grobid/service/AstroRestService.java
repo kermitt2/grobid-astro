@@ -4,7 +4,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.grobid.core.lexicon.AstroLexicon;
 import org.grobid.core.main.GrobidHomeFinder;
 import org.grobid.core.main.LibraryLoader;
-import org.grobid.core.utilities.AstroProperties;
+import org.grobid.core.utilities.AstroConfiguration;
 import org.grobid.core.utilities.GrobidProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,9 +14,13 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.InputStream;
+import java.io.File;
 import java.util.Arrays;
 
 import org.grobid.core.utilities.GrobidConfig.ModelParameters;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 /**
  * RESTful service for GROBID astro extension.
@@ -38,17 +42,23 @@ public class AstroRestService implements AstroPaths {
         LOGGER.info("Init Servlet AstroRestService.");
         LOGGER.info("Init lexicon and KB resources.");
         try {
-            String pGrobidHome = AstroProperties.get("grobid.home");
+
+            AstroConfiguration astroConfiguration = null;
+            try {
+                ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+                astroConfiguration = mapper.readValue(new File("resources/config/grobid-astro.yaml"), AstroConfiguration.class);
+            } catch(Exception e) {
+                LOGGER.error("The config file does not appear valid, see resources/config/grobid-astro.yaml", e);
+            }
+
+            String pGrobidHome = astroConfiguration.getGrobidHome();
 
             GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
             GrobidProperties.getInstance(grobidHomeFinder);
     
             LOGGER.info(">>>>>>>> GROBID_HOME="+GrobidProperties.getGrobidHome());
 
-            ModelParameters modelConfig = new ModelParameters();
-            modelConfig.name = "astro";
-            modelConfig.engine = "wapiti";
-            GrobidProperties.getInstance().addModel(modelConfig);
+            GrobidProperties.getInstance().addModel(astroConfiguration.getModel());
 
             AstroLexicon.getInstance();
             LibraryLoader.load();

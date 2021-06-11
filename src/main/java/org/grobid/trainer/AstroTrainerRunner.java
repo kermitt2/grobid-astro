@@ -1,10 +1,14 @@
 package org.grobid.trainer;
 
 import org.grobid.core.main.GrobidHomeFinder;
-import org.grobid.core.utilities.AstroProperties;
+import org.grobid.core.utilities.AstroConfiguration;
 import org.grobid.core.utilities.GrobidProperties;
 
 import java.util.Arrays;
+import java.io.File;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 /**
  * Training application for training a target model.
@@ -59,17 +63,23 @@ public class AstroTrainerRunner {
      */
     public static void main(String[] args) {
         if (args.length < 3) {
-            throw new IllegalStateException(
-                    USAGE);
+            throw new IllegalStateException(USAGE);
         }
 
         RunType mode = RunType.getRunType(Integer.parseInt(args[0]));
         if ((mode == RunType.SPLIT) && (args.length < 5)) {
-            throw new IllegalStateException(
-                    USAGE);
+            throw new IllegalStateException(USAGE);
+        }
+
+        AstroConfiguration astroConfiguration = null;
+        try {
+            ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+            astroConfiguration = mapper.readValue(new File("resources/config/grobid-astro.yaml"), AstroConfiguration.class);
+        } catch(Exception e) {
+            System.err.println("The config file does not appear valid, see resources/config/grobid-astro.yaml");
         }
         
-        String path2GbdHome = AstroProperties.get("grobid.home");
+        String path2GbdHome = astroConfiguration.getGrobidHome();
         System.out.println("path2GbdHome=" + path2GbdHome);
         initProcess(path2GbdHome);
 
