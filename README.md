@@ -97,8 +97,10 @@ In this mode, by default, 80% of the available data is used for training and the
 For generating training data in TEI, based on the current model, from a list of text or PDF files in a input repository, use the following command: 
 
 ```
-> java -Xmx4G -jar build/libs/grobid-astro-0.5.1-SNAPSHOT-onejar.jar -gH ../grobid-home -dIn ~/test_astro/ -dOut ~/test_astro/out/ -exe createTraining
+> java -Xmx4G -jar build/libs/grobid-astro-0.6.2-SNAPSHOT-onejar.jar -gH ../grobid-home -dIn ~/test_astro/ -dOut ~/test_astro/out/ -exe createTraining
 ```
+
+(change the grobid-astro version as required!)
 
 
 ## License
