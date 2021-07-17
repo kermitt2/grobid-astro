@@ -54,11 +54,8 @@ dependencies {
     //compile 'com.github.kermitt2:grobid:grobid-core:0.6.2'
     //compile 'com.github.kermitt2:grobid:grobid-trainer:0.6.2'
 
-    compile group: 'org.grobid', name: 'grobid-core', version: '0.7.0-SNAPSHOT'
-    compile group: 'org.grobid', name: 'grobid-trainer', version: '0.7.0-SNAPSHOT'
-
-    //compile 'org.grobid:grobid-core:0.6.2'
-    //compile 'org.grobid:grobid-trainer:0.6.2'
+    compile group: 'org.grobid', name: 'grobid-core', version: '0.7.0'
+    compile group: 'org.grobid', name: 'grobid-trainer', version: '0.7.0'
 
     //Apache commons
     compile 'org.apache.commons:commons-collections4:4.1'

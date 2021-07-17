@@ -7,13 +7,16 @@ import org.grobid.core.document.Document;
 import org.grobid.core.factory.GrobidFactory;
 import org.grobid.core.layout.LayoutToken;
 import org.grobid.core.utilities.GrobidProperties;
-import org.grobid.core.utilities.AstroProperties;
+import org.grobid.core.utilities.AstroConfiguration;
 import org.grobid.core.utilities.OffsetPosition;
 import org.grobid.core.main.GrobidHomeFinder;
 import org.grobid.core.utilities.Pair;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -33,8 +36,17 @@ public class AstroLexiconTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
         try {
-            String pGrobidHome = AstroProperties.get("grobid.home");
+            AstroConfiguration astroConfiguration = null;
+            try {
+                ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+                astroConfiguration = mapper.readValue(new File("resources/config/grobid-astro.yaml"), AstroConfiguration.class);
+            } catch(Exception e) {
+                System.out.println("The config file does not appear valid, see resources/config/grobid-astro.yaml");
+                e.printStackTrace();
+            }
 
+            String pGrobidHome = astroConfiguration.getGrobidHome();
+            
             GrobidHomeFinder grobidHomeFinder = new GrobidHomeFinder(Arrays.asList(pGrobidHome));
             GrobidProperties.getInstance(grobidHomeFinder);
     

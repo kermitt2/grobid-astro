@@ -17,8 +17,6 @@ import java.io.InputStream;
 import java.io.File;
 import java.util.Arrays;
 
-import org.grobid.core.utilities.GrobidConfig.ModelParameters;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
@@ -42,7 +40,6 @@ public class AstroRestService implements AstroPaths {
         LOGGER.info("Init Servlet AstroRestService.");
         LOGGER.info("Init lexicon and KB resources.");
         try {
-
             AstroConfiguration astroConfiguration = null;
             try {
                 ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
